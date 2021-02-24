@@ -55,11 +55,11 @@ public class Pagina {
 
     //Constructor por defecto
     public Pagina() {
-        url = "google";
-        descripcion = "maravillosa";
+        url = "";
+        descripcion = "";
         pageRank = 0;
-        palabrasClaves = new String[]{"vacio"};
-        enlacesReferente = "otrapagina";
+        palabrasClaves = new String[]{""};
+        enlacesReferente = "";
     }
 
     //Getters and setters
@@ -112,5 +112,7 @@ public class Pagina {
     			aumentado = true;
     		}
     	}
-    }   
+    }
+    
+    
 }
