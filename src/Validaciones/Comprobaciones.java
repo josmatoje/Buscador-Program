@@ -5,14 +5,19 @@ import java.util.Scanner;
 public class Comprobaciones {
     
     /*
-    	Metodo que pregunta Si o No y devuelve true en caso de seleccionar si o false en caso contrario
         Signatura: public boolean leerValidarRespuestaSiNo (Scanner teclado) 
+        
+        Comentario: Metodo que lee y valida si una respuesta es S o N. En funcion de esta se devolvera un valor boleano u otro.
+        
         Precondiciones: Ninguna
+        
         Entrada: Scanner teclado
-        Salida: Boolean afirmativo  
+        
+        Salida: Boolean afirmativo 
+         
         Postcondiciones: Este metodo se trata de una funciona ya que devuelve en este caso un boleano(afirmativo) cuyo valor sera:
-        				 -true: si respuesta es 's'	
-        				 -false: si respuesta es 'n'
+        				 -true: si respuesta es 's'.	
+        				 -false: si respuesta es 'n.
         				
     */
     public boolean leerValidarRespuestaSiNo (Scanner teclado) {   
@@ -36,23 +41,37 @@ public class Comprobaciones {
     }
 
 
-    /*
-    Metodos que comprueban si el valor dado está entre un valor n y otro m
+    /*    
         Signatura:public int valorEntrenym(int eleccion, int valorInicial, int valorFinal, Scanner teclado)
-        Precondiciones: --
-        Entrada: enteros maximo y minimo entre los que se quiere acotar la eleccion, objeto de la clase Scanner
-        Entrada/Salida: Entero que representa la eleccion (validada al salir) 
-        Postcondiciones: el numero debe ser >= el valor inicial y menor o igual que el valor maximo
+        
+        Comentario: Este metodo se encarga de leer y validar que un numero este entre un rango.
+        
+        Precondiciones: El numero valorInicial tiene que ser menor que valorFinal
+        
+        Entradas:
+         		 Scanner teclado
+        		 int valorInicial, valorFinal
+        
+		Salidas: int numero 
+        
+        Postcondiciones: Este metodo se trata de un funcion ya que devuelve un tipo de dato, entero(numero) en este caso,
+        				 el cual estara entre un rango(valorInicial y valorFinal)
     */
 
-    public int valorEntrenym(int eleccion, int valorInicial, int valorFinal, Scanner teclado){
+    public int leerValidarNumeroEntreRango(int valorInicial, int valorFinal, Scanner teclado){
+        int numero = 0; 
         
-        while(eleccion<valorInicial || eleccion>valorFinal){
-            System.out.println("Introduzca un valor válido (de " + valorInicial + " a " + valorFinal + "): ");
-            eleccion=teclado.nextInt();
-        }
+        System.out.println("Ingrese un numero entre ("+valorInicial+"-"+valorFinal+")");
+        do {
+        	
+        	numero = teclado.nextInt();
+        	if (numero < valorInicial || numero > valorInicial) {
+				System.out.println("Numero ingresado no valido, vuelva intentarlo: ");
+			}
+        	
+        }while(numero < valorInicial || numero > valorInicial);
         
-        return eleccion;
+        return numero;
     }
 
 }
