@@ -1,3 +1,37 @@
+/**
+ * Nombre: Pagina
+ * Propiedades:
+ *  Basicas:
+ *   url: cadena, consultable
+ *   descripcion: cadena, consultable, modificable
+ *   pageRank: entero, consultable
+ *   palabrasClaves: array de cadenas, consultable, modificable
+ *   enlacesReferentes: cadena, consultable, modificable
+ *
+ * Derivadas: Ninguna
+ *
+ * Compartida: Ninguna
+ *
+ * Métodos principales:
+ * url:
+ *  public String getUrl()
+ * descripcion:
+ *  public String getDescripcion()
+ *  public void setDescripcion(String descripcion)
+ * pageRank:
+ *  public int getPageRank()
+ * palabrasClaves:
+ *  public String[] getPalabrasClaves()
+ *  public void setPalabrasClaves(String[] palabrasClaves)
+ * enlacesClaves:
+ *  public String getEnlacesReferente()
+ *  public void setEnlacesReferente(String enlacesReferente)
+ *
+ * Metodos añadidos: Ninguno
+ *
+ * Metodos heredados: Ninguno
+ *
+ */
 package ClasesBasicas;
 
 public class Pagina {
@@ -32,9 +66,6 @@ public class Pagina {
         return url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
 
     public String getDescripcion() {
         return descripcion;
@@ -46,10 +77,6 @@ public class Pagina {
 
     public int getPageRank() {
         return pageRank;
-    }
-
-    public void setPageRank(int pageRank) {
-        this.pageRank = pageRank;
     }
 
     public String[] getPalabrasClaves() {
