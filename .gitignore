@@ -1,5 +1,12 @@
+<<<<<<< HEAD
+
+*.iml
+
+.idea/
+=======
 /bin/
 
 .classpath
 
 .project
+>>>>>>> Pedrito
