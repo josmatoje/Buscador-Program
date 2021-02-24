@@ -42,7 +42,7 @@ public class Comprobaciones {
 
 
     /*    
-        Signatura:public int valorEntrenym(int eleccion, int valorInicial, int valorFinal, Scanner teclado)
+        Signatura:public int leerValidarNumeroEntreRango(int valorInicial, int valorFinal, Scanner teclado)
         
         Comentario: Este metodo se encarga de leer y validar que un numero este entre un rango.
         
