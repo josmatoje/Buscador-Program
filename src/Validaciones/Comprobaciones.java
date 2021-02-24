@@ -6,7 +6,7 @@ public class Comprobaciones {
     
     /*
     	Metodo que pregunta Si o No y devuelve true en caso de seleccionar si o false en caso contrario
-        Signatura: public boolean validacionSiNo (Scanner teclado) 
+        Signatura: public boolean leerValidarRespuestaSiNo (Scanner teclado) 
         Precondiciones: Ninguna
         Entrada: Scanner teclado
         Salida: Boolean afirmativo  
@@ -15,7 +15,7 @@ public class Comprobaciones {
         				 -false: si respuesta es 'n'
         				
     */
-    public boolean validacionSiNo (Scanner teclado) {   
+    public boolean leerValidarRespuestaSiNo (Scanner teclado) {   
         char respuesta;
         boolean afirmativo = true;
         
