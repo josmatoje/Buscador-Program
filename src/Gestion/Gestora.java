@@ -1,4 +1,4 @@
-package Gestora;
+package Gestion;
 
 public class Gestora {
     
