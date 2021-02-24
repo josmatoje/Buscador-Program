@@ -5,29 +5,33 @@ import java.util.Scanner;
 public class Comprobaciones {
     
     /*
-    Metodo que pregunta Si o No y devuelve true en caso de seleccionar si o false en caso contrario
-        Signatura: public boolean validacionSiNo () 
-        Precondiciones: --
-        Entrada: objeto de la clase Scanner
-        Salida: boleano 
-        Postcondiciones:--
+    	Metodo que pregunta Si o No y devuelve true en caso de seleccionar si o false en caso contrario
+        Signatura: public boolean validacionSiNo (Scanner teclado) 
+        Precondiciones: Ninguna
+        Entrada: Scanner teclado
+        Salida: Boolean afirmativo  
+        Postcondiciones: Este metodo se trata de una funciona ya que devuelve en este caso un boleano(afirmativo) cuyo valor sera:
+        				 -true: si respuesta es 's'	
+        				 -false: si respuesta es 'n'
+        				
     */
-    public boolean validacionSiNo (Scanner teclado) {
-    
+    public boolean validacionSiNo (Scanner teclado) {   
         char respuesta;
-        boolean afirmativo;
-        
+        boolean afirmativo = true;
         
         System.out.println("Introduzca S (si)/ N (no)");
-        respuesta=teclado.next().toLowerCase().charAt(0);
+        do {
+        	 respuesta=teclado.next().toLowerCase().charAt(0);
 
-        while(respuesta!='s' && respuesta!='n'){
-            System.out.println("Introduzca S o N");
-            respuesta=teclado.next().toLowerCase().charAt(0);
+        	 if (respuesta!='s' && respuesta!='n') {
+				System.out.println("Error valor introducido invalido, ingrese uno de nuevo:");
+			}
+        	 
+        }while(respuesta != 's' && respuesta != 'n');
+        
+        if(respuesta == 'n') { //Si la respuesta es No
+        	afirmativo = false;
         }
-        
-        afirmativo = respuesta=='s'; //Si respuesta=='s' afirmativo es true, en caso contrario es false
-        
         return afirmativo;
     }
 
