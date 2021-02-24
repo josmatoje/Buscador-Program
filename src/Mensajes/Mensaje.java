@@ -4,17 +4,25 @@ import ClasesBasicas.Pagina;
 
 public class Mensaje {
 	
-	//Métodos para mostrar menús
+	//Metodos para mostrar menos
 	
-	/**Cabecera del método:
+	/**Cabecera del metodo:
 	 * Precondiciones: ninguna
+<<<<<<< Updated upstream
 	 * Postcondiciones: Nos muestra el menú inicial del buscador
+=======
+	 * Postcondiciones: Nos muestra el mensaje inicial del buscador
+>>>>>>> Stashed changes
 	 * Entrada: Ninguna
 	 * Salida: Ninguna
 	 */
 	public void menuPrincipal() {
 		System.out.println("********************\n\n"
+<<<<<<< Updated upstream
 				+ "Bienvenido a tu buscador favorito, ¿que desea realizar? \n"
+=======
+				+ "Bienvenido a tu buscador favorito, que desea realizar? \n"
+>>>>>>> Stashed changes
 				+ "1.- Dar de alta una nueva pagina web \n"
 				+ "2.- Buscar paginas claves \n"
 				+ "3.- Modificar una pagina web existente \n"

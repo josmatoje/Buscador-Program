@@ -13,6 +13,12 @@
 .idea/
 =======
 /bin/
+<<<<<<< HEAD
+
+.project
+
+.classpath
+=======
 
 .classpath
 
