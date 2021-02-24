@@ -1,6 +1,21 @@
+<<<<<<< HEAD
 
 .idea/misc.xml
 
 .idea/modules.xml
 
 .idea/vcs.xml
+=======
+<<<<<<< HEAD
+
+*.iml
+
+.idea/
+=======
+/bin/
+
+.classpath
+
+.project
+>>>>>>> Pedrito
+>>>>>>> main
