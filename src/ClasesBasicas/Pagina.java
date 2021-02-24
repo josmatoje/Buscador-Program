@@ -13,7 +13,6 @@
  * Compartida: Ninguna
  *
  * Metodos principales:
-<<<<<<< Updated upstream
  * 						-url:
  *  						public String getUrl()
  * 						-descripcion:
@@ -29,23 +28,6 @@
  *  						public void setEnlacesReferente(String enlacesReferente)
  * Metodos aï¿½adidos: 
  *					-private void aumentarPageRankPaginaEnlace(Pagina[] paginas)
-=======
- * url:
- *  public String getUrl()
- * descripcion:
- *  public String getDescripcion()
- *  public void setDescripcion(String descripcion)
- * pageRank:
- *  public int getPageRank()
- * palabrasClaves:
- *  public String[] getPalabrasClaves()
- *  public void setPalabrasClaves(String[] palabrasClaves)
- * enlacesClaves:
- *  public String getEnlacesReferente()
- *  public void setEnlacesReferente(String enlacesReferente)
- *
- * Metodos annadidos: Ninguno
->>>>>>> Stashed changes
  *
  * Metodos heredados: Ninguno
  *
@@ -114,14 +96,14 @@ public class Pagina {
         this.enlacesReferente = enlacesReferente;
     }
     
-    //Método toString para mostrar las páginas
+    //Mï¿½todo toString para mostrar las pï¿½ginas
     @Override
      public String toString() {
     	 return("       http://"+url+".com       \n"
     	 		+descripcion);
      }
 
-    //Metodos anadidos
+    //Metodos aï¿½adidos
     private void aumentarPageRankPaginaEnlace(Pagina[] paginas) {
     	boolean aumentado = false;
     	for(int i = 0; i < paginas.length && !aumentado; i++) {
