@@ -94,6 +94,13 @@ public class Pagina {
     public void setEnlacesReferente(String enlacesReferente) {
         this.enlacesReferente = enlacesReferente;
     }
+    
+    //Método toString para mostrar las páginas
+    @Override
+     public String toString() {
+    	 return("       http://"+url+".com       \n"
+    	 		+descripcion);
+     }
 
 
 }
