@@ -1,6 +1,6 @@
 package principal;
 
-import ClasesBasicas.Pagina;
+import clasesBasicas.Pagina;
 
 public class Main {
 

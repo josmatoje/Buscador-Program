@@ -32,7 +32,7 @@
  * Metodos heredados: Ninguno
  *
  */
-package ClasesBasicas;
+package clasesBasicas;
 
 public class Pagina {
 
@@ -44,13 +44,12 @@ public class Pagina {
     private String enlacesReferente;
 
     //Constructor con parametros
-    public Pagina(String url, String descripcion, int pageRank, String[] palabrasClaves, String enlacesReferente, Pagina[] paginas) {
+    public Pagina(String url, String descripcion, int pageRank, String[] palabrasClaves, String enlacesReferente) {
         this.url = url;
         this.descripcion = descripcion;
         this.pageRank = pageRank;
         this.palabrasClaves = palabrasClaves;
         this.enlacesReferente = enlacesReferente;
-        aumentarPageRankPaginaEnlace(paginas);
     }
 
     //Constructor por defecto
@@ -101,18 +100,5 @@ public class Pagina {
      public String toString() {
     	 return("       http://"+url+".com       \n"
     	 		+descripcion);
-     }
-
-    //Metodos añadidos
-    private void aumentarPageRankPaginaEnlace(Pagina[] paginas) {
-    	boolean aumentado = false;
-    	for(int i = 0; i < paginas.length && !aumentado; i++) {
-    		if(paginas[i] != null && enlacesReferente.equals(paginas[i].url)) {
-    			paginas[i].pageRank++;
-    			aumentado = true;
-    		}
-    	}
-    }
-    
-    
+     }   
 }

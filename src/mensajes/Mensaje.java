@@ -1,6 +1,6 @@
-package Mensajes;
+package mensajes;
 
-import ClasesBasicas.Pagina;
+import clasesBasicas.Pagina;
 
 public class Mensaje {
 	
@@ -71,7 +71,7 @@ public class Mensaje {
 	public void menuModificarPaginaWeb() {
 		System.out.println("********************\n\n"
 				+ "1.- Cambiar la descripcion \n"
-				+ "2.- Anyadir palabras claves \n"
+				+ "2.- Añadir palabras claves \n"
 				+ "3.- Volver al menu principal\n\n"
 				+ "********************");
 	}
