@@ -13,6 +13,12 @@
 .idea/
 =======
 /bin/
+<<<<<<< HEAD
+
+.project
+
+.classpath
+=======
 
 .classpath
 
@@ -21,3 +27,5 @@
 >>>>>>> main
 
 src/package-info.java
+
+out/
