@@ -26,13 +26,15 @@
  * 						-enlacesClaves:
  *  						public String getEnlacesReferente()
  *  						public void setEnlacesReferente(String enlacesReferente)
- * Metodos añadidos: 
- *					-private void aumentarPageRankPaginaEnlace(Pagina[] paginas)
+ * Metodos anhadidos:
+ *
  *
  * Metodos heredados: Ninguno
  *
  */
 package clasesBasicas;
+
+import gestion.Gestora;
 
 public class Pagina {
 
@@ -79,6 +81,10 @@ public class Pagina {
         return pageRank;
     }
 
+    public void setPageRank(int pageRank) {
+        this.pageRank = pageRank;
+    }
+
     public String[] getPalabrasClaves() {
         return palabrasClaves;
     }
@@ -95,7 +101,7 @@ public class Pagina {
         this.enlacesReferente = enlacesReferente;
     }
     
-    //Método toString para mostrar las páginas
+    //Metodo toString para mostrar las paginas
     @Override
      public String toString() {
     	 return("       http://"+url+".com       \n"

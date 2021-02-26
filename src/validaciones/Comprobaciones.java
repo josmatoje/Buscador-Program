@@ -80,7 +80,7 @@ public class Comprobaciones {
     }
     
     /**Precondiociones=Ninguna
-     * Postcondiciones= Este m�todo nos sirve para validar lo introducido por teclado en el menu principal. Para ello nos devolvera
+     * Postcondiciones= Este metodo nos sirve para validar lo introducido por teclado en el menu principal. Para ello nos devolvera
      * un boolean que sera verdadero en caso de que sea un numero valido y false si no lo es.
      * Entrada: String eleccion
      * Salida=boolean eleccionCorrecta

@@ -4,17 +4,23 @@ import clasesBasicas.Pagina;
 
 public class Mensaje {
 	
-	//Métodos para mostrar menús
+	//Metodos para mostrar menos
 	
-	/**Cabecera del método:
+	/**Cabecera del metodo:
 	 * Precondiciones: ninguna
-	 * Postcondiciones: Nos muestra el menú inicial del buscador
+<<<<<<< Updated upstream
+	 * Postcondiciones: Nos muestra el menu inicial del buscador
+=======
+	 * Postcondiciones: Nos muestra el mensaje inicial del buscador
+>>>>>>> Stashed changes
 	 * Entrada: Ninguna
 	 * Salida: Ninguna
 	 */
+
 	public void menuPrincipal() {
 		System.out.println("********************\n\n"
-				+ "Bienvenido a tu buscador favorito, ¿que desea realizar? \n"
+
+				+ "Bienvenido a tu buscador favorito, que desea realizar? \n"
 				+ "1.- Dar de alta una nueva pagina web \n"
 				+ "2.- Buscar paginas claves \n"
 				+ "3.- Modificar una pagina web existente \n"
@@ -39,19 +45,19 @@ public class Mensaje {
 	}
 	/**
 	 * Precondiciones=ninguna
-	 * Postcondiciones=Nos muestra un pequeño mensaje indicandonos que introduzcamos una url valida
+	 * Postcondiciones=Nos muestra un pequenho mensaje indicandonos que introduzcamos una url valida
 	 * Entrada=ninguna
 	 * Salida=ninguna 
 	 * 
 	 */
 	
-	public void añadirPaginaWeb() {
-		System.out.print("Introduzca la url que desea añadir:");
+	public void anadirPaginaWeb() {
+		System.out.print("Introduzca la url que desea anhadir:");
 	}
 	
 	/**
 	 * Precondiciones=ninguna
-	 * Postcondiciones=Nos muestra un pequeño mensaje indicandonos que introduzcamos una url valida para modificar la pagina
+	 * Postcondiciones=Nos muestra un pequenho mensaje indicandonos que introduzcamos una url valida para modificar la pagina
 	 * Entrada=ninguna
 	 * Salida=ninguna 
 	 * 
@@ -68,10 +74,11 @@ public class Mensaje {
 	 * Salida=ninguna 
 	 * 
 	 */
+
 	public void menuModificarPaginaWeb() {
 		System.out.println("********************\n\n"
 				+ "1.- Cambiar la descripcion \n"
-				+ "2.- Añadir palabras claves \n"
+				+ "2.- Aï¿½adir palabras claves \n"
 				+ "3.- Volver al menu principal\n\n"
 				+ "********************");
 	}
