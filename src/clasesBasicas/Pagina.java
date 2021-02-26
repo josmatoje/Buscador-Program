@@ -46,17 +46,17 @@ public class Pagina {
     private String enlacesReferente;
 
     //Constructor con parametros
-    public Pagina(String url, String descripcion, int pageRank, String[] palabrasClaves, String enlacesReferente, Pagina[] paginas) {
+    public Pagina(String url, String descripcion, String[] palabrasClaves, String enlacesReferente) {
         this.url = url;
         this.descripcion = descripcion;
-        this.pageRank = pageRank;
         this.palabrasClaves = palabrasClaves;
+        this.pageRank=0;
         this.enlacesReferente = enlacesReferente;
     }
 
     //Constructor por defecto
     public Pagina() {
-        url = "google";
+        url = "http://google.com";
         descripcion = "maravillosa";
         pageRank = 0;
         palabrasClaves = new String[]{"vacio"};
@@ -104,7 +104,7 @@ public class Pagina {
     //Metodo toString para mostrar las paginas
     @Override
      public String toString() {
-    	 return("       http://"+url+".com       \n"
+    	 return("          "+url+"          \n"
     	 		+descripcion);
      }
 

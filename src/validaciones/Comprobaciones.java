@@ -25,7 +25,7 @@ public class Comprobaciones {
         				 -false: si respuesta es 'n.
         				
     */
-    public boolean leerValidarRespuestaSiNo (Scanner teclado) {   
+    public static boolean leerValidarRespuestaSiNo (Scanner teclado) {   
         char respuesta;
         boolean afirmativo = true;
         
@@ -63,7 +63,7 @@ public class Comprobaciones {
         				 el cual estara entre un rango(valorInicial y valorFinal)
     */
 
-    public int leerValidarNumeroEntreRango(int valorInicial, int valorFinal, Scanner teclado){
+    public static int leerValidarNumeroEntreRango(int valorInicial, int valorFinal, Scanner teclado){
         int numero = 0; 
         
         System.out.println("Ingrese un numero entre ("+valorInicial+"-"+valorFinal+")");
@@ -79,29 +79,8 @@ public class Comprobaciones {
         return numero;
     }
     
-    /**Precondiociones=Ninguna
-     * Postcondiciones= Este metodo nos sirve para validar lo introducido por teclado en el menu principal. Para ello nos devolvera
-     * un boolean que sera verdadero en caso de que sea un numero valido y false si no lo es.
-     * Entrada: Scanner teclado
-     * Salida=boolean eleccionCorrecta
-     * 
-     * @param Scanner teclado 
-     */
     
-    public void menuPrincipal(Scanner teclado) {
-    	String eleccion;
-    	System.out.print("�Qu� opci�n desea realizar?: ");
-    	eleccion=teclado.next();
-    	switch(eleccion) {
-    	case "1" -> System.out.println();
-    	case "2" -> System.out.println();
-    	case "3" -> System.out.println();
-    	case "4" -> System.out.println();
-    	default -> Mensaje.caracterIntroducidoNoValido();
-    	}
-    }
-    
-    public boolean validarUrl(String url) {
+    public static boolean validarUrl(String url) {
     	boolean valida;
 
     	try {    		
@@ -113,7 +92,7 @@ public class Comprobaciones {
     	return valida;
     }
  
-    public boolean validarExistenciaUrl(Pagina[] paginas,String url) {
+    public static boolean validarExistenciaUrl(Pagina[] paginas,String url) {
     	boolean urlValida = false;
     	for(int i = 0; i < paginas.length && !urlValida;i++) {
     		if (!url.equals(paginas[i].getUrl())) {

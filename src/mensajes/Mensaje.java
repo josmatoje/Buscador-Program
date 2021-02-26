@@ -17,7 +17,7 @@ public class Mensaje {
 	 * Salida: Ninguna
 	 */
 
-	public void menuPrincipal() {
+	public static void menuPrincipal() {
 		System.out.println("********************\n\n"
 
 				+ "Bienvenido a tu buscador favorito, que desea realizar? \n"
@@ -37,7 +37,7 @@ public class Mensaje {
 	 * @param array
 	 */
 	
-	public void mostrarResultadoBusqueda(Pagina[] array) {
+	public static void mostrarResultadoBusqueda(Pagina[] array) {
 		System.out.println("Resultados:");
 		for(int i=0;i<array.length;i++) {
 			System.out.println(array[i].toString());
@@ -51,7 +51,7 @@ public class Mensaje {
 	 * 
 	 */
 	
-	public void anadirPaginaWeb() {
+	public static void anadirPaginaWeb() {
 		System.out.print("Introduzca la url que desea anhadir:");
 	}
 	
@@ -63,7 +63,7 @@ public class Mensaje {
 	 * 
 	 */
 	
-	public void modificarPaginaWeb() {
+	public static void modificarPaginaWeb() {
 		System.out.print("Introduzca el url de la pagina que desea modificar:");
 	}
 	
@@ -75,7 +75,7 @@ public class Mensaje {
 	 * 
 	 */
 
-	public void menuModificarPaginaWeb() {
+	public static void menuModificarPaginaWeb() {
 		System.out.println("********************\n\n"
 				+ "1.- Cambiar la descripcion \n"
 				+ "2.- Anyadir palabras claves \n"
