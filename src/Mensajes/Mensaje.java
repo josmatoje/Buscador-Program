@@ -32,8 +32,47 @@ public class Mensaje {
 	 */
 	
 	public void mostrarResultadoBusqueda(Pagina[] array) {
+		System.out.println("Resultados:");
 		for(int i=0;i<array.length;i++) {
 			System.out.println(array[i].toString());
 		}
+	}
+	/**
+	 * Precondiciones=ninguna
+	 * Postcondiciones=Nos muestra un pequeño mensaje indicandonos que introduzcamos una url valida
+	 * Entrada=ninguna
+	 * Salida=ninguna 
+	 * 
+	 */
+	
+	public void añadirPaginaWeb() {
+		System.out.print("Introduzca la url que desea añadir:");
+	}
+	
+	/**
+	 * Precondiciones=ninguna
+	 * Postcondiciones=Nos muestra un pequeño mensaje indicandonos que introduzcamos una url valida para modificar la pagina
+	 * Entrada=ninguna
+	 * Salida=ninguna 
+	 * 
+	 */
+	
+	public void modificarPaginaWeb() {
+		System.out.print("Introduzca el url de la pagina que desea modificar:");
+	}
+	
+	/**
+	 * Precondiciones=ninguna
+	 * Postcondiciones=Nos muestra el menu para la opcion de modificar una pagina una vez introducida una url valida.
+	 * Entrada=ninguna
+	 * Salida=ninguna 
+	 * 
+	 */
+	public void menuModificarPaginaWeb() {
+		System.out.println("********************\n\n"
+				+ "1.- Cambiar la descripcion \n"
+				+ "2.- Anyadir palabras claves \n"
+				+ "3.- Volver al menu principal\n\n"
+				+ "********************");
 	}
 }

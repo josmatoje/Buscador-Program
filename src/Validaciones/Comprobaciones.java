@@ -2,6 +2,8 @@ package Validaciones;
 
 import java.util.Scanner;
 
+import ClasesBasicas.Pagina;
+
 public class Comprobaciones {
     
     /*
@@ -44,11 +46,46 @@ public class Comprobaciones {
     public int valorEntrenym(int eleccion, int valorInicial, int valorFinal, Scanner teclado){
         
         while(eleccion<valorInicial || eleccion>valorFinal){
-            System.out.println("Introduzca un valor vÃ¡lido (de " + valorInicial + " a " + valorFinal + "): ");
+            System.out.println("Introduzca un valor valido (de " + valorInicial + " a " + valorFinal + "): ");
             eleccion=teclado.nextInt();
         }
         
         return eleccion;
+    }
+    
+    /**Precondiociones=Ninguna
+     * Postcondiciones= Este método nos sirve para validar lo introducido por teclado en el menu principal. Para ello nos devolvera
+     * un boolean que sera verdadero en caso de que sea un numero valido y false si no lo es.
+     * Entrada: String eleccion
+     * Salida=boolean eleccionCorrecta
+     * 
+     * @param eleccion
+     * @return eleccionCorrecta
+     */
+    
+    public boolean menuPrincipal(String eleccion) {
+    	boolean eleccionCorrecta=true;
+    	switch(eleccion) {
+    	case "1" -> System.out.println();
+    	case "2" -> System.out.println();
+    	case "3" -> System.out.println();
+    	case "4" -> System.out.println();
+    	default -> eleccionCorrecta=false;
+    	}
+    	return eleccionCorrecta;
+    }
+    
+    public void validarUrlIntroducida(Pagina[] array,String url,String opcion) {
+    	boolean urlValida=true;
+    	switch (opcion) {
+    	case"crear" : 
+    		for(int i=0; i<array.length&&urlValida;i++) {
+    			urlValida=(url!=array[i].getUrl());
+    		}
+ 
+    		break;
+    	
+    	}
     }
 
 }
