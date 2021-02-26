@@ -8,11 +8,11 @@ public  class Mensaje {
 	
 	/**Cabecera del metodo:
 	 * Precondiciones: ninguna
-<<<<<<< Updated upstream
+
 	 * Postcondiciones: Nos muestra el menu inicial del buscador
-=======
+
 	 * Postcondiciones: Nos muestra el mensaje inicial del buscador
->>>>>>> Stashed changes
+
 	 * Entrada: Ninguna
 	 * Salida: Ninguna
 	 */
