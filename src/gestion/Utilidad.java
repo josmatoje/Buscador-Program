@@ -4,9 +4,9 @@ import clasesBasicas.Pagina;
 
 public class Utilidad {
 
-    public static String[] aumentarArray (String[] arrayLleno){
+    public static Object[] aumentarArray (Object[] arrayLleno){
 
-        String[] arrayDoble = new String [arrayLleno.length*2]; //Creamos un array del tamaño*2 del array que queremos copiar
+        Object[] arrayDoble = new Object [arrayLleno.length*2]; //Creamos un array del tamaño*2 del array que queremos copiar
         for(int i=0; i<arrayLleno.length; i++)
             arrayDoble[i]=arrayLleno[i];
 
