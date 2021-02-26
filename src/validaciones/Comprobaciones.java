@@ -1,9 +1,11 @@
 package validaciones;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Scanner;
 
 import clasesBasicas.Pagina;
-import mensajes.Mensaje;
 
 public class Comprobaciones {
     
@@ -88,7 +90,7 @@ public class Comprobaciones {
     
     public void menuPrincipal(Scanner teclado) {
     	String eleccion;
-    	System.out.print("¿Qué opción desea realizar?: ");
+    	System.out.print("ï¿½Quï¿½ opciï¿½n desea realizar?: ");
     	eleccion=teclado.next();
     	switch(eleccion) {
     	case "1" -> System.out.println();
@@ -99,17 +101,25 @@ public class Comprobaciones {
     	}
     }
     
-    public void validarUrlIntroducida(Pagina[] array,String url,String opcion) {
-    	boolean urlValida=true;
-    	switch (opcion) {
-    	case"crear" : 
-    		for(int i=0; i<array.length&&urlValida;i++) {
-    			urlValida=(url!=array[i].getUrl());
-    		}
- 
-    		break;
-    	
-    	}
-    }
+    public boolean validarUrl(String url) {
+    	boolean valida;
 
+    	try {    		
+			URL urlValida = new URL(url);			
+			valida = true;
+		} catch (MalformedURLException e) {
+			valida = false;
+		}  	
+    	return valida;
+    }
+ 
+    public boolean validarExistenciaUrl(Pagina[] paginas,String url) {
+    	boolean urlValida = false;
+    	for(int i = 0; i < paginas.length && !urlValida;i++) {
+    		if (!url.equals(paginas[i].getUrl())) {
+					urlValida = true;
+			}
+    	}
+    	return urlValida;
+    }
 }

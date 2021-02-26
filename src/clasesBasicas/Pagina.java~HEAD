@@ -26,7 +26,7 @@
  * 						-enlacesClaves:
  *  						public String getEnlacesReferente()
  *  						public void setEnlacesReferente(String enlacesReferente)
- * Metodos aï¿½adidos: 
+ * Metodos añadidos: 
  *					-private void aumentarPageRankPaginaEnlace(Pagina[] paginas)
  *
  * Metodos heredados: Ninguno
@@ -44,21 +44,22 @@ public class Pagina {
     private String enlacesReferente;
 
     //Constructor con parametros
-    public Pagina(String url, String descripcion, int pageRank, String[] palabrasClaves, String enlacesReferente) {
+    public Pagina(String url, String descripcion, int pageRank, String[] palabrasClaves, String enlacesReferente, Pagina[] paginas) {
         this.url = url;
         this.descripcion = descripcion;
         this.pageRank = pageRank;
         this.palabrasClaves = palabrasClaves;
         this.enlacesReferente = enlacesReferente;
+        aumentarPageRankPaginaEnlace(paginas);
     }
 
     //Constructor por defecto
     public Pagina() {
-        url = "";
-        descripcion = "";
+        url = "google";
+        descripcion = "maravillosa";
         pageRank = 0;
-        palabrasClaves = new String[]{""};
-        enlacesReferente = "";
+        palabrasClaves = new String[]{"vacio"};
+        enlacesReferente = "otrapagina";
     }
 
     //Getters and setters
@@ -95,10 +96,21 @@ public class Pagina {
         this.enlacesReferente = enlacesReferente;
     }
     
-    //Mï¿½todo toString para mostrar las pï¿½ginas
+    //Método toString para mostrar las páginas
     @Override
      public String toString() {
     	 return("       http://"+url+".com       \n"
     	 		+descripcion);
-     }   
+     }
+
+    //Metodos añadidos
+    private void aumentarPageRankPaginaEnlace(Pagina[] paginas) {
+    	boolean aumentado = false;
+    	for(int i = 0; i < paginas.length && !aumentado; i++) {
+    		if(paginas[i] != null && enlacesReferente.equals(paginas[i].url)) {
+    			paginas[i].pageRank++;
+    			aumentado = true;
+    		}
+    	}
+    }   
 }

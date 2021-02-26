@@ -26,7 +26,7 @@
  * 						-enlacesClaves:
  *  						public String getEnlacesReferente()
  *  						public void setEnlacesReferente(String enlacesReferente)
- * Metodos aï¿½adidos: 
+ * Metodos añadidos: 
  *					-private void aumentarPageRankPaginaEnlace(Pagina[] paginas)
  *
  * Metodos heredados: Ninguno
@@ -95,7 +95,7 @@ public class Pagina {
         this.enlacesReferente = enlacesReferente;
     }
     
-    //Mï¿½todo toString para mostrar las pï¿½ginas
+    //Método toString para mostrar las páginas
     @Override
      public String toString() {
     	 return("       http://"+url+".com       \n"
