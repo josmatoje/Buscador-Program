@@ -2,7 +2,7 @@ package mensajes;
 
 import clasesBasicas.Pagina;
 
-public class Mensaje {
+public  class Mensaje {
 	
 	//Metodos para mostrar menos
 	
@@ -16,8 +16,7 @@ public class Mensaje {
 	 * Entrada: Ninguna
 	 * Salida: Ninguna
 	 */
-
-	public void menuPrincipal() {
+	public static void menuPrincipal() {
 		System.out.println("********************\n\n"
 
 				+ "Bienvenido a tu buscador favorito, que desea realizar? \n"
@@ -37,7 +36,7 @@ public class Mensaje {
 	 * @param array
 	 */
 	
-	public void mostrarResultadoBusqueda(Pagina[] array) {
+	public static void mostrarResultadoBusqueda(Pagina[] array) {
 		System.out.println("Resultados:");
 		for(int i=0;i<array.length;i++) {
 			System.out.println(array[i].toString());
@@ -51,8 +50,8 @@ public class Mensaje {
 	 * 
 	 */
 	
-	public void anadirPaginaWeb() {
-		System.out.print("Introduzca la url que desea anhadir:");
+	public static void a�adirPaginaWeb() {
+		System.out.print("Introduzca la url que desea a�adir:");
 	}
 	
 	/**
@@ -63,7 +62,7 @@ public class Mensaje {
 	 * 
 	 */
 	
-	public void modificarPaginaWeb() {
+	public static void modificarPaginaWeb() {
 		System.out.print("Introduzca el url de la pagina que desea modificar:");
 	}
 	
@@ -74,12 +73,21 @@ public class Mensaje {
 	 * Salida=ninguna 
 	 * 
 	 */
-
-	public void menuModificarPaginaWeb() {
+	public static void menuModificarPaginaWeb() {
 		System.out.println("********************\n\n"
 				+ "1.- Cambiar la descripcion \n"
 				+ "2.- A�adir palabras claves \n"
 				+ "3.- Volver al menu principal\n\n"
 				+ "********************");
+	}
+	
+	/**
+	 * Precondiciones=ninguna
+	 * Postcondiciones=Le muestra al usuario un mensaje para indicar que ha introducido un dato no valido
+	 * Entrada=ninguna
+	 * Salida=ninguna
+	 */
+	public static void caracterIntroducidoNoValido() {
+		System.out.println("Caracter introducido no valido, por favor vuelva a intentarlo");
 	}
 }
