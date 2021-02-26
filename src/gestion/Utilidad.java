@@ -3,10 +3,18 @@ package gestion;
 import clasesBasicas.Pagina;
 
 public class Utilidad {
+	/**
+	 * Precondiciones=que la array introducida este creada e inicializada
+	 * Postcondiciones: Este metodo nos coge una array de paginas y nos devuelve un array con los mismos valores pero de longitud doble
+	 * Entrada: Pagina[] arrayLleno
+	 * Salida: Pagina[] arrayDoble
+	 * @param arrayLleno
+	 * @return arrayDoble
+	 */
 
-    public static Object[] aumentarArray (Object[] arrayLleno){
+    public static Pagina[] aumentarArray (Pagina[] arrayLleno){
 
-        Object[] arrayDoble = new Object [arrayLleno.length*2]; //Creamos un array del tamaño*2 del array que queremos copiar
+        Pagina[] arrayDoble = new Pagina [arrayLleno.length*2]; //Creamos un array del tamaño*2 del array que queremos copiar
         for(int i=0; i<arrayLleno.length; i++)
             arrayDoble[i]=arrayLleno[i];
 
@@ -100,10 +108,15 @@ public class Utilidad {
         return particion;
     }
 
-    /*
-    Descripcion: Compara dos arrays de cadenas y devuelve el numero de veces que coinciden cadenas en ambos string
-    Precondiciones: No se encuentran palabras repetidas en niguna de las cadenas que se pasan por parametros
-    Postcondiciones:
+    /**  Descripcion: Compara dos arrays de cadenas y devuelve el numero de veces que coinciden cadenas en ambos string
+     *Precondiciones: No se encuentran palabras repetidas en niguna de las cadenas que se pasan por parametros
+     *Postcondiciones: Le damos dos array de String y el metodo nos devuelve el numero de veces que coinciden las palabras de un array en la otra.
+     *Entrada:String[] palabrasPagina, String[] palabrasComprobar
+     *Salida:int contador
+     * 
+     * @param palabrasPagina
+     * @param palabrasComprobar
+     * @return
      */
     public static int palabrasCoincidentes(String[] palabrasPagina, String[] palabrasComprobar){
 
@@ -112,8 +125,8 @@ public class Utilidad {
 
         for(int i=0; i<palabrasComprobar.length; i++){
             comprobado=false;
-            for(int j=0; i<palabrasPagina.length; i++){
-                if(palabrasComprobar[i].equals(palabrasPagina[j]) && !comprobado) {
+            for(int j=0; i<palabrasPagina.length && !comprobado; i++){
+                if(palabrasComprobar[i].equals(palabrasPagina[j]) ) {
                     contador++;
                     comprobado=true;
                 }

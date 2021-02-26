@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import clasesBasicas.Pagina;
 import gestion.Gestora;
+import gestion.Utilidad;
 import validaciones.Comprobaciones;
 
 class Tests {
@@ -65,6 +66,15 @@ class Tests {
 	 * Descripcion: Test para comprobar que el metodo aumentar array funciona correctamente 
 	 * Metodo a testear: aumentarArray(Object [] arrayLleno)
 	 */
+	
+	@Test
+	void aumentarArray(){
+		paginas= Utilidad.aumentarArray(paginas);
+		paginas= Utilidad.aumentarArray(paginas);
+		paginas= Utilidad.aumentarArray(paginas);
+		paginas= Utilidad.aumentarArray(paginas);
+		assertEquals(32, paginas.length);
+	}
 	
 	
 	
