@@ -26,13 +26,15 @@
  * 						-enlacesClaves:
  *  						public String getEnlacesReferente()
  *  						public void setEnlacesReferente(String enlacesReferente)
- * Metodos a�adidos: 
- *					-private void aumentarPageRankPaginaEnlace(Pagina[] paginas)
+ * Metodos anhadidos:
+ *
  *
  * Metodos heredados: Ninguno
  *
  */
-package ClasesBasicas;
+package clasesBasicas;
+
+import gestion.Gestora;
 
 public class Pagina {
 
@@ -50,7 +52,6 @@ public class Pagina {
         this.pageRank = pageRank;
         this.palabrasClaves = palabrasClaves;
         this.enlacesReferente = enlacesReferente;
-        aumentarPageRankPaginaEnlace(paginas);
     }
 
     //Constructor por defecto
@@ -80,6 +81,10 @@ public class Pagina {
         return pageRank;
     }
 
+    public void setPageRank(int pageRank) {
+        this.pageRank = pageRank;
+    }
+
     public String[] getPalabrasClaves() {
         return palabrasClaves;
     }
@@ -96,21 +101,13 @@ public class Pagina {
         this.enlacesReferente = enlacesReferente;
     }
     
-    //M�todo toString para mostrar las p�ginas
+    //Metodo toString para mostrar las paginas
     @Override
      public String toString() {
     	 return("       http://"+url+".com       \n"
     	 		+descripcion);
      }
 
-    //Metodos a�adidos
-    private void aumentarPageRankPaginaEnlace(Pagina[] paginas) {
-    	boolean aumentado = false;
-    	for(int i = 0; i < paginas.length && !aumentado; i++) {
-    		if(paginas[i] != null && enlacesReferente.equals(paginas[i].url)) {
-    			paginas[i].pageRank++;
-    			aumentado = true;
-    		}
-    	}
-    }   
+    //Metodos anhadidos
+
 }
