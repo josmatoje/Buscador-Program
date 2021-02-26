@@ -1,8 +1,5 @@
 package validaciones;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Scanner;
 
 import clasesBasicas.Pagina;
@@ -25,7 +22,7 @@ public class Comprobaciones {
         				 -false: si respuesta es 'n.
         				
     */
-    public static boolean leerValidarRespuestaSiNo (Scanner teclado) {   
+    public boolean leerValidarRespuestaSiNo (Scanner teclado) {   
         char respuesta;
         boolean afirmativo = true;
         
@@ -63,7 +60,7 @@ public class Comprobaciones {
         				 el cual estara entre un rango(valorInicial y valorFinal)
     */
 
-    public static int leerValidarNumeroEntreRango(int valorInicial, int valorFinal, Scanner teclado){
+    public int leerValidarNumeroEntreRango(int valorInicial, int valorFinal, Scanner teclado){
         int numero = 0; 
         
         System.out.println("Ingrese un numero entre ("+valorInicial+"-"+valorFinal+")");
@@ -79,26 +76,39 @@ public class Comprobaciones {
         return numero;
     }
     
+    /**Precondiociones=Ninguna
+     * Postcondiciones= Este metodo nos sirve para validar lo introducido por teclado en el menu principal. Para ello nos devolvera
+     * un boolean que sera verdadero en caso de que sea un numero valido y false si no lo es.
+     * Entrada: String eleccion
+     * Salida=boolean eleccionCorrecta
+     * 
+     * @param eleccion
+     * @return eleccionCorrecta
+     */
     
-    public static boolean validarUrl(String url) {
-    	boolean valida;
-
-    	try {    		
-			URL urlValida = new URL(url);			
-			valida = true;
-		} catch (MalformedURLException e) {
-			valida = false;
-		}  	
-    	return valida;
-    }
- 
-    public static boolean validarExistenciaUrl(Pagina[] paginas,String url) {
-    	boolean urlValida = false;
-    	for(int i = 0; i < paginas.length && !urlValida;i++) {
-    		if (!url.equals(paginas[i].getUrl())) {
-					urlValida = true;
-			}
+    public boolean menuPrincipal(String eleccion) {
+    	boolean eleccionCorrecta=true;
+    	switch(eleccion) {
+    	case "1" -> System.out.println();
+    	case "2" -> System.out.println();
+    	case "3" -> System.out.println();
+    	case "4" -> System.out.println();
+    	default -> eleccionCorrecta=false;
     	}
-    	return urlValida;
+    	return eleccionCorrecta;
     }
+    
+    public void validarUrlIntroducida(Pagina[] array,String url,String opcion) {
+    	boolean urlValida=true;
+    	switch (opcion) {
+    	case"crear" : 
+    		for(int i=0; i<array.length&&urlValida;i++) {
+    			urlValida=(url!=array[i].getUrl());
+    		}
+ 
+    		break;
+    	
+    	}
+    }
+
 }
