@@ -32,7 +32,7 @@
  * Metodos heredados: Ninguno
  *
  */
-package ClasesBasicas;
+package clasesBasicas;
 
 public class Pagina {
 

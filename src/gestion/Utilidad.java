@@ -1,6 +1,6 @@
-package Gestion;
+package gestion;
 
-import ClasesBasicas.Pagina;
+import clasesBasicas.Pagina;
 
 public class Utilidad {
 

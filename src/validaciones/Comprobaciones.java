@@ -1,8 +1,9 @@
-package Validaciones;
+package validaciones;
 
 import java.util.Scanner;
 
-import ClasesBasicas.Pagina;
+import clasesBasicas.Pagina;
+import mensajes.Mensaje;
 
 public class Comprobaciones {
     
@@ -79,23 +80,23 @@ public class Comprobaciones {
     /**Precondiociones=Ninguna
      * Postcondiciones= Este mï¿½todo nos sirve para validar lo introducido por teclado en el menu principal. Para ello nos devolvera
      * un boolean que sera verdadero en caso de que sea un numero valido y false si no lo es.
-     * Entrada: String eleccion
+     * Entrada: Scanner teclado
      * Salida=boolean eleccionCorrecta
      * 
-     * @param eleccion
-     * @return eleccionCorrecta
+     * @param Scanner teclado 
      */
     
-    public boolean menuPrincipal(String eleccion) {
-    	boolean eleccionCorrecta=true;
+    public void menuPrincipal(Scanner teclado) {
+    	String eleccion;
+    	System.out.print("¿Qué opción desea realizar?: ");
+    	eleccion=teclado.next();
     	switch(eleccion) {
     	case "1" -> System.out.println();
     	case "2" -> System.out.println();
     	case "3" -> System.out.println();
     	case "4" -> System.out.println();
-    	default -> eleccionCorrecta=false;
+    	default -> Mensaje.caracterIntroducidoNoValido();
     	}
-    	return eleccionCorrecta;
     }
     
     public void validarUrlIntroducida(Pagina[] array,String url,String opcion) {
