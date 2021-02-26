@@ -50,8 +50,8 @@ public  class Mensaje {
 	 * 
 	 */
 	
-	public static void a�adirPaginaWeb() {
-		System.out.print("Introduzca la url que desea a�adir:");
+	public static void anhadirPaginaWeb() {
+		System.out.print("Introduzca la url que desea anhadir:");
 	}
 	
 	/**
