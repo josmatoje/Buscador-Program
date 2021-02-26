@@ -20,6 +20,7 @@
  *  						public void setDescripcion(String descripcion)
  * 						-pageRank:
  * 							 public int getPageRank()
+ * 							 public void setPageRank(int pageRank)
  * 						-palabrasClaves:
  *  						public String[] getPalabrasClaves()
  *  						public void setPalabrasClaves(String[] palabrasClaves)
@@ -34,8 +35,6 @@
  */
 package clasesBasicas;
 
-import gestion.Gestora;
-
 public class Pagina {
 
     //Atributos
@@ -46,10 +45,10 @@ public class Pagina {
     private String enlacesReferente;
 
     //Constructor con parametros
-    public Pagina(String url, String descripcion, int pageRank, String[] palabrasClaves, String enlacesReferente) {
+    public Pagina(String url, String descripcion, String[] palabrasClaves, String enlacesReferente) {
         this.url = url;
         this.descripcion = descripcion;
-        this.pageRank = pageRank;
+        this.pageRank = 0;
         this.palabrasClaves = palabrasClaves;
         this.enlacesReferente = enlacesReferente;
     }
@@ -59,7 +58,7 @@ public class Pagina {
         url = "";
         descripcion = "";
         pageRank = 0;
-        palabrasClaves = new String[]{""};
+        palabrasClaves = new String[1];
         enlacesReferente = "";
     }
 
@@ -67,7 +66,6 @@ public class Pagina {
     public String getUrl() {
         return url;
     }
-
 
     public String getDescripcion() {
         return descripcion;
