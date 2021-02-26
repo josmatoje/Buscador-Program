@@ -4,11 +4,11 @@ import clasesBasicas.Pagina;
 
 public class Utilidad {
 
-    public static String[] aumentarArray (String[] arrayLleno){
+    public static Pagina[] aumentarArray (Pagina[] paginas){
 
-        String[] arrayDoble = new String [arrayLleno.length*2]; //Creamos un array del tamaño*2 del array que queremos copiar
-        for(int i=0; i<arrayLleno.length; i++)
-            arrayDoble[i]=arrayLleno[i];
+        Pagina[] arrayDoble = new Pagina [paginas.length*2]; //Creamos un array del tamaño*2 del array que queremos copiar
+        for(int i=0; i<paginas.length; i++)
+            arrayDoble[i]=paginas[i];
 
         return arrayDoble;
     }

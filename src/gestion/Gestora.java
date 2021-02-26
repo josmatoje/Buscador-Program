@@ -14,6 +14,7 @@ public class Gestora {
      * @param paginas
      * @param p
      */
+
     public static void aumentarPageRankPaginaEnlace(Pagina[] paginas, Pagina p) {
         boolean aumentado = false;
         for(int i = 0; i < paginas.length && !aumentado; i++) {
@@ -22,5 +23,28 @@ public class Gestora {
                 aumentado = true;
             }
         }
+    }
+
+    /**
+     * Precondiciones: array paginas y objeto p de la clase Pagina
+     * Postcondiciones: 
+     * @param paginas
+     * @param p
+     */
+
+    public static Pagina[] insertarPagina(Pagina[] paginas,Pagina p){
+        boolean auxiliar=false;
+        int i;
+        for(i=0; i< paginas.length && auxiliar==false; i++){
+            if(paginas[i] == null){
+                paginas[i] = p;
+                auxiliar=true;
+            }
+        }
+        if(!auxiliar){//si la pagina no se ha metido en la lista
+            paginas = Utilidad.aumentarArray(paginas);
+            paginas[i] = p;
+        }
+        return paginas;
     }
 }
