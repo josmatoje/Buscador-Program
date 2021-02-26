@@ -26,13 +26,15 @@
  * 						-enlacesClaves:
  *  						public String getEnlacesReferente()
  *  						public void setEnlacesReferente(String enlacesReferente)
- * Metodos a�adidos: 
- *					-private void aumentarPageRankPaginaEnlace(Pagina[] paginas)
+ * Metodos anhadidos:
+ *
  *
  * Metodos heredados: Ninguno
  *
  */
 package clasesBasicas;
+
+import gestion.Gestora;
 
 public class Pagina {
 
@@ -44,7 +46,7 @@ public class Pagina {
     private String enlacesReferente;
 
     //Constructor con parametros
-    public Pagina(String url, String descripcion, int pageRank, String[] palabrasClaves, String enlacesReferente) {
+    public Pagina(String url, String descripcion, int pageRank, String[] palabrasClaves, String enlacesReferente, Pagina[] paginas) {
         this.url = url;
         this.descripcion = descripcion;
         this.pageRank = pageRank;
@@ -54,11 +56,11 @@ public class Pagina {
 
     //Constructor por defecto
     public Pagina() {
-        url = "";
-        descripcion = "";
+        url = "google";
+        descripcion = "maravillosa";
         pageRank = 0;
-        palabrasClaves = new String[]{""};
-        enlacesReferente = "";
+        palabrasClaves = new String[]{"vacio"};
+        enlacesReferente = "otrapagina";
     }
 
     //Getters and setters
@@ -79,6 +81,10 @@ public class Pagina {
         return pageRank;
     }
 
+    public void setPageRank(int pageRank) {
+        this.pageRank = pageRank;
+    }
+
     public String[] getPalabrasClaves() {
         return palabrasClaves;
     }
@@ -95,10 +101,13 @@ public class Pagina {
         this.enlacesReferente = enlacesReferente;
     }
     
-    //M�todo toString para mostrar las p�ginas
+    //Metodo toString para mostrar las paginas
     @Override
      public String toString() {
     	 return("       http://"+url+".com       \n"
     	 		+descripcion);
-     }   
+     }
+
+    //Metodos anhadidos
+
 }
