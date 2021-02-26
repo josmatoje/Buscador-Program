@@ -41,14 +41,61 @@ public class Utilidad {
 
     public static int partirLista(Pagina[] listaPaginas, String[] palabrasClave){
 
-        int[] posiciones= new int [listaPaginas.length] ;
-        int particion=listaPaginas.length/2;
+        int[] palabrasCoincidentes= new int [listaPaginas.length] ;
+        int particion=0; //Celda en la que se encuentra el valor por el que vamos a partir el array
+        //En nuestro caso al pasarle siempre un array siempre trabajamos con la posicion cero como referencia y esta no varia
+        // hasta el final del metodo.
+        // Hemos mantenido el uso del parametro particion en la totalidad del codigo para ayudar a la legibilidad.
+        boolean pageRankMayor = true;
+        Pagina paginaAux;
 
         //Genera un array de enteros con el numero de palabras coincidentes para cada pagina de la lista dada
         for (int i=0; i<listaPaginas.length; i++)
-            posiciones[i]=palabrasCoincidentes(listaPaginas[i].getPalabrasClaves(),palabrasClave);
+            palabrasCoincidentes[i]=palabrasCoincidentes(listaPaginas[i].getPalabrasClaves(),palabrasClave);
 
+        for(int i=1, j=listaPaginas.length; i<j;){//Empezando por el principio (saltandonos la posicion cero que será nuestra pagina a comparar)
+            // y el final del array y aseguramos que i siempre menor que j
+            
+            //pageRankMayor=true; no es necesario actualizar ya que del bloque anterior siempre sale a falso o sale del bucle principal
+            // y en la primera iteracion se ha inicializado a true.
 
+            //avanzamos con el indice i mientras la pagina en esa posicion tenga mas o igual numero de palabras coincidentes que la pagina de particion
+            for(;palabrasCoincidentes[i]>=palabrasCoincidentes[0]&&pageRankMayor;i++){
+                if(palabrasCoincidentes[i]==palabrasCoincidentes[0]){ //En caso de tener el mismo numero valoramos el pageRank
+                    if(listaPaginas[i].getPageRank()<listaPaginas[0].getPageRank())
+                        pageRankMayor=false;//Si tiene menos pasamos al siguiente bloque (la pagina es menos relevante
+                }
+            }
+            
+            //pageRankMayor=false; no es necesario actualizar ya que del bloque anterior siempre sale a falso o sale del bucle principal
+            
+            //avanzamos con el indice j mientras la pagina en esa posicion tenga menos numero de palabras coincidentes que la pagina de particion
+            for(;palabrasCoincidentes[j]<palabrasCoincidentes[0]&&!pageRankMayor;j++){//Ahora pageRank debe ser menor
+                if(palabrasCoincidentes[j]==palabrasCoincidentes[0]){ //En caso de tener el mismo numero valoramos el pageRank
+                    if(listaPaginas[j].getPageRank()>listaPaginas[0].getPageRank())
+                        pageRankMayor=true;//Si tiene mas pasamos al siguiente bloque (la pagina es mas relevante)
+                        //En este caso si es (y el anterior) si son iguales hablamos de paginas con la misma relevancia
+                }
+            }
+            //Tenemos la posicion i de una pagina de menor relevancia a la particion y en j una de mayor relevancia
+            paginaAux=listaPaginas[i];
+            listaPaginas[i]=listaPaginas[j];
+            listaPaginas[j]=paginaAux; //Intercambiamos la pagina en i por la pagina en j
+            particion=i;//Actualizamos la posicion por la que vamos intercambiando las celdas ya que en la ultima iteracion i=j y este será nuestro
+            // punto de particion
+
+        }//Final de busqueda de particion y de ordenacion del array
+
+        //Comprobamos si el ultima caso es
+        if(palabrasCoincidentes[0]>=palabrasCoincidentes[particion]){
+            if(palabrasCoincidentes[0]==palabrasCoincidentes[particion] && listaPaginas[0].getPageRank()>listaPaginas[particion].getPageRank()){
+                particion--;
+            }
+        }
+        //Debemos intercambiar el valor de particion para dejarlo en la posicion deseada
+        paginaAux=listaPaginas[0];
+        listaPaginas[0]=listaPaginas[particion];
+        listaPaginas[particion]=paginaAux; //Intercambiamos la pagina en i por la pagina en j
 
         return particion;
     }
