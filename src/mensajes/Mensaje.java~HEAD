@@ -4,22 +4,17 @@ import clasesBasicas.Pagina;
 
 public  class Mensaje {
 	
-	//Metodos para mostrar menos
+	//Métodos para mostrar menús
 	
-	/**Cabecera del metodo:
+	/**Cabecera del método:
 	 * Precondiciones: ninguna
-
-	 * Postcondiciones: Nos muestra el menu inicial del buscador
-
-	 * Postcondiciones: Nos muestra el mensaje inicial del buscador
-
+	 * Postcondiciones: Nos muestra el menú inicial del buscador
 	 * Entrada: Ninguna
 	 * Salida: Ninguna
 	 */
 	public static void menuPrincipal() {
 		System.out.println("********************\n\n"
-
-				+ "Bienvenido a tu buscador favorito, que desea realizar? \n"
+				+ "Bienvenido a tu buscador favorito, ¿que desea realizar? \n"
 				+ "1.- Dar de alta una nueva pagina web \n"
 				+ "2.- Buscar paginas claves \n"
 				+ "3.- Modificar una pagina web existente \n"
@@ -44,19 +39,19 @@ public  class Mensaje {
 	}
 	/**
 	 * Precondiciones=ninguna
-	 * Postcondiciones=Nos muestra un pequenho mensaje indicandonos que introduzcamos una url valida
+	 * Postcondiciones=Nos muestra un pequeño mensaje indicandonos que introduzcamos una url valida
 	 * Entrada=ninguna
 	 * Salida=ninguna 
 	 * 
 	 */
 	
-	public static void anhadirPaginaWeb() {
-		System.out.print("Introduzca la url que desea anhadir:");
+	public static void añadirPaginaWeb() {
+		System.out.print("Introduzca la url que desea añadir:");
 	}
 	
 	/**
 	 * Precondiciones=ninguna
-	 * Postcondiciones=Nos muestra un pequenho mensaje indicandonos que introduzcamos una url valida para modificar la pagina
+	 * Postcondiciones=Nos muestra un pequeño mensaje indicandonos que introduzcamos una url valida para modificar la pagina
 	 * Entrada=ninguna
 	 * Salida=ninguna 
 	 * 
@@ -76,7 +71,7 @@ public  class Mensaje {
 	public static void menuModificarPaginaWeb() {
 		System.out.println("********************\n\n"
 				+ "1.- Cambiar la descripcion \n"
-				+ "2.- Aï¿½adir palabras claves \n"
+				+ "2.- Anyadir palabras claves \n"
 				+ "3.- Volver al menu principal\n\n"
 				+ "********************");
 	}

@@ -20,15 +20,14 @@
  *  						public void setDescripcion(String descripcion)
  * 						-pageRank:
  * 							 public int getPageRank()
- * 							 public void setPageRank(int pageRank)
  * 						-palabrasClaves:
  *  						public String[] getPalabrasClaves()
  *  						public void setPalabrasClaves(String[] palabrasClaves)
  * 						-enlacesClaves:
  *  						public String getEnlacesReferente()
  *  						public void setEnlacesReferente(String enlacesReferente)
- * Metodos anhadidos:
- *
+ * Metodos añadidos: 
+ *					-private void aumentarPageRankPaginaEnlace(Pagina[] paginas)
  *
  * Metodos heredados: Ninguno
  *
@@ -45,27 +44,29 @@ public class Pagina {
     private String enlacesReferente;
 
     //Constructor con parametros
-    public Pagina(String url, String descripcion, String[] palabrasClaves, String enlacesReferente) {
+    public Pagina(String url, String descripcion, int pageRank, String[] palabrasClaves, String enlacesReferente, Pagina[] paginas) {
         this.url = url;
         this.descripcion = descripcion;
-        this.pageRank = 0;
+        this.pageRank = pageRank;
         this.palabrasClaves = palabrasClaves;
         this.enlacesReferente = enlacesReferente;
+        aumentarPageRankPaginaEnlace(paginas);
     }
 
     //Constructor por defecto
     public Pagina() {
-        url = "";
-        descripcion = "";
+        url = "google";
+        descripcion = "maravillosa";
         pageRank = 0;
-        palabrasClaves = new String[1];
-        enlacesReferente = "";
+        palabrasClaves = new String[]{"vacio"};
+        enlacesReferente = "otrapagina";
     }
 
     //Getters and setters
     public String getUrl() {
         return url;
     }
+
 
     public String getDescripcion() {
         return descripcion;
@@ -77,10 +78,6 @@ public class Pagina {
 
     public int getPageRank() {
         return pageRank;
-    }
-
-    public void setPageRank(int pageRank) {
-        this.pageRank = pageRank;
     }
 
     public String[] getPalabrasClaves() {
@@ -99,10 +96,21 @@ public class Pagina {
         this.enlacesReferente = enlacesReferente;
     }
     
-    //Metodo toString para mostrar las paginas
+    //Método toString para mostrar las páginas
     @Override
      public String toString() {
     	 return("       http://"+url+".com       \n"
     	 		+descripcion);
-     }   
+     }
+
+    //Metodos añadidos
+    private void aumentarPageRankPaginaEnlace(Pagina[] paginas) {
+    	boolean aumentado = false;
+    	for(int i = 0; i < paginas.length && !aumentado; i++) {
+    		if(paginas[i] != null && enlacesReferente.equals(paginas[i].url)) {
+    			paginas[i].pageRank++;
+    			aumentado = true;
+    		}
+    	}
+    }   
 }
