@@ -59,6 +59,7 @@ public class Pagina {
         descripcion = "";
         pageRank = 0;
         palabrasClaves = new String[1];
+        // palabrasClaves[0]=null; TODO: ¿Es null por defecto?
         enlacesReferente = "";
     }
 
