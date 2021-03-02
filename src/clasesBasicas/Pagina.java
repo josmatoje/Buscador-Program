@@ -20,7 +20,6 @@
  *  						public void setDescripcion(String descripcion)
  * 						-pageRank:
  * 							 public int getPageRank()
- * 							 public void setPageRank(int pageRank)
  * 						-palabrasClaves:
  *  						public String[] getPalabrasClaves()
  *  						public void setPalabrasClaves(String[] palabrasClaves)
@@ -35,6 +34,8 @@
  */
 package clasesBasicas;
 
+import gestion.Gestora;
+
 public class Pagina {
 
     //Atributos
@@ -48,25 +49,27 @@ public class Pagina {
     public Pagina(String url, String descripcion, String[] palabrasClaves, String enlacesReferente) {
         this.url = url;
         this.descripcion = descripcion;
-        this.pageRank = 0;
         this.palabrasClaves = palabrasClaves;
+        this.pageRank=0;
         this.enlacesReferente = enlacesReferente;
     }
 
     //Constructor por defecto
     public Pagina() {
-        url = "";
-        descripcion = "";
+        url = "http://google.com";
+        descripcion = "maravillosa";
         pageRank = 0;
-        palabrasClaves = new String[1];
-        // palabrasClaves[0]=null; TODO: ¿Es null por defecto?
-        enlacesReferente = "";
+        palabrasClaves = new String[]{"vacio"}; 
+        //palabrasClaves = new String[1];       
+        // palabrasClaves[0]=null; TODO: ï¿½Es null por defecto?
+        enlacesReferente = "otrapagina";
     }
 
     //Getters and setters
     public String getUrl() {
         return url;
     }
+
 
     public String getDescripcion() {
         return descripcion;
@@ -103,7 +106,10 @@ public class Pagina {
     //Metodo toString para mostrar las paginas
     @Override
      public String toString() {
-    	 return("       http://"+url+".com       \n"
+    	 return("          "+url+"          \n"
     	 		+descripcion);
-     }   
+     }
+
+    //Metodos anhadidos
+
 }

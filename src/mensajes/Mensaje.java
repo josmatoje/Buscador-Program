@@ -2,7 +2,7 @@ package mensajes;
 
 import clasesBasicas.Pagina;
 
-public  class Mensaje {
+public class Mensaje {
 	
 	//Metodos para mostrar menos
 	
@@ -16,6 +16,7 @@ public  class Mensaje {
 	 * Entrada: Ninguna
 	 * Salida: Ninguna
 	 */
+
 	public static void menuPrincipal() {
 		System.out.println("********************\n\n"
 
@@ -50,8 +51,8 @@ public  class Mensaje {
 	 * 
 	 */
 	
-	public static void a�adirPaginaWeb() {
-		System.out.print("Introduzca la url que desea a�adir:");
+	public static void anadirPaginaWeb() {
+		System.out.print("Introduzca la url que desea anhadir:");
 	}
 	
 	/**
@@ -73,14 +74,16 @@ public  class Mensaje {
 	 * Salida=ninguna 
 	 * 
 	 */
+
 	public static void menuModificarPaginaWeb() {
 		System.out.println("********************\n\n"
 				+ "1.- Cambiar la descripcion \n"
-				+ "2.- A�adir palabras claves \n"
+				+ "2.- Anyadir palabras claves \n"
 				+ "3.- Volver al menu principal\n\n"
 				+ "********************");
 	}
-	
+}
+
 	/**
 	 * Precondiciones=ninguna
 	 * Postcondiciones=Le muestra al usuario un mensaje para indicar que ha introducido un dato no valido

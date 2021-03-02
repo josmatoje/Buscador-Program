@@ -29,6 +29,29 @@ public class Gestora {
         return aumentado;
     }
 
+    /**
+     * Precondiciones: array paginas y objeto p de la clase Pagina
+     * Postcondiciones: 
+     * @param paginas
+     * @param p
+     */
+
+    public static Pagina[] insertarPagina(Pagina[] paginas,Pagina p){
+        boolean auxiliar=false;
+        int i;
+        for(i=0; i< paginas.length && auxiliar==false; i++){
+            if(paginas[i] == null){
+                paginas[i] = p;
+                auxiliar=true;
+            }
+        }
+        if(!auxiliar){//si la pagina no se ha metido en la lista
+            paginas = Utilidad.aumentarArray(paginas);
+            paginas[i] = p;
+        }
+        return paginas;
+    }
+
     /*
     Entradas: un array de paginas y un array de cadenas.
     Precondiciones: el array (lista) no debe estar vacío.
