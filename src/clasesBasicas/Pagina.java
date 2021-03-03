@@ -59,7 +59,9 @@ public class Pagina {
         url = "http://google.com";
         descripcion = "maravillosa";
         pageRank = 0;
-        palabrasClaves = new String[]{"vacio"};
+        palabrasClaves = new String[]{"vacio"}; 
+        //palabrasClaves = new String[1];       
+        // palabrasClaves[0]=null; TODO: �Es null por defecto?
         enlacesReferente = "otrapagina";
     }
 
