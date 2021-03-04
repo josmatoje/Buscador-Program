@@ -58,7 +58,7 @@ public class Pagina {
         url = "";
         descripcion = "";
         pageRank = 0;
-        palabrasClaves = new String[1];
+        palabrasClaves = null;
         enlacesReferente = "";
     }
 

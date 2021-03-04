@@ -91,14 +91,3 @@ public  class Mensaje {
 		System.out.println("Caracter introducido no valido, por favor vuelva a intentarlo");
 	}
 }
-
-	/**
-	 * Precondiciones=ninguna
-	 * Postcondiciones=Le muestra al usuario un mensaje para indicar que ha introducido un dato no valido
-	 * Entrada=ninguna
-	 * Salida=ninguna
-	 */
-	public static void caracterIntroducidoNoValido() {
-		System.out.println("Caracter introducido no valido, por favor vuelva a intentarlo");
-	}
-}
