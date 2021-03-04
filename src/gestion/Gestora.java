@@ -245,4 +245,16 @@ public class Gestora {
         return particion;
     }
 
+	public static boolean comprobarPalabraRepetida(String[] palabras) {
+		boolean repetida = false;
+		
+		for(int i = 0; i < palabras.length && !repetida; i++) {
+			for(int j = 0; j < palabras.length && !repetida; j++) {
+				if(i != j && palabras[i].equals(palabras[j])) {
+					repetida = true;
+				}
+			}
+		}
+		return repetida;
+	}
 }
