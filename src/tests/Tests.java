@@ -8,12 +8,14 @@ import org.junit.jupiter.api.Test;
 import clasesBasicas.Pagina;
 import gestion.Gestora;
 import gestion.Utilidad;
-import validaciones.Comprobaciones;
+import validaciones.Validacion;
 
 class Tests {
+	
 	 static Pagina paginaDePrueba;
 	 static Pagina paginaMala;
 	 static Pagina[] paginas = new Pagina[2];
+	 static Validacion validacion = new Validacion();
 	 
 	@BeforeAll
 	
@@ -33,7 +35,7 @@ class Tests {
 	 */
 	@Test
 	void testUrlValida() {
-		assertTrue(Comprobaciones.validarUrl(paginaDePrueba.getUrl()));
+		assertTrue(validacion.validarUrl(paginaDePrueba.getUrl()));
 	}
 	/**
 	 * Descripcion: Test para comprobar que la validacion de url funciona bien cuando se mete una url no valida.
@@ -41,7 +43,7 @@ class Tests {
 	 */
 	@Test
 	void testUrlNoValida() {
-		assertFalse(Comprobaciones.validarUrl(paginaMala.getUrl()));
+		assertFalse(validacion.validarUrl(paginaMala.getUrl()));
 	}
 	/**
 	 * Descripcion: Test para comprobar que el page rank de una pagina aumenta.
@@ -75,9 +77,4 @@ class Tests {
 		paginas= Utilidad.aumentarArray(paginas);
 		assertEquals(32, paginas.length);
 	}
-	
-	
-	
-	
-
 }
