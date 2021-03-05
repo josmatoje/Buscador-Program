@@ -18,17 +18,35 @@ public class Gestora {
      * @param paginas
      * @param p
      */
-    public static boolean aumentarPageRankPaginaEnlace(Pagina[] paginas, Pagina p) {
-        boolean aumentado = false;
-        for(int i = 0; i < paginas.length && !aumentado; i++) {
-            if(paginas[i] != null && p.getEnlacesReferente().equals(paginas[i].getUrl())) {
+    public static void aumentarPageRankPaginaEnlace(Pagina[] paginas, Pagina paginaNueva) {
+        boolean modificado = false;
+        for(int i = 0; i < paginas.length && !modificado; i++) {
+            if(paginas[i] != null && paginaNueva.getEnlacesReferente().equals(paginas[i].getUrl())) {
                 paginas[i].setPageRank(paginas[i].getPageRank()+1);
-                aumentado = true;
+                modificado = true;
             }
         }
-        return aumentado;
     }
-
+    
+    /**
+     * Entradas: array paginas y objeto p de la clase Pagina
+     * Salida: Ninguna
+     * Precondiciones: Crear la array paginas, asi como el objeto p
+     * Postcondiciones: La variable aumentado es false si el enlace referente de la pagina p no coincide con ninguna url de la array paginas.
+     * Si el url de alguna pagina coincide con la referente de la dada, el page rank de la primera aumentara en uno y aumentado es true.
+     *
+     * @param paginas
+     * @param p
+     */
+    public static void disminuirPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace) {
+        boolean modificado = false;
+        for(int i = 0; i < paginas.length && !modificado; i++) {
+            if(paginas[i] != null && paginas[i].getUrl().equals(urlEnlace)) {
+                paginas[i].setPageRank(paginas[i].getPageRank()-1);
+                modificado = true;
+            }
+        }
+    }
     /**
      * Precondiciones: array paginas y objeto p de la clase Pagina
      * Postcondiciones: 
@@ -62,7 +80,6 @@ public class Gestora {
 
         int puntoMedio;
         Pagina[] semiLista1, semiLista2;
-        Pagina auxiliar;
 
         if(listaPaginas.length>=1) {//Caso base, una lista de una unica pagina (un unico elemento ya está ordenado)
 
@@ -93,13 +110,13 @@ public class Gestora {
         Precondiciones: el array (lista) no debe estar vacío.
         Salida: el mismo array (cambiado).
         Postcondiciones: lista [0],...,lista[N-1] está ordenado descendentemente según el criterio de palabras clave dado.
-         */
+    */
     public static void ordenarPaginas (Pagina[] listaPaginas, String[] palabrasClave, int inicio, int fin){
 
         int puntoMedio;
 
         if(inicio<fin) {//Caso base, indicesno definen un segmento del array
-            puntoMedio = partirLista(listaPaginas, palabrasClave);//Partimos (y ordenamos) la lista
+            puntoMedio = partirLista(listaPaginas, palabrasClave,inicio,fin);//Partimos (y ordenamos) la lista
             ordenarPaginas(listaPaginas,palabrasClave,inicio,puntoMedio-1);
             ordenarPaginas(listaPaginas, palabrasClave, puntoMedio+1,fin);
         }
@@ -117,7 +134,7 @@ public class Gestora {
      */
     public static int partirLista(Pagina[] listaPaginas, String[] palabrasClave){
 
-        int[] palabrasCoincidentes= new int [listaPaginas.length] ;
+        int[] palabrasCoincidentes= new int [listaPaginas.length];
         int particion=0; //Celda en la que se encuentra el valor por el que vamos a partir el array
         //En nuestro caso al pasarle siempre un array siempre trabajamos con la posicion cero como referencia y esta no varia
         // hasta el final del metodo.
@@ -244,5 +261,21 @@ public class Gestora {
 
         return particion;
     }
-
+    
+	/*
+	  
+	  
+	 */
+	public static void eliminarPalabrasRepetida(String[] palabras) {
+		boolean repetida = false; 
+		for(int i = 0; i < palabras.length; i++) {
+			repetida = false;
+			for(int j = i; j < palabras.length && !repetida; j++) {
+				if(i != j && !palabras[i].equals("") && palabras[i].equals(palabras[j]) ) {
+					palabras[i] = "";
+					repetida = true;					
+				}
+			}
+		}
+	}
 }

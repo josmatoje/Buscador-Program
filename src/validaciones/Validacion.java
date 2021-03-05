@@ -5,10 +5,12 @@ import java.net.URL;
 import java.util.Scanner;
 
 import clasesBasicas.Pagina;
+import gestion.Gestora;
 
 public class Validacion {
     
 	 private static Scanner teclado = new Scanner(System.in);
+	 
     /*
         Signatura: public boolean leerValidarRespuestaSiNo () 
         
@@ -25,7 +27,7 @@ public class Validacion {
         				 -false: si respuesta es 'n.
         				
     */
-    public boolean leerValidarRespuestaSiNo () {   
+    public static boolean leerValidarRespuestaSiNo () {   
         char respuesta;
         boolean afirmativo = true;
         
@@ -63,7 +65,7 @@ public class Validacion {
         				 el cual estara entre un rango(valorInicial y valorFinal)
     */
 
-    public int leerValidarNumeroEntreRango(int valorInicial, int valorFinal){
+    public static int leerValidarNumeroEntreRango(int valorInicial, int valorFinal){
         int numero = 0; 
         
         System.out.println("Ingrese un numero entre ("+valorInicial+"-"+valorFinal+")");
@@ -80,6 +82,28 @@ public class Validacion {
     }
     
     /*
+     
+      
+     */
+    public static String obtenerValidarUrl(Pagina[] paginas) {
+    	String url = "";
+    	boolean urlValida = false, urlRepetida = false;
+    	
+    	do {
+    		System.out.println("Ingrese la url de la pagina");
+    		url = teclado.nextLine();
+    		urlValida = validarUrl(url);
+    		urlRepetida = comprobarExistenciaUrl(paginas, url);
+    		
+    		if(!urlValida || urlRepetida) {
+    			System.out.println("Url introducida invalida.");
+    		}
+    	
+    	}while(!urlValida || urlRepetida);
+    
+    	return url;
+    }
+    /*
 	    Signatura:  public boolean validarUrl(String url) 
 	    
 	    Comentario: Este metodo se encarga de comprobar si una URL esta bien formada o no.
@@ -95,7 +119,7 @@ public class Validacion {
 	    				 -true: si la url es correcta.	
 	    				 -false: si la url no es correcta.   				
      */
-    public boolean validarUrl(String url) {
+    public static boolean validarUrl(String url) {
     	boolean valida;
 
     	try {    		
@@ -108,7 +132,7 @@ public class Validacion {
 		}  	
     	return valida;
     }
- 
+    
     /*
 	    Signatura: public boolean comprobarExistenciaUrl(Pagina[] paginas,String url)
 	    
@@ -126,7 +150,7 @@ public class Validacion {
 	    				 -true: si la url de enlace de una pagina es la url principal de otra pagina	
 	    				 -false: si la url de enlace de una pagina no es la url principal de otra pagina	  				
      */
-    public boolean comprobarExistenciaUrl(Pagina[] paginas,String url) {
+    public static boolean comprobarExistenciaUrl(Pagina[] paginas,String url) {
     	boolean existe = false;
     	for(int i = 0; i < paginas.length && !existe;i++) {
     		if (!url.equals(paginas[i].getUrl())) {
@@ -141,7 +165,7 @@ public class Validacion {
       
       
      */
-    public String leerValidarEnlaceReferente(Pagina[] paginas) {
+    public static String leerValidarEnlaceReferente(Pagina[] paginas) {
     	
     	String enlaceReferente = "";
     	boolean urlValida = false, urlExiste = false;
@@ -149,22 +173,47 @@ public class Validacion {
 		
 		if( leerValidarRespuestaSiNo() ) { //Delvuelve true, es que Si 
 			
-			do {
-			
+			do {			
 				do{
 					System.out.println("Ingrese el enlace referente");
 					enlaceReferente = teclado.nextLine();
 					urlValida = validarUrl(enlaceReferente);
 				}while( !urlValida ); //Mientras el enlaceReferente no sea una url 
 				
-				urlExiste = comprobarExistenciaUrl(paginas, enlaceReferente);
-				
+				urlExiste = comprobarExistenciaUrl(paginas, enlaceReferente);	
 			}while( urlExiste ); //Mientras el enlaceReferente sea una url que existe
 			
 		} 
 		return enlaceReferente;
 	}
     	
+    /*
+      
+      
+     */
+    public static String[] leerValidarPalabrasClaves() {
+    	
+    	String[] palabrasClaves = null;
+    	String palabras = "";
+		System.out.println("Quieres ingresar una palabra clave");
+		
+		if( leerValidarRespuestaSiNo() ) { //Delvuelve true, es que Si 
+
+			System.out.println("Ingrese todas las palabras separadas por un espacio");
+			palabras = teclado.nextLine();
+
+			palabrasClaves = palabras.split(" "); //Se guardan las palabras separadas por un espacio
+		
+		} 
+		
+		Gestora.eliminarPalabrasRepetida(palabrasClaves); //Elimina las palabras que haya repetidas
+		return palabrasClaves;
+	}
+    
+    /*
+      
+      
+     */
     public static void cerrarTeclado() {
     	teclado.close();
     }

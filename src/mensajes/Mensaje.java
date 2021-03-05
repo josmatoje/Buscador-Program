@@ -2,17 +2,20 @@ package mensajes;
 
 import clasesBasicas.Pagina;
 
-public class Mensaje {
+public  class Mensaje {
 	
 	//Metodos para mostrar menos
 	
 	/**Cabecera del metodo:
 	 * Precondiciones: ninguna
+
 	 * Postcondiciones: Nos muestra el menu inicial del buscador
+
+	 * Postcondiciones: Nos muestra el mensaje inicial del buscador
+
 	 * Entrada: Ninguna
 	 * Salida: Ninguna
 	 */
-
 	public static void menuPrincipal() {
 		System.out.println("******************************************************\n\n"
 
@@ -47,7 +50,7 @@ public class Mensaje {
 	 * 
 	 */
 	
-	public static void anadirPaginaWeb() {
+	public static void anhadirPaginaWeb() {
 		System.out.print("Introduzca la url que desea anhadir:");
 	}
 	
@@ -70,16 +73,14 @@ public class Mensaje {
 	 * Salida=ninguna 
 	 * 
 	 */
-
 	public static void menuModificarPaginaWeb() {
 		System.out.println("******************************\n\n"
 				+ "1.- Cambiar la descripcion \n"
-				+ "2.- Anyadir palabras claves \n"
+				+ "2.- A�adir palabras claves \n"
 				+ "3.- Volver al menu principal\n\n"
 				+ "******************************");
 	}
-
-
+	
 	/**
 	 * Precondiciones=ninguna
 	 * Postcondiciones=Le muestra al usuario un mensaje para indicar que ha introducido un dato no valido
