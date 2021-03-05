@@ -8,24 +8,20 @@ public class Mensaje {
 	
 	/**Cabecera del metodo:
 	 * Precondiciones: ninguna
-<<<<<<< Updated upstream
 	 * Postcondiciones: Nos muestra el menu inicial del buscador
-=======
-	 * Postcondiciones: Nos muestra el mensaje inicial del buscador
->>>>>>> Stashed changes
 	 * Entrada: Ninguna
 	 * Salida: Ninguna
 	 */
 
 	public static void menuPrincipal() {
-		System.out.println("********************\n\n"
+		System.out.println("******************************************************\n\n"
 
 				+ "Bienvenido a tu buscador favorito, que desea realizar? \n"
 				+ "1.- Dar de alta una nueva pagina web \n"
 				+ "2.- Buscar paginas claves \n"
 				+ "3.- Modificar una pagina web existente \n"
 				+ "4.- Salir\n\n"
-				+ "********************");
+				+ "******************************************************");
 	}
 	
 	/**
@@ -76,13 +72,13 @@ public class Mensaje {
 	 */
 
 	public static void menuModificarPaginaWeb() {
-		System.out.println("********************\n\n"
+		System.out.println("******************************\n\n"
 				+ "1.- Cambiar la descripcion \n"
 				+ "2.- Anyadir palabras claves \n"
 				+ "3.- Volver al menu principal\n\n"
-				+ "********************");
+				+ "******************************");
 	}
-}
+
 
 	/**
 	 * Precondiciones=ninguna
