@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Utilidad {
 	/**
-     * Descripición: Este metodo coge una array generico y nos devuelve un array con los mismos valores pero de longitud doble
+     * Descripicion: Este metodo coge una array generico y nos devuelve un array con los mismos valores pero de longitud doble
 	 * Precondiciones: que la array introducida este creada e inicializada
 	 * Postcondiciones: la array tiene el doble de longitud, las nuevas celdas tienen valor null o por defecto
 	 * Entrada: T[] arrayLleno

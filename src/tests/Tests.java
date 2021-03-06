@@ -23,10 +23,10 @@ class Tests {
 	 * Objetos necesarios para los test que se crearan antes de la ejecucion de estos
 	 */
 	 static void Pagina() {
-		 paginaDePrueba=new Pagina();
-		 paginaMala=new Pagina("enlaceMalo.com", "pagina hecha para probar los enlaces malos", new String[]{"buscador"}, paginaDePrueba.getUrl() );
-		 paginas[0]= paginaDePrueba;
-		 paginas[1]=paginaMala;
+		 paginaDePrueba = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos", new String[]{"informatica"},"");
+		 paginaMala = new Pagina("enlaceMalo.com", "pagina hecha para probar los enlaces malos", new String[]{"buscador"}, paginaDePrueba.getUrl());
+		 paginas[0] = paginaDePrueba;
+		 paginas[1] = paginaMala;
 	}
 	
 	/**
@@ -35,7 +35,7 @@ class Tests {
 	 */
 	@Test
 	void testUrlValida() {
-		assertTrue(validacion.validarUrl(paginaDePrueba.getUrl()));
+		assertTrue(Validacion.validarUrl(paginaDePrueba.getUrl()));
 	}
 	/**
 	 * Descripcion: Test para comprobar que la validacion de url funciona bien cuando se mete una url no valida.
@@ -43,7 +43,7 @@ class Tests {
 	 */
 	@Test
 	void testUrlNoValida() {
-		assertFalse(validacion.validarUrl(paginaMala.getUrl()));
+		assertFalse(Validacion.validarUrl(paginaMala.getUrl()));
 	}
 	/**
 	 * Descripcion: Test para comprobar que el page rank de una pagina aumenta.
@@ -51,17 +51,17 @@ class Tests {
 	 */
 	@Test
 	void testAumentarPageRank() {
-		Gestora.aumentarPageRankPaginaEnlace(paginas, paginaMala);
+		Gestora.aumentarPageRankPaginaEnlace(paginas, paginaMala.getEnlacesReferente());
 		assertEquals(1, paginaDePrueba.getPageRank());
 	}
 	/**
 	 * Descripcion: Test para comprobar que el page rank no aumenta.
 	 * Metodo a testear: aumentarPageRankPaginaEnlace(Pagina[] paginas, Pagina p) de la clase Gestora
 	 */
-	
+
 	@Test
 	void testNoAumentarPageRank() {
-		Gestora.aumentarPageRankPaginaEnlace(paginas, paginaDePrueba);
+		Gestora.aumentarPageRankPaginaEnlace(paginas, paginaDePrueba.getEnlacesReferente());
 		assertEquals(0, paginaMala.getPageRank());
 	}
 	/**
@@ -71,10 +71,10 @@ class Tests {
 	
 	@Test
 	void aumentarArray(){
-		paginas= Utilidad.aumentarArray(paginas);
-		paginas= Utilidad.aumentarArray(paginas);
-		paginas= Utilidad.aumentarArray(paginas);
-		paginas= Utilidad.aumentarArray(paginas);
+		paginas = Utilidad.aumentarArray(paginas);
+		paginas = Utilidad.aumentarArray(paginas);
+		paginas = Utilidad.aumentarArray(paginas);
+		paginas = Utilidad.aumentarArray(paginas);
 		assertEquals(32, paginas.length);
 	}
 }
