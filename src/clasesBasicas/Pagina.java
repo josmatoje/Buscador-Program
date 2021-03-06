@@ -1,40 +1,38 @@
 /**
- * Nombre: Pagina
- * Propiedades:
- *  Basicas:
- *   url: cadena, consultable
- *   descripcion: cadena, consultable, modificable
- *   pageRank: entero, consultable
- *   palabrasClaves: array de cadenas, consultable, modificable
- *   enlacesReferentes: cadena, consultable, modificable
- *
- * Derivadas: Ninguna
- *
- * Compartida: Ninguna
- *
- * Metodos principales:
- * 						-url:
- *  						public String getUrl()
- * 						-descripcion:
- *  						public String getDescripcion()
- *  						public void setDescripcion(String descripcion)
- * 						-pageRank:
- * 							 public int getPageRank()
- * 						-palabrasClaves:
- *  						public String[] getPalabrasClaves()
- *  						public void setPalabrasClaves(String[] palabrasClaves)
- * 						-enlacesClaves:
- *  						public String getEnlacesReferente()
- *  						public void setEnlacesReferente(String enlacesReferente)
- * Metodos anhadidos:
- *
- *
- * Metodos heredados: Ninguno
+ * Nombre: Pagina<br/>
+ * Propiedades:<br/>
+ *  Basicas:<br/>
+ *   url: cadena, consultable<br/>
+ *   descripcion: cadena, consultable, modificable<br/>
+ *   pageRank: entero, consultable<br/>
+ *   palabrasClaves: array de cadenas, consultable, modificable<br/>
+ *   enlacesReferentes: cadena, consultable, modificable<br/>
+ *<br/>
+ * Derivadas: Ninguna<br/>
+ *<br/>
+ * Compartida: Ninguna<br/>
+ *<br/>
+ * Metodos principales:<br/>
+ * 						-url:<br/>
+ *  						public String getUrl()<br/>
+ * 						-descripcion:<br/>
+ *  						public String getDescripcion()<br/>
+ *  						public void setDescripcion(String descripcion)<br/>
+ * 						-pageRank:<br/>
+ * 							 public int getPageRank()<br/>
+ * 							 public void setPageRank(int pageRank)<br/>
+ * 						-palabrasClaves:<br/>
+ *  						public String[] getPalabrasClaves()<br/>
+ *  						public void setPalabrasClaves(String[] palabrasClaves)<br/>
+ * 						-enlacesClaves:<br/>
+ *  						public String getEnlacesReferente()<br/>
+ *  						public void setEnlacesReferente(String enlacesReferente)<br/>
+ * Metodos anhadidos:<br/>
+ *<br/>
+ * Metodos heredados: Ninguno<br/>
  *
  */
 package clasesBasicas;
-
-import gestion.Gestora;
 
 public class Pagina {
 
@@ -49,27 +47,24 @@ public class Pagina {
     public Pagina(String url, String descripcion, String[] palabrasClaves, String enlacesReferente) {
         this.url = url;
         this.descripcion = descripcion;
+        this.pageRank = 0;
         this.palabrasClaves = palabrasClaves;
-        this.pageRank=0;
         this.enlacesReferente = enlacesReferente;
     }
 
     //Constructor por defecto
     public Pagina() {
-        url = "http://google.com";
-        descripcion = "maravillosa";
+        url = "";
+        descripcion = "";
         pageRank = 0;
-        palabrasClaves = new String[]{"vacio"}; 
-        //palabrasClaves = new String[1];       
-        // palabrasClaves[0]=null; TODO: �Es null por defecto?
-        enlacesReferente = "otrapagina";
+        palabrasClaves = null;
+        enlacesReferente = "";
     }
 
     //Getters and setters
     public String getUrl() {
         return url;
     }
-
 
     public String getDescripcion() {
         return descripcion;
@@ -106,10 +101,8 @@ public class Pagina {
     //Metodo toString para mostrar las paginas
     @Override
      public String toString() {
-    	 return("          "+url+"          \n"
+        //todo: en caso de pagina por defecto no imprimir;
+    	 return("       http://"+url+".com       \n"
     	 		+descripcion);
-     }
-
-    //Metodos anhadidos
-
+     }   
 }

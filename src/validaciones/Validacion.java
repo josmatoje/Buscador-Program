@@ -5,37 +5,41 @@ import java.net.URL;
 import java.util.Scanner;
 
 import clasesBasicas.Pagina;
+import gestion.Gestora;
+import mensajes.Mensaje;
 
 public class Validacion {
     
 	 private static Scanner teclado = new Scanner(System.in);
-    /*
-        Signatura: public boolean leerValidarRespuestaSiNo () 
-        
-        Comentario: Metodo que lee y valida si una respuesta es S o N. En funcion de esta se devolvera un valor boleano u otro.
-        
-        Precondiciones: Ninguna
-        
-        Entrada: Scanner teclado
-        
-        Salida: Boolean afirmativo 
-         
-        Postcondiciones: Este metodo se trata de una funciona ya que devuelve en este caso un boleano(afirmativo) cuyo valor sera:
-        				 -true: si respuesta es 's'.	
-        				 -false: si respuesta es 'n.
-        				
-    */
-    public boolean leerValidarRespuestaSiNo () {   
+	 
+    /**
+     * Cabecera: public static boolean leerValidarRespuestaSiNo()
+     *   
+     * Comentario: Metodo que lee y valida si una respuesta es S o N. En funcion de esta se devolvera un valor boleano u otro.
+     * 
+     * Precondiciones: Ninguna
+     * 
+     * Entrada: Ninguna
+     * 
+     * Salida: Boolean afirmativo
+     * 
+     * Postcondiciones: Este metodo se trata de una funciona ya que devuelve en este caso un boleano(afirmativo) cuyo valor sera:
+     * 					 -true: si respuesta es 's'.	
+     *   				 -false: si respuesta es 'n.
+     *   	
+     *  @return afirmativo		
+     */
+    public static boolean leerValidarRespuestaSiNo() {   
         char respuesta;
         boolean afirmativo = true;
         
-        System.out.println("Introduzca S (si)/ N (no)");
+        System.out.println("Introduzca S (si) / N (no)");
         do {
-        	 respuesta=teclado.next().toLowerCase().charAt(0);
+        	 respuesta = teclado.nextLine().toLowerCase().charAt(0);
 
-        	 if (respuesta!='s' && respuesta!='n') {
+        	 if (respuesta != 's' && respuesta != 'n') {
 				System.out.println("Error valor introducido invalido, ingrese uno de nuevo:");
-			}
+        	 }
         	 
         }while(respuesta != 's' && respuesta != 'n');
         
@@ -44,58 +48,110 @@ public class Validacion {
         }
         return afirmativo;
     }
-
-
-    /*     
-        Signatura:public int leerValidarNumeroEntreRango(int valorInicial, int valorFinal)
-        
-        Comentario: Este metodo se encarga de leer y validar que un numero este entre un rango.
-        
-        Precondiciones: El numero valorInicial tiene que ser menor que valorFinal
-        
-        Entradas:
-         		 Scanner teclado
-        		 int valorInicial, valorFinal
-        
-		Salidas: int numero 
-        
-        Postcondiciones: Este metodo se trata de un funcion ya que devuelve un tipo de dato, entero(numero) en este caso,
-        				 el cual estara entre un rango(valorInicial y valorFinal)
-    */
-
-    public int leerValidarNumeroEntreRango(int valorInicial, int valorFinal){
+    
+    /**     
+     * Cabecera: public static int leerValidarNumeroEntreRango(int valorInicial, int valorFinal)
+     *   
+     * Comentario: Este metodo se encarga de leer y validar que un numero este entre un rango.
+     *   
+     * Precondiciones: El numero valorInicial tiene que ser menor que valorFinal
+     *   
+     * Entradas: int valorInicial, int valorFinal
+     *   
+	 * Salidas: int numero 
+     *   
+     * Postcondiciones: Este metodo se trata de un funcion ya que devuelve un tipo de dato, entero(numero) en este caso,
+     *   				 el cual estara entre un rango(valorInicial y valorFinal)
+     *   
+     * @param valorInicial
+     * @param valorFinal
+     * 
+     * @return numero
+     */
+    public static int leerValidarNumeroEntreRango(int valorInicial, int valorFinal){
         int numero = 0; 
         
-        System.out.println("Ingrese un numero entre ("+valorInicial+"-"+valorFinal+")");
+        System.out.println("Ingrese un numero entre("+valorInicial+"-"+valorFinal+")");
         do {
         	
         	numero = teclado.nextInt();
-        	if (numero < valorInicial || numero > valorInicial) {
+        	teclado.nextLine();
+        	if (numero < valorInicial || numero > valorFinal) {
 				System.out.println("Numero ingresado no valido, vuelva intentarlo: ");
 			}
         	
-        }while(numero < valorInicial || numero > valorInicial);
+        }while(numero < valorInicial || numero > valorFinal);
         
         return numero;
     }
     
-    /*
-	    Signatura:  public boolean validarUrl(String url) 
-	    
-	    Comentario: Este metodo se encarga de comprobar si una URL esta bien formada o no.
-	    
-	    Precondiciones: Ninguna
-	    
-	    Entrada: String url
-	    
-	    Salida: Boolean valida 
-	     
-	    Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato(valida), en este caso un boleano el cual tomara los 
-	    				 siguientes valores:
-	    				 -true: si la url es correcta.	
-	    				 -false: si la url no es correcta.   				
+    /**     
+     * Cabecera: public static String obtenerUrl(Pagina[] paginas)
+     *   
+     * Comentario: Este metodo se encarga de leer una url. Ademas:
+     * 			   -Mediante el metodo validarUrl() se validara que la url sea una url que esta bien formada
+	 * 			   -Mediante el metodo comprobarExistenciaUrl() se comprobara que la url no sea igual a la url principal 
+	 * 			    de alguna de la paginas que contiene un array de tipo Pagina
+	 * 
+     * Precondiciones: Ninguna
+     *   
+     * Entradas: Pagina[] paginas
+     *   
+	 * Salidas: String url
+     *   
+     * Postcondiciones: Este metodo se trata de un funcion ya que devuelve un tipo de dato, una cadena(url) en este caso,
+     * 					la cual sera una url, esta sera una url bien formada y ademas no sera igual a la url principal de alguna 
+     * 					de las paginas que hay en un array de tipo Pagina
+     *   
+     * @param Pagina[] paginas
+     * 
+     * @return url
      */
-    public boolean validarUrl(String url) {
+    public static String obtenerUrl(Pagina[] paginas) {
+    	String url = "";
+    	boolean urlValida = false, urlRepetida = false;
+    	
+    	do {    		
+    		do{
+        		System.out.println("Ingrese la url de la pagina");
+        		url = teclado.nextLine();
+    			urlValida = validarUrl(url); //Se comprobara que la url sea una que este bien formada(Que siga la sintaxis de una url)
+    			if(!urlValida)
+    				System.out.println("La Url introducida no esta bien formada.\n");
+    		}while(!urlValida);
+    		
+    		urlRepetida = comprobarExistenciaUrl(paginas, url); //Se comprueba que esa url no sea la url principal de alguna 
+    															//de las paginas que hay en un array de tipo Pagina
+
+    		if(urlRepetida)
+				System.out.println("La url introducida ya existe");
+    	
+    	}while(urlRepetida);
+    
+    	return url;
+    }
+    
+    /**
+	 * Cabecera: public static boolean validarUrl(String url) 
+	 *   
+	 * Comentario: Este metodo se encarga de comprobar si una URL esta bien formada o no.
+	 *   
+	 * Precondiciones: Ninguna
+	 *   
+	 * Entrada: String url
+	 *   
+	 * Salida: boolean valida 
+	 *    
+	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato(valida), en este caso un boleano el cual tomara los 
+	 *   				siguientes valores:
+	 *   				-true: si la url es correcta.	
+	 *   				-false: si la url no es correcta. 
+	 *   
+	 * @param url
+	 * 
+	 * @return valida				
+     */
+    public static boolean validarUrl(String url) {
     	boolean valida;
 
     	try {    		
@@ -108,63 +164,160 @@ public class Validacion {
 		}  	
     	return valida;
     }
- 
-    /*
-	    Signatura: public boolean comprobarExistenciaUrl(Pagina[] paginas,String url)
-	    
-	    Comentario: Este metodo se encarga de comprobar si la URL de enlace de una pagina, es la url principal de alguna de las paginas 
-	    			que hay en un array de paginas
-	    
-	    Precondiciones: Pagina[] paginas,String url
-	    
-	    Entrada: String url
-	    
-	    Salida: Boolean existe 
-	     
-	    Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato(existe), en este caso un boleano el cual tomara los 
-	    				 siguientes valores:
-	    				 -true: si la url de enlace de una pagina es la url principal de otra pagina	
-	    				 -false: si la url de enlace de una pagina no es la url principal de otra pagina	  				
+    
+    /**
+	 * Cabecera: public static boolean comprobarExistenciaUrl(Pagina[] paginas,String url)
+	 *   
+	 * Comentario: Este metodo se encarga de comprobar si la cadena(url) es igual a la url principal de alguna de las paginas 
+	 *   		   que hay en un array de tipo Pagina
+	 *   
+	 * Precondiciones: Ninguna
+	 *   
+	 * Entrada: Pagina[] paginas,String url
+	 *   
+	 * Salida: boolean existe 
+	 *    
+	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato(existe), en este caso un boleano el cual tomara los 
+	 *   				siguientes valores:
+	 *   			    -true: Si la url recibida como parametro es la url principal de otra pagina	
+	 *   				-false: Si la url recibida como parametro no es la url principal de otra pagina	  
+	 *   
+	 * @param paginas
+	 * @param url
+	 * 
+	 * @return existe				
      */
-    public boolean comprobarExistenciaUrl(Pagina[] paginas,String url) {
+    public static boolean comprobarExistenciaUrl(Pagina[] paginas,String url) {
     	boolean existe = false;
     	for(int i = 0; i < paginas.length && !existe;i++) {
-    		if (!url.equals(paginas[i].getUrl())) {
+    		if (paginas[i] != null && url.equals(paginas[i].getUrl())) {
     			existe = true;
 			}
     	}
     	return existe;
     } 
     
-    /*
-      
-      
-      
+    /**
+	 * Cabecera: public static String leerEnlaceReferente(Pagina[] paginas)
+	 *   
+	 * Comentario: Este metodo se encarga de leer una url de enlace referente.
+	 * 			   Mediante el metodo validarUrl() se validara que la url de enlace referente sea una url que esta bien formada
+	 * 			   Mediante el metodo comprobarExistenciaUrl() se comprobara que la url de enlace referente es igual a la url principal 
+	 * 			   de alguna de la paginas que contiene un array de tipo Pagina
+	 *   
+	 * Precondiciones: Ninguna
+	 *   
+	 * Entrada: Pagina[] paginas
+	 *   
+	 * Salida: String enlaceReferente
+	 *    
+	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato, en este caso una cadena(enlaceReferente).
+	 * 
+	 * @param paginas
+	 *  
+	 * @return enlaceReferente 				
      */
-    public String leerValidarEnlaceReferente(Pagina[] paginas) {
+    public static String leerEnlaceReferente(Pagina[] paginas) {
     	
     	String enlaceReferente = "";
-    	boolean urlValida = false, urlExiste = false;
-		System.out.println("Quieres ingresar un enlace referente a la pagina");
+    	boolean urlValida = false, urlExiste = false, continuar = false;
+		System.out.println("¿Quieres ingresar un enlace referente a la pagina?");
 		
-		if( leerValidarRespuestaSiNo() ) { //Delvuelve true, es que Si 
+		if( leerValidarRespuestaSiNo() ) { //Si la respuesta que se lee es Si(true)
 			
-			do {
-			
+			do {			
 				do{
 					System.out.println("Ingrese el enlace referente");
 					enlaceReferente = teclado.nextLine();
-					urlValida = validarUrl(enlaceReferente);
-				}while( !urlValida ); //Mientras el enlaceReferente no sea una url 
+					urlValida = validarUrl(enlaceReferente); //Se comprueba que la url introducida sigue la sintaxis de una URL
+					if(!urlValida)
+		    			System.out.println("La Url no esta bien formada\n");
+				}while(!urlValida); //Mientras el enlaceReferente no sea una url 
 				
-				urlExiste = comprobarExistenciaUrl(paginas, enlaceReferente);
-				
-			}while( urlExiste ); //Mientras el enlaceReferente sea una url que existe
+				urlExiste = comprobarExistenciaUrl(paginas, enlaceReferente);//Se comprueba que ese enlace Referente corresponde a 
+																			 //la url principal de alguna de las paginas que hay en un array 
+																			 //de tipo Pagina
+				if(!urlExiste)
+					System.out.println("La Url de enlace introducida no corresponde con la Url principal de ninguna de las paginas\n");
+					System.out.println("Desea continuar y volver a intentarlo");
+					continuar = leerValidarRespuestaSiNo();
+					if(!continuar)
+						enlaceReferente = "";
+			}while(!urlExiste && continuar); //Mientras el enlaceReferente no exista como url principal de otra pagina
 			
 		} 
 		return enlaceReferente;
 	}
+
+    /**
+	 * Cabecera: public static String[] leerPalabrasClaves()
+	 *   
+	 * Comentario: Este metodo se encarga de leer las palabras claves que se desee que tenga una pagina
+	 * 			   Mediante el metodo eliminarPalabrasRepetida() se eliminaran aquellas palabras que esten repetidas
+	 *   
+	 * Precondiciones: Ninguna
+	 *   
+	 * Entrada: Ninguna
+	 *   
+	 * Salida: String[] palabrasClaves
+	 *    
+	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato, en este caso un array de cadena(palabrasClaves).
+	 *  
+	 * @return palabrasClaves 				
+     */
+	public static String[] leerPalabrasClaves() {
     	
+    	String[] palabrasClaves = null;
+    	String palabras = "";
+		System.out.println("¿Quieres ingresar una palabra clave?");
+		
+		if( leerValidarRespuestaSiNo() ) { //Si la respuesta que se lee es Si(true) 
+
+			Mensaje.introducirPalabrasClave();
+			palabras = teclado.next();
+
+			palabrasClaves = palabras.split(" "); //Se guardan las palabras separadas por un espacio
+			teclado.nextLine();
+		} 
+		
+		if(palabrasClaves != null)
+			Gestora.eliminarPalabrasRepetida(palabrasClaves); //Elimina las palabras que haya repetidas
+		return palabrasClaves;
+	}
+
+    /**
+	 * Cabecera: public static String leerDescripcion()
+	 *   
+	 * Comentario: Este metodo se encarga de leer una cadena, que sera la descripcion de una pagina
+	 *   
+	 * Precondiciones: Ninguna
+	 *   
+	 * Entrada: Ninguna
+	 *   
+	 * Salida: String(cadena)
+	 *    
+	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato, en este caso una cadena.
+	 *  
+	 * @return teclado.nextLine();				
+     */
+	public static String leerDescripcion() {
+    	return teclado.nextLine();
+	}
+    
+    /**
+	 * Cabecera: public static void cerrarTeclado()
+	 *   
+	 * Comentario: Este metodo se encarga de cerrar el flujo de entrada de datos de un objeto de tipo Scanner
+	 *   
+	 * Precondiciones: Ninguna
+	 *   
+	 * Entrada: Ninguna
+	 *   
+	 * Salida: Ninguna
+	 *    
+	 * Postcondiciones: Se cerrara el obtejo compartido de tipo Scanner.
+	 *  				
+     */
     public static void cerrarTeclado() {
     	teclado.close();
     }

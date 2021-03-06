@@ -2,30 +2,29 @@ package mensajes;
 
 import clasesBasicas.Pagina;
 
-public class Mensaje {
+public  class Mensaje {
 	
 	//Metodos para mostrar menos
 	
 	/**Cabecera del metodo:
 	 * Precondiciones: ninguna
-<<<<<<< Updated upstream
+
 	 * Postcondiciones: Nos muestra el menu inicial del buscador
-=======
+
 	 * Postcondiciones: Nos muestra el mensaje inicial del buscador
->>>>>>> Stashed changes
+
 	 * Entrada: Ninguna
 	 * Salida: Ninguna
 	 */
-
 	public static void menuPrincipal() {
-		System.out.println("********************\n\n"
+		System.out.println("******************************************************\n\n"
 
 				+ "Bienvenido a tu buscador favorito, que desea realizar? \n"
 				+ "1.- Dar de alta una nueva pagina web \n"
 				+ "2.- Buscar paginas claves \n"
 				+ "3.- Modificar una pagina web existente \n"
 				+ "4.- Salir\n\n"
-				+ "********************");
+				+ "******************************************************");
 	}
 	
 	/**
@@ -51,7 +50,7 @@ public class Mensaje {
 	 * 
 	 */
 	
-	public static void anadirPaginaWeb() {
+	public static void anhadirPaginaWeb() {
 		System.out.print("Introduzca la url que desea anhadir:");
 	}
 	
@@ -74,23 +73,23 @@ public class Mensaje {
 	 * Salida=ninguna 
 	 * 
 	 */
-
 	public static void menuModificarPaginaWeb() {
-		System.out.println("********************\n\n"
+		System.out.println("******************************\n\n"
 				+ "1.- Cambiar la descripcion \n"
-				+ "2.- Anyadir palabras claves \n"
+				+ "2.- A�adir palabras claves \n"
 				+ "3.- Volver al menu principal\n\n"
-				+ "********************");
+				+ "******************************");
 	}
-}
-
+	
 	/**
 	 * Precondiciones=ninguna
 	 * Postcondiciones=Le muestra al usuario un mensaje para indicar que ha introducido un dato no valido
-	 * Entrada=ninguna
-	 * Salida=ninguna
 	 */
 	public static void caracterIntroducidoNoValido() {
 		System.out.println("Caracter introducido no valido, por favor vuelva a intentarlo");
+	}
+
+	public static void introducirPalabrasClave(){
+		System.out.println("Ingrese todas las palabras separadas por espacios:");
 	}
 }
