@@ -417,4 +417,73 @@ public class Gestora {
 			}
 		}
 	}
+	
+	/**
+	 * Descripcion: Compara dos arrays de cadenas y devuelve el numero de veces que
+	 * coinciden cadenas en ambos string Precondiciones: No se encuentran palabras
+	 * repetidas en niguna de las cadenas que se pasan por parametros
+	 * Postcondiciones: Le damos dos array de String y el metodo nos devuelve el
+	 * numero de veces que coinciden las palabras de un array en la otra.
+	 * Entrada:String[] palabrasPagina, String[] palabrasComprobar Salida:int
+	 * contador
+	 * 
+	 * @param palabrasPagina
+	 * @param palabrasComprobar
+	 * @return palabrasCoincidentes /* Entrada: dos listas (Arrays) de cadenas los
+	 *         cuales van a ser comparados Salida: un entero que indica el numero de
+	 *         veces que se encuentra una cadena en ambas listas (arrays)
+	 *         Precondiciones: No se encuentran palabras repetidas en niguna de las
+	 *         cadenas que se pasan por parametros Postcondiciones: el entero será
+	 *         un numero mayor o igual a cero, las listas no se ven modificadas
+	 */
+	public static int palabrasCoincidentes(String[] palabrasPagina, String[] palabrasComprobar) {
+
+		int contador = 0;
+		boolean comprobado;
+
+		for (int i = 0; i < palabrasComprobar.length; i++) {
+			comprobado = false;
+			for (int j = 0; i < palabrasPagina.length && !comprobado; i++) {
+				if (!palabrasComprobar[i].equals("") && palabrasPagina[j] != null && !palabrasComprobar[j].equals("")
+						&& palabrasComprobar[i].equals(palabrasPagina[j])) {
+					contador++;
+					comprobado = true;
+				}
+			}
+		}
+
+		return contador;
+	}
+	
+	/**
+	 * Cabecera: public static boolean comprobarExistenciaUrl(Pagina[] paginas,String url)
+	 *   
+	 * Comentario: Este metodo se encarga de comprobar si la cadena(url) es igual a la url principal de alguna de las paginas 
+	 *   		   que hay en un array de tipo Pagina
+	 *   
+	 * Precondiciones: Ninguna
+	 *   
+	 * Entrada: Pagina[] paginas,String url
+	 *   
+	 * Salida: boolean existe 
+	 *    
+	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato(existe), en este caso un boleano el cual tomara los 
+	 *   				siguientes valores:
+	 *   			    -true: Si la url recibida como parametro es la url principal de otra pagina	
+	 *   				-false: Si la url recibida como parametro no es la url principal de otra pagina	  
+	 *   
+	 * @param paginas
+	 * @param url
+	 * 
+	 * @return existe				
+     */
+    public static boolean comprobarExistenciaUrl(Pagina[] paginas,String url) {
+    	boolean existe = false;
+    	for(int i = 0; i < paginas.length && !existe;i++) {
+    		if (paginas[i] != null && url.equals(paginas[i].getUrl())) {
+    			existe = true;
+			}
+    	}
+    	return existe;
+    } 
 }
