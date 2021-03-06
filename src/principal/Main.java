@@ -26,20 +26,20 @@ public class Main {
 			
 			switch(opcion) {
 			
-			case 1:	//Opcion dar de alta una pagina web 
+			case 1:	//Opcion dar de alta una pagina web
 
-			url = Validacion.obtenerValidarUrl(paginasWeb); //Se obtiene al url de la nueva pagina que se creara 
-			System.out.println("Ingrese una breve descripcion sobre la pagina");
-			descripcion = teclado.nextLine();
-			enlaceReferente = Validacion.leerValidarEnlaceReferente(paginasWeb);
-			palabrasClaves = Validacion.leerValidarPalabrasClaves();
-			//Se creara la nueva pagina
-			pagina = new Pagina(url,descripcion,palabrasClaves,enlaceReferente); //Faltan el [] de las palabras claves
-			
-			Gestora.insertarPagina(paginasWeb, pagina);
-			if(!pagina.getEnlacesReferente().equals("")) {
-				Gestora.aumentarPageRankPaginaEnlace(paginasWeb, pagina);
-			}
+				url = Validacion.obtenerValidarUrl(paginasWeb); //Se obtiene al url de la nueva pagina que se creara
+				System.out.println("Ingrese una breve descripcion sobre la pagina");
+				descripcion = teclado.nextLine();
+				enlaceReferente = Validacion.leerValidarEnlaceReferente(paginasWeb);
+				palabrasClaves = Validacion.leerValidarPalabrasClaves();
+				//Se creara la nueva pagina
+				pagina = new Pagina(url,descripcion,palabrasClaves,enlaceReferente); //Faltan el [] de las palabras claves
+
+				Gestora.insertarPagina(paginasWeb, pagina);
+				if(!pagina.getEnlacesReferente().equals(""))
+					Gestora.aumentarPageRankPaginaEnlace(paginasWeb, pagina);
+
 		
 			break;
 			

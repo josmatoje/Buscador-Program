@@ -206,7 +206,7 @@ public class Validacion {
 		
 		} 
 		
-		Gestora.comprobarPalabraRepetida(palabrasClaves); //Elimina las palabras que haya repetidas
+		Gestora.eliminarPalabrasRepetida(palabrasClaves); //Elimina las palabras que haya repetidas
 		return palabrasClaves;
 	}
     

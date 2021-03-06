@@ -16,7 +16,7 @@ public class Gestora {
      * Si el url de alguna pagina coincide con la referente de la dada, el page rank de la primera aumentara en uno y aumentado es true.
      *
      * @param paginas
-     * @param p
+     * @param paginaNueva
      */
     public static void aumentarPageRankPaginaEnlace(Pagina[] paginas, Pagina paginaNueva) {
         boolean modificado = false;
@@ -36,7 +36,7 @@ public class Gestora {
      * Si el url de alguna pagina coincide con la referente de la dada, el page rank de la primera aumentara en uno y aumentado es true.
      *
      * @param paginas
-     * @param p
+     * @param urlEnlace
      */
     public static void disminuirPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace) {
         boolean modificado = false;
@@ -52,6 +52,7 @@ public class Gestora {
      * Postcondiciones: 
      * @param paginas
      * @param p
+     * @return insertarPagina
      */
 
     public static Pagina[] insertarPagina(Pagina[] paginas,Pagina p){
@@ -107,10 +108,17 @@ public class Gestora {
 
     /*
         Entradas: un array de paginas y un array de cadenas.
-        Precondiciones: el array (lista) no debe estar vacío.
         Salida: el mismo array (cambiado).
-        Postcondiciones: lista [0],...,lista[N-1] está ordenado descendentemente según el criterio de palabras clave dado.
-    */
+          */
+
+    /**
+     * Precondiciones: el array (lista) no debe estar vacío.
+     * Postcondiciones: lista [0],...,lista[N-1] está ordenado descendentemente según el criterio de palabras clave dado.
+     * @param listaPaginas
+     * @param palabrasClave
+     * @param inicio
+     * @param fin
+     */
     public static void ordenarPaginas (Pagina[] listaPaginas, String[] palabrasClave, int inicio, int fin){
 
         int puntoMedio;
