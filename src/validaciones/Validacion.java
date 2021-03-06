@@ -103,7 +103,7 @@ public class Validacion {
      * 					la cual sera una url, esta sera una url bien formada y ademas no sera igual a la url principal de alguna 
      * 					de las paginas que hay en un array de tipo Pagina
      *   
-     * @param Pagina[] paginas
+     * @param paginas
      * 
      * @return url
      */

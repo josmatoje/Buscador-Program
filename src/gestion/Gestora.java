@@ -8,38 +8,62 @@ import java.util.Arrays;
 
 public class Gestora {
 
-	/**
-	 * Cabecera: public static void aumentarPageRankPaginaEnlace(Pagina[] paginas,
-	 * String urlEnlace)
-	 * 
-	 * Comentario: Este metodo se encarga de aumentar en uno el pageRank de un
-	 * objeto de tipo Pagina que se encuentra en un array de tipo Pagina. Solo se
-	 * aumentara si en dicho array se encuentra una pagina que su url es igual al
-	 * parametro urlEnlace
-	 * 
-	 * Entradas: Pagina[] paginas,String urlEnlace
-	 * 
-	 * Salida: Ninguna
-	 * 
-	 * Precondiciones: Crear el array paginas
-	 * 
-	 * Postcondiciones: Se aumenta el pageRank de un objeto Pagina pero solo si se
-	 * da el caso que en el array de paginas hay una que su url es igual al
-	 * urlEnlace, entonces a esta se le aumentara en uno su pageRank, por lo tanto
-	 * se hara por referencia.
-	 * 
-	 * @param paginas
-	 * @param urlEnlace
-	 */
-	public static void aumentarPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace) {
-		boolean modificado = false;
-		for (int i = 0; i < paginas.length && !modificado; i++) {
-			if (paginas[i] != null && paginas[i].getUrl().equals(urlEnlace)) {
-				paginas[i].setPageRank(paginas[i].getPageRank() + 1);
-				modificado = true;
-			}
-		}
-	}
+    /**
+     * Cabecera: public static void aumentarPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace)
+     * 
+     * Comentario: Este metodo se encarga de aumentar en uno el pageRank de un objeto de tipo Pagina que se encuentra en un array de tipo Pagina.
+     * 			   Solo se aumentara si en dicho array se encuentra una pagina que su url es igual al parametro urlEnlace
+     * 
+     * Entradas: Pagina[] paginas,String urlEnlace
+     * 
+     * Salida: Ninguna
+     * 
+     * Precondiciones: Crear el array paginas
+     * 
+     * Postcondiciones: Se aumenta el pageRank de un objeto Pagina pero solo si se da el caso que en el array de paginas hay una que su url es 
+     * 					igual al urlEnlace, entonces a esta se le aumentara en uno su pageRank, por lo tanto se hara por referencia.
+     * 
+     * @param paginas
+     * @param urlEnlace
+     */
+    public static void aumentarPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace) {
+        boolean modificado = false;
+        for(int i = 0; i < paginas.length && !modificado; i++) {
+            if(paginas[i] != null && paginas[i].getUrl().equals(urlEnlace)) {
+                paginas[i].setPageRank(paginas[i].getPageRank() + 1);
+                modificado = true;
+            }
+        }
+    }
+    
+    /**
+     * Cabecera: public static void disminuirPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace)
+     * 
+     * Comentario: Este metodo se encarga de disminuir en uno el pageRank de un objeto de tipo Pagina que se encuentra en un array de tipo Pagina.
+     * 			   Solo se disminuira si en dicho array se encuentra una pagina que su url es igual al parametro urlEnlace
+     * 
+     * Entradas: Pagina[] paginas,String urlEnlace
+     * 
+     * Salida: Ninguna
+     * 
+     * Precondiciones: Crear el array paginas
+     * 
+     * Postcondiciones: Se disminuira el pageRank de un objeto Pagina pero solo si se da el caso que en el array de paginas hay una que su url es 
+     * 					igual al urlEnlace, entonces a esta se le disminuira en uno su pageRank, por lo tanto se hara por referencia.
+     * 
+     * @param paginas
+     * @param urlEnlace
+     */
+
+    public static void disminuirPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace) {
+        boolean modificado = false;
+        for(int i = 0; i < paginas.length && !modificado; i++) {
+            if(paginas[i] != null && paginas[i].getUrl().equals(urlEnlace)) {
+                paginas[i].setPageRank(paginas[i].getPageRank() - 1);
+                modificado = true;
+            }
+        }
+    }
 
 	/**
 	 * Cabecera: public static void disminuirPageRankPaginaEnlace(Pagina[] paginas,
