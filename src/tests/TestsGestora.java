@@ -32,7 +32,7 @@ public class TestsGestora {
 
 	
 	/**
-	 * Descripcion: Test para comprobar que el page rank de una pagina aumenta.
+	 * Descripcion: Test para comprobar que el page rank de una pagina aumenta(que entra en el for y en el if).
 	 * Metodo a testear: aumentarPageRankPaginaEnlace(Pagina[] paginas, Pagina p) de
 	 * la clase Gestora
 	 */
@@ -43,7 +43,7 @@ public class TestsGestora {
 	}
 	
 	/**
-	 * Descripcion: Test para comprobar que el page rank no aumenta. Metodo a
+	 * Descripcion: Test para comprobar que el page rank no aumenta(por tanto que no entra en el if pero si al for). Metodo a
 	 * testear: aumentarPageRankPaginaEnlace(Pagina[] paginas, Pagina p) de la clase
 	 * Gestora
 	 */
@@ -52,6 +52,27 @@ public class TestsGestora {
 	void testNoAumentarPageRank() {
 		Gestora.aumentarPageRankPaginaEnlace(paginas, paginaDePrueba.getEnlacesReferente());
 		assertEquals(0, paginaMala.getPageRank());
+	}
+	
+	/**
+	 * Descripcion: Test para coomprobar que no se aumenta el page rank al no entrar en el for.
+	 * Metodo a testear: aumentarPageRankPaginaEnlace(Pagina[] paginas, Pagina p) de la clase Gestora
+	 */
+	
+	@Test
+	void testNoEntraEnElFor() {
+		
+	}
+	
+	/**
+	 * Descripcion: Test para comprobar que el pagvee rank disminuye.
+	 * Metodo a testear: disminuirPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace) de la clase Gestora
+	 * 
+	 */
+	
+	@Test
+	void testDisminiurPageRank() {
+		
 	}
 
 }

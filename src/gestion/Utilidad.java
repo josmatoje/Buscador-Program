@@ -30,41 +30,6 @@ public class Utilidad {
 		return Arrays.copyOf(arrayLleno, arrayLleno.length * 2);
 	}
 
-	/**
-	 * Descripcion: Compara dos arrays de cadenas y devuelve el numero de veces que
-	 * coinciden cadenas en ambos string Precondiciones: No se encuentran palabras
-	 * repetidas en niguna de las cadenas que se pasan por parametros
-	 * Postcondiciones: Le damos dos array de String y el metodo nos devuelve el
-	 * numero de veces que coinciden las palabras de un array en la otra.
-	 * Entrada:String[] palabrasPagina, String[] palabrasComprobar Salida:int
-	 * contador
-	 * 
-	 * @param palabrasPagina
-	 * @param palabrasComprobar
-	 * @return palabrasCoincidentes /* Entrada: dos listas (Arrays) de cadenas los
-	 *         cuales van a ser comparados Salida: un entero que indica el numero de
-	 *         veces que se encuentra una cadena en ambas listas (arrays)
-	 *         Precondiciones: No se encuentran palabras repetidas en niguna de las
-	 *         cadenas que se pasan por parametros Postcondiciones: el entero será
-	 *         un numero mayor o igual a cero, las listas no se ven modificadas
-	 */
-	public static int palabrasCoincidentes(String[] palabrasPagina, String[] palabrasComprobar) {
-
-		int contador = 0;
-		boolean comprobado;
-
-		for (int i = 0; i < palabrasComprobar.length; i++) {
-			comprobado = false;
-			for (int j = 0; j < palabrasPagina.length && !comprobado; j++) {
-				if (!palabrasComprobar[i].equals("") && palabrasPagina[j] != null && !palabrasComprobar[j].equals("")
-						&& palabrasComprobar[i].equals(palabrasPagina[j])) {
-					contador++;
-					comprobado = true;
-				}
-			}
-		}
-
-		return contador;
-	}
+	
 
 }
