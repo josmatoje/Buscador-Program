@@ -71,16 +71,16 @@ public class Validacion {
     public static int leerValidarNumeroEntreRango(int valorInicial, int valorFinal){
         int numero = 0; 
         
-        System.out.println("Ingrese un numero entre ("+valorInicial+"-"+valorFinal+")");
+        System.out.println("Ingrese un numero entre("+valorInicial+"-"+valorFinal+")");
         do {
         	
         	numero = teclado.nextInt();
         	teclado.nextLine();
-        	if (numero < valorInicial || numero > valorInicial) {
+        	if (numero < valorInicial || numero > valorFinal) {
 				System.out.println("Numero ingresado no valido, vuelva intentarlo: ");
 			}
         	
-        }while(numero < valorInicial || numero > valorInicial);
+        }while(numero < valorInicial || numero > valorFinal);
         
         return numero;
     }
