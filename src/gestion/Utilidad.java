@@ -35,7 +35,7 @@ public class Utilidad {
      * 
      * @param palabrasPagina
      * @param palabrasComprobar
-     * @return
+     * @return palabrasCoincidentes
     /*
     Entrada: dos listas (Arrays) de cadenas los cuales van a ser comparados
     Salida: un entero que indica el numero de veces que se encuentra una cadena en ambas listas (arrays)

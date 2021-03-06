@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import clasesBasicas.Pagina;
 import gestion.Gestora;
+import mensajes.Mensaje;
 
 public class Validacion {
     
@@ -94,10 +95,12 @@ public class Validacion {
     		url = teclado.nextLine();
     		urlValida = validarUrl(url);
     		urlRepetida = comprobarExistenciaUrl(paginas, url);
-    		
-    		if(!urlValida || urlRepetida) {
+
+    		if(!urlValida)
     			System.out.println("Url introducida invalida.");
-    		}
+
+    		if(urlRepetida)
+				System.out.println("La url introducida ya existe");
     	
     	}while(!urlValida || urlRepetida);
     
@@ -169,7 +172,7 @@ public class Validacion {
     	
     	String enlaceReferente = "";
     	boolean urlValida = false, urlExiste = false;
-		System.out.println("Quieres ingresar un enlace referente a la pagina");
+		System.out.println("¿Quieres ingresar un enlace referente a la pagina?");
 		
 		if( leerValidarRespuestaSiNo() ) { //Delvuelve true, es que Si 
 			
@@ -186,28 +189,36 @@ public class Validacion {
 		} 
 		return enlaceReferente;
 	}
-    	
-    /*
-      
-      
-     */
-    public static String[] leerValidarPalabrasClaves() {
+
+	/**
+	 *
+	 * @return palabrasClaves
+	 */
+	public static String[] leerValidarPalabrasClaves() {
     	
     	String[] palabrasClaves = null;
     	String palabras = "";
-		System.out.println("Quieres ingresar una palabra clave");
+		System.out.println("¿Quieres ingresar una palabra clave?");
 		
 		if( leerValidarRespuestaSiNo() ) { //Delvuelve true, es que Si 
 
-			System.out.println("Ingrese todas las palabras separadas por un espacio");
+			Mensaje.introducirPalabrasClave();
 			palabras = teclado.nextLine();
 
 			palabrasClaves = palabras.split(" "); //Se guardan las palabras separadas por un espacio
-		
+
 		} 
 		
 		Gestora.eliminarPalabrasRepetida(palabrasClaves); //Elimina las palabras que haya repetidas
 		return palabrasClaves;
+	}
+
+	/**
+	 *
+	 * @return descripcion
+	 */
+	public static String leerDescripcion (){
+    	return teclado.nextLine();
 	}
     
     /*

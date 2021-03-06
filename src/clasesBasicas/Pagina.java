@@ -101,6 +101,7 @@ public class Pagina {
     //Metodo toString para mostrar las paginas
     @Override
      public String toString() {
+        //todo: en caso de pagina por defecto no imprimir;
     	 return("       http://"+url+".com       \n"
     	 		+descripcion);
      }   

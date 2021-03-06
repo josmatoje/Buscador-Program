@@ -115,18 +115,18 @@ public class Gestora {
      * Precondiciones: el array (lista) no debe estar vacío.
      * Postcondiciones: lista [0],...,lista[N-1] está ordenado descendentemente según el criterio de palabras clave dado.
      * @param listaPaginas
-     * @param palabrasClave
+     * @param palabrasCoincidentes
      * @param inicio
      * @param fin
      */
-    public static void ordenarPaginas (Pagina[] listaPaginas, String[] palabrasClave, int inicio, int fin){
+    public static void ordenarPaginas (Pagina[] listaPaginas, int[] palabrasCoincidentes, int inicio, int fin){
 
         int puntoMedio;
 
         if(inicio<fin) {//Caso base, indicesno definen un segmento del array
-            puntoMedio = partirLista(listaPaginas, palabrasClave,inicio,fin);//Partimos (y ordenamos) la lista
-            ordenarPaginas(listaPaginas,palabrasClave,inicio,puntoMedio-1);
-            ordenarPaginas(listaPaginas, palabrasClave, puntoMedio+1,fin);
+            puntoMedio = partirLista(listaPaginas, palabrasCoincidentes,inicio,fin);//Partimos (y ordenamos) la lista
+            ordenarPaginas(listaPaginas,palabrasCoincidentes,inicio,puntoMedio-1);
+            ordenarPaginas(listaPaginas, palabrasCoincidentes, puntoMedio+1,fin);
         }
     }
 
@@ -149,10 +149,6 @@ public class Gestora {
         // Hemos mantenido el uso del parametro particion en la totalidad del codigo para ayudar a la legibilidad.
         boolean pageRankMayor = true;
         Pagina paginaAux;
-
-        //Genera un array de enteros con el numero de palabras coincidentes para cada pagina de la lista dada
-        for (int i=0; i<listaPaginas.length; i++)
-            palabrasCoincidentes[i]=Utilidad.palabrasCoincidentes(listaPaginas[i].getPalabrasClaves(),palabrasClave);
 
         for(int i=1, j=listaPaginas.length; i<j;){//Empezando por el principio (saltandonos la posicion cero que será nuestra pagina a comparar)
             // y el final del array y aseguramos que i siempre menor que j
@@ -212,16 +208,11 @@ public class Gestora {
         - Asociado al nombre del subprograma se devuelve el lugar por el que se
         divide el array. Por tanto, el subprograma se diseñará como función.
      */
-    public static int partirLista(Pagina[] listaPaginas, String[] palabrasClave, int inicio, int fin){
+    public static int partirLista(Pagina[] listaPaginas, int[] palabrasCoincidentes, int inicio, int fin){
 
-        int[] palabrasCoincidentes= new int [fin-inicio+1] ;
-        int particion = inicio;//El programa asume la pagina de inicio como la de particion
+        int particion = inicio, palCoinAux;//El programa asume la pagina de inicio como la de particion
         boolean pageRankMayor = true;
         Pagina paginaAux;
-
-        //Genera un array de enteros con el numero de palabras coincidentes para cada pagina del fragmento de lista dado
-        for (int i=0; i<palabrasCoincidentes.length; i++)
-            palabrasCoincidentes[i]=Utilidad.palabrasCoincidentes(listaPaginas[inicio+i].getPalabrasClaves(),palabrasClave);
 
         for(int i=inicio+1, j=fin; i<j;){//recorremos el array desde el pinicio y el final y aseguramos que i siempre menor que j
 
@@ -229,8 +220,8 @@ public class Gestora {
             // y en la primera iteracion se ha inicializado a true.
 
             //avanzamos con el indice i mientras la pagina en esa posicion tenga mas o igual numero de palabras coincidentes que la pagina de particion (0)
-            for(;(palabrasCoincidentes[i-inicio]>=palabrasCoincidentes[0])&&pageRankMayor;i++){
-                if(palabrasCoincidentes[i-inicio]==palabrasCoincidentes[0]){ //En caso de tener el mismo numero valoramos el pageRank
+            for(;(palabrasCoincidentes[i]>=palabrasCoincidentes[inicio])&&pageRankMayor;i++){
+                if(palabrasCoincidentes[i]==palabrasCoincidentes[inicio]){ //En caso de tener el mismo numero valoramos el pageRank
                     if(listaPaginas[i].getPageRank()<listaPaginas[inicio].getPageRank())
                         pageRankMayor=false;//Si tiene menos pasamos al siguiente bloque (la pagina es menos relevante)
                 }
@@ -239,8 +230,8 @@ public class Gestora {
             //pageRankMayor=false; no es necesario actualizar ya que del bloque anterior siempre sale a falso o sale del bucle principal
 
             //avanzamos con el indice j mientras la pagina en esa posicion tenga menos numero de palabras coincidentes que la pagina de particion
-            for(;palabrasCoincidentes[j-inicio]<=palabrasCoincidentes[0]&&!pageRankMayor;j--){//Ahora pageRank debe ser menor
-                if(palabrasCoincidentes[j-inicio]==palabrasCoincidentes[0]){ //En caso de tener el mismo numero valoramos el pageRank
+            for(;palabrasCoincidentes[j]<=palabrasCoincidentes[inicio]&&!pageRankMayor;j--){//Ahora pageRank debe ser menor
+                if(palabrasCoincidentes[j]==palabrasCoincidentes[inicio]){ //En caso de tener el mismo numero valoramos el pageRank
                     if(listaPaginas[j].getPageRank()>listaPaginas[inicio].getPageRank())
                         pageRankMayor=true;//Si tiene mas pasamos al siguiente bloque (la pagina es mas relevante)
                     //En este caso si es (y el anterior) si son iguales hablamos de paginas con la misma relevancia
@@ -251,14 +242,21 @@ public class Gestora {
             paginaAux=listaPaginas[j];
             listaPaginas[j]=listaPaginas[i];
             listaPaginas[i]=paginaAux; //Intercambiamos la pagina en i por la pagina en j
+
+            //Posteriormente cambiamos tambien las palabras coincidentes de nuestro array de enteros para futuras posibles iteraciones que
+            //  cada posivion del array de enteros se corresponda con la posicion del array de su pagina correspondiente
+            palCoinAux=palabrasCoincidentes[j];
+            palabrasCoincidentes[j]=palabrasCoincidentes[i];
+            palabrasCoincidentes[i]= palCoinAux;
+
             particion=i;//Actualizamos la posicion por la que vamos intercambiando las celdas ya que en la ultima iteracion i=j
             //este será nuestro punto de particion
 
         }//Final de busqueda de particion y de ordenacion del array
 
         //Comprobamos si el ultima caso la pagina es menos relevante que la pagina de particion
-        if(palabrasCoincidentes[0]>=palabrasCoincidentes[particion-inicio]){
-            if(palabrasCoincidentes[0]==palabrasCoincidentes[particion] && listaPaginas[inicio].getPageRank()>listaPaginas[particion].getPageRank()){
+        if(palabrasCoincidentes[inicio]>=palabrasCoincidentes[particion]){
+            if(palabrasCoincidentes[inicio]==palabrasCoincidentes[particion] && listaPaginas[inicio].getPageRank()>listaPaginas[particion].getPageRank()){
                 particion--;//En caso afirmativo lo dejamos a la derecha
             }
         }
@@ -269,11 +267,13 @@ public class Gestora {
 
         return particion;
     }
-    
-	/*
-	  
-	  
-	 */
+
+    /**
+     * Descripición: este método sustituye las palabras repetidas de un array por cadenas vacias (no nulas)
+     * Precondiciones:--
+     * Postcondiciones: el array contendrá Strings distintos y tendrá la misma longitud que el array original. Solo podrá encontrarse repetidos strings vacios ("")
+     * @param palabras
+     */
 	public static void eliminarPalabrasRepetida(String[] palabras) {
 		boolean repetida = false; 
 		for(int i = 0; i < palabras.length; i++) {
