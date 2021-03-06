@@ -35,7 +35,7 @@ public class Validacion {
         
         System.out.println("Introduzca S (si) / N (no)");
         do {
-        	 respuesta = teclado.next().toLowerCase().charAt(0);
+        	 respuesta = teclado.nextLine().toLowerCase().charAt(0);
 
         	 if (respuesta != 's' && respuesta != 'n') {
 				System.out.println("Error valor introducido invalido, ingrese uno de nuevo:");
@@ -190,7 +190,7 @@ public class Validacion {
     public static boolean comprobarExistenciaUrl(Pagina[] paginas,String url) {
     	boolean existe = false;
     	for(int i = 0; i < paginas.length && !existe;i++) {
-    		if (paginas[i] != null && !url.equals(paginas[i].getUrl())) {
+    		if (paginas[i] != null && url.equals(paginas[i].getUrl())) {
     			existe = true;
 			}
     	}
@@ -277,7 +277,7 @@ public class Validacion {
 			palabras = teclado.next();
 
 			palabrasClaves = palabras.split(" "); //Se guardan las palabras separadas por un espacio
-
+			teclado.nextLine();
 		} 
 		
 		if(palabrasClaves != null)
