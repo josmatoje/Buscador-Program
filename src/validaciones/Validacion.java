@@ -75,6 +75,7 @@ public class Validacion {
         do {
         	
         	numero = teclado.nextInt();
+        	teclado.nextLine();
         	if (numero < valorInicial || numero > valorInicial) {
 				System.out.println("Numero ingresado no valido, vuelva intentarlo: ");
 			}
@@ -113,7 +114,7 @@ public class Validacion {
     	do {    		
     		do{
         		System.out.println("Ingrese la url de la pagina");
-        		url = teclado.next();
+        		url = teclado.nextLine();
     			urlValida = validarUrl(url); //Se comprobara que la url sea una que este bien formada(Que siga la sintaxis de una url)
     			if(!urlValida)
     				System.out.println("La Url introducida no esta bien formada.\n");
@@ -227,7 +228,7 @@ public class Validacion {
 			do {			
 				do{
 					System.out.println("Ingrese el enlace referente");
-					enlaceReferente = teclado.next();
+					enlaceReferente = teclado.nextLine();
 					urlValida = validarUrl(enlaceReferente); //Se comprueba que la url introducida sigue la sintaxis de una URL
 					if(!urlValida)
 		    			System.out.println("La Url no esta bien formada\n");
@@ -300,7 +301,7 @@ public class Validacion {
 	 * @return teclado.nextLine();				
      */
 	public static String leerDescripcion() {
-    	return teclado.next();
+    	return teclado.nextLine();
 	}
     
     /**
