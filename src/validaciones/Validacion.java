@@ -35,7 +35,7 @@ public class Validacion {
         
         System.out.println("Introduzca S (si) / N (no)");
         do {
-        	 respuesta=teclado.next().toLowerCase().charAt(0);
+        	 respuesta = teclado.next().toLowerCase().charAt(0);
 
         	 if (respuesta != 's' && respuesta != 'n') {
 				System.out.println("Error valor introducido invalido, ingrese uno de nuevo:");
@@ -113,7 +113,7 @@ public class Validacion {
     	do {    		
     		do{
         		System.out.println("Ingrese la url de la pagina");
-        		url = teclado.nextLine();
+        		url = teclado.next();
     			urlValida = validarUrl(url); //Se comprobara que la url sea una que este bien formada(Que siga la sintaxis de una url)
     			if(!urlValida)
     				System.out.println("La Url introducida no esta bien formada.\n");
@@ -219,7 +219,7 @@ public class Validacion {
     public static String leerEnlaceReferente(Pagina[] paginas) {
     	
     	String enlaceReferente = "";
-    	boolean urlValida = false, urlExiste = false;
+    	boolean urlValida = false, urlExiste = false, continuar = false;
 		System.out.println("¿Quieres ingresar un enlace referente a la pagina?");
 		
 		if( leerValidarRespuestaSiNo() ) { //Si la respuesta que se lee es Si(true)
@@ -227,7 +227,7 @@ public class Validacion {
 			do {			
 				do{
 					System.out.println("Ingrese el enlace referente");
-					enlaceReferente = teclado.nextLine();
+					enlaceReferente = teclado.next();
 					urlValida = validarUrl(enlaceReferente); //Se comprueba que la url introducida sigue la sintaxis de una URL
 					if(!urlValida)
 		    			System.out.println("La Url no esta bien formada\n");
@@ -238,7 +238,11 @@ public class Validacion {
 																			 //de tipo Pagina
 				if(!urlExiste)
 					System.out.println("La Url de enlace introducida no corresponde con la Url principal de ninguna de las paginas\n");
-			}while(!urlExiste); //Mientras el enlaceReferente no exista como url principal de otra pagina
+					System.out.println("Desea continuar y volver a intentarlo");
+					continuar = leerValidarRespuestaSiNo();
+					if(!continuar)
+						enlaceReferente = "";
+			}while(!urlExiste && continuar); //Mientras el enlaceReferente no exista como url principal de otra pagina
 			
 		} 
 		return enlaceReferente;
@@ -269,13 +273,14 @@ public class Validacion {
 		if( leerValidarRespuestaSiNo() ) { //Si la respuesta que se lee es Si(true) 
 
 			Mensaje.introducirPalabrasClave();
-			palabras = teclado.nextLine();
+			palabras = teclado.next();
 
 			palabrasClaves = palabras.split(" "); //Se guardan las palabras separadas por un espacio
 
 		} 
 		
-		Gestora.eliminarPalabrasRepetida(palabrasClaves); //Elimina las palabras que haya repetidas
+		if(palabrasClaves != null)
+			Gestora.eliminarPalabrasRepetida(palabrasClaves); //Elimina las palabras que haya repetidas
 		return palabrasClaves;
 	}
 
@@ -295,7 +300,7 @@ public class Validacion {
 	 * @return teclado.nextLine();				
      */
 	public static String leerDescripcion() {
-    	return teclado.nextLine();
+    	return teclado.next();
 	}
     
     /**
