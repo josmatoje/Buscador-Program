@@ -54,7 +54,7 @@ public class Main {
 				// pagina de la lista dada
 				palabrasCoincidentes = new int[paginasWeb.length];
 				for (int i = 0; i < palabrasCoincidentes.length; i++)
-					palabrasCoincidentes[i] = Utilidad.palabrasCoincidentes(paginasWeb[i].getPalabrasClaves(),
+					palabrasCoincidentes[i] = Gestora.palabrasCoincidentes(paginasWeb[i].getPalabrasClaves(),
 							palabrasClaves);
 
 				Gestora.ordenarPaginas(paginasWeb, palabrasCoincidentes, 0, paginasWeb.length);

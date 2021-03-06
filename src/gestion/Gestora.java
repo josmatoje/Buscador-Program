@@ -435,7 +435,7 @@ public class Gestora {
 
 		for (int i = 0; i < palabrasComprobar.length; i++) {
 			comprobado = false;
-			for (int j = 0; i < palabrasPagina.length && !comprobado; i++) {
+			for (int j = 0; j < palabrasPagina.length && !comprobado; j++) {
 				if (!palabrasComprobar[i].equals("") && palabrasPagina[j] != null && !palabrasComprobar[j].equals("")
 						&& palabrasComprobar[i].equals(palabrasPagina[j])) {
 					contador++;
