@@ -65,19 +65,8 @@ public class Gestora {
     }
 
     /**
-     * Cabecera: public static Pagina[] insertarPagina(Pagina[] paginas,Pagina pagina)
-     * 
-     * Comentario: Este metodo se encarga de guardar un objeto de tipo Pagina en un array de tipo Pagina. Si dicho array esta lleno su tamaño 
-     * 			   aumentara por dos.
-     * 
-     * Entradas: Pagina[] paginas,Pagina p
-     * 
-     * Salida: Pagina[] paginas
-     * 
-     * Precondiciones: Crear el array paginas
-     * 
-     * Postcondiciones: Al tratarse de una funcion, se volvera un tipo de dato(Pagina[]) en este caso sera paginas.
-     * 
+     * Precondiciones: array paginas y objeto p de la clase Pagina
+     * Postcondiciones:
      * @param paginas
      * @param pagina
      * 
@@ -85,7 +74,7 @@ public class Gestora {
      */
     
     /*
-     * Aclaracion: En el caso en el que paginas este lleno, se tendra que aumentar su tamaño, entonces este tomara
+     * Aclaracion: En el caso en el que paginas este lleno, se tendra que aumentar su tamaï¿½o, entonces este tomara
      * otra referencia, por eso el metodo devuelve Pagina[]
      */
     public static Pagina[] insertarPagina(Pagina[] paginas,Pagina pagina){
@@ -197,7 +186,7 @@ public class Gestora {
      *   - Segun las especificaciones, array[ppio], ...., array[fin] quedara dividido
      *     respecto a valorParticion.
      *   - Asociado al nombre del subprograma se devuelve el lugar por el que se
-     *     divide el array. Por tanto, el subprograma se diseñara como funcion.
+     *     divide el array. Por tanto, el subprograma se diseï¿½ara como funcion.
      *     
      * @param listaPaginas
      * @param palabrasClave
@@ -277,7 +266,7 @@ public class Gestora {
      *   - Segun las especificaciones, array[ppio], ...., array[fin] quedara dividido
      *     respecto a valorParticion.
      *   - Asociado al nombre del subprograma se devuelve el lugar por el que se
-     *     divide el array. Por tanto, el subprograma se diseñara como funcion.
+     *     divide el array. Por tanto, el subprograma se diseï¿½ara como funcion.
      *     
      * @param listaPaginas
      * @param palabrasClave
