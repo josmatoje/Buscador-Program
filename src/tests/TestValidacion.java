@@ -14,7 +14,7 @@ public class TestValidacion {
 	static Pagina paginaMala;
 	static Pagina[] paginas = new Pagina[2];
 	static Validacion validacion = new Validacion();
-	
+	static char respuesta;
 	
 	@BeforeAll
 
@@ -31,13 +31,30 @@ public class TestValidacion {
 		paginas[1] = paginaMala;
 	}
 	
+	//Test para el metodo leerValidarRespuestaSiNo
+	
+	/**
+	 * Descripcion: Test para ver si es afirmativa la respuesta
+	 */
+	@Test
+	void leerValidarRespuestaSiNoAfirmativo() {
+		assertTrue(Validacion.leerValidarRespuestaSiNo());
+	}
+	
+	/**
+	 * Descripcion: Test para ver si es afirmativa la respuesta
+	 */
+	@Test
+	void leerValidarRespuestaSiNoNegativo() {
+		assertFalse(Validacion.leerValidarRespuestaSiNo());
+	}
 	
 	/**
 	 * Descripcion: Test para comprobar que la validacion de url funciona bien
 	 * cuando hay una url valida Metodo a testear: validarUrl(String url) de la
 	 * clase Comprobaciones.
 	 */
-	@Test
+	//@Test
 	void testUrlValida() {
 		assertTrue(Validacion.validarUrl(paginaDePrueba.getUrl()));
 	}
