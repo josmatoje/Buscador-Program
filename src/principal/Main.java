@@ -47,7 +47,6 @@ public class Main {
 
 			case 2: // Buscar paginas
 
-				Mensaje.introducirPalabrasClave();
 				palabrasClaves = Validacion.leerPalabrasClaves();
 
 				// Genera un array de enteros con el numero de palabras coincidentes para cada
@@ -65,7 +64,7 @@ public class Main {
 
 			case 3: // Modificar una pagina web
 
-				break;
+			break;
 
 			default:
 				System.out.println("###Saliendo del programa...###"); // Sera la opcion 4 de salir del programa

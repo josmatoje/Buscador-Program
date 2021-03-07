@@ -181,8 +181,7 @@ public class Gestora {
 	}
 
 	/**
-	 * Cabecera: public static int partirLista(Pagina[] listaPaginas, String[]
-	 * palabrasClave)
+	 * Cabecera: public static int partirLista(Pagina[] listaPaginas, String[] palabrasClave)
 	 * 
 	 * Entradas: String[] palabrasClave.
 	 * 
@@ -279,7 +278,7 @@ public class Gestora {
 	 * Cabecera: public static int partirLista(Pagina[] listaPaginas, int[]
 	 * palabrasCoincidentes, int inicio, int fin)
 	 * 
-	 * Entradas: Pagina[] listaPaginas, int[] palabrasCoincidentes.
+	 * Entradas: int[] palabrasCoincidentes, int inicio, int fin
 	 * 
 	 * Salida: punto por donde se ha partido el array.
 	 * 
