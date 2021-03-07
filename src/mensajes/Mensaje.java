@@ -86,4 +86,21 @@ public class Mensaje {
 	public static void introducirPalabrasClave() {
 		System.out.println("Ingrese todas las palabras separadas por espacios:");
 	}
+
+	public static int imprimirPaginas(Pagina[] listaPaginas){
+		int numeroPaginas;
+
+		System.out.println("Escoja la pagina que desea modificar: ");
+		for(numeroPaginas=0; listaPaginas[numeroPaginas]!=null && numeroPaginas< listaPaginas.length; numeroPaginas++){
+			System.out.println((numeroPaginas+1)+". "+listaPaginas[numeroPaginas].toString());
+		}
+
+		return numeroPaginas;
+	}
+	
+	public static void mostrarPalabrasClave (String[] palabrasClave){
+		for(String palabra:palabrasClave){
+			System.out.println("- "+palabra);
+		}
+	}
 }
