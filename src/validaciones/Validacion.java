@@ -103,7 +103,7 @@ public class Validacion {
      * 					la cual sera una url, esta sera una url bien formada y ademas no sera igual a la url principal de alguna 
      * 					de las paginas que hay en un array de tipo Pagina
      *   
-     * @param Pagina[] paginas
+     * @param paginas
      * 
      * @return url
      */
@@ -120,7 +120,7 @@ public class Validacion {
     				System.out.println("La Url introducida no esta bien formada.\n");
     		}while(!urlValida);
     		
-    		urlRepetida = comprobarExistenciaUrl(paginas, url); //Se comprueba que esa url no sea la url principal de alguna 
+    		urlRepetida = Gestora.comprobarExistenciaUrl(paginas, url); //Se comprueba que esa url no sea la url principal de alguna 
     															//de las paginas que hay en un array de tipo Pagina
 
     		if(urlRepetida)
@@ -166,38 +166,6 @@ public class Validacion {
     }
     
     /**
-	 * Cabecera: public static boolean comprobarExistenciaUrl(Pagina[] paginas,String url)
-	 *   
-	 * Comentario: Este metodo se encarga de comprobar si la cadena(url) es igual a la url principal de alguna de las paginas 
-	 *   		   que hay en un array de tipo Pagina
-	 *   
-	 * Precondiciones: Ninguna
-	 *   
-	 * Entrada: Pagina[] paginas,String url
-	 *   
-	 * Salida: boolean existe 
-	 *    
-	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato(existe), en este caso un boleano el cual tomara los 
-	 *   				siguientes valores:
-	 *   			    -true: Si la url recibida como parametro es la url principal de otra pagina	
-	 *   				-false: Si la url recibida como parametro no es la url principal de otra pagina	  
-	 *   
-	 * @param paginas
-	 * @param url
-	 * 
-	 * @return existe				
-     */
-    public static boolean comprobarExistenciaUrl(Pagina[] paginas,String url) {
-    	boolean existe = false;
-    	for(int i = 0; i < paginas.length && !existe;i++) {
-    		if (paginas[i] != null && url.equals(paginas[i].getUrl())) {
-    			existe = true;
-			}
-    	}
-    	return existe;
-    } 
-    
-    /**
 	 * Cabecera: public static String leerEnlaceReferente(Pagina[] paginas)
 	 *   
 	 * Comentario: Este metodo se encarga de leer una url de enlace referente.
@@ -234,7 +202,7 @@ public class Validacion {
 		    			System.out.println("La Url no esta bien formada\n");
 				}while(!urlValida); //Mientras el enlaceReferente no sea una url 
 				
-				urlExiste = comprobarExistenciaUrl(paginas, enlaceReferente);//Se comprueba que ese enlace Referente corresponde a 
+				urlExiste = Gestora.comprobarExistenciaUrl(paginas, enlaceReferente);//Se comprueba que ese enlace Referente corresponde a 
 																			 //la url principal de alguna de las paginas que hay en un array 
 																			 //de tipo Pagina
 				if(!urlExiste)
