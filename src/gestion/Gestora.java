@@ -97,57 +97,6 @@ public class Gestora {
 	}
 
 	/**
-	 * Cabecera: public static void ordenarPaginas (Pagina[] listaPaginas, String[]
-	 * palabrasClave)
-	 * 
-	 * Comentario: Este metodo se encarga de ordenar un array de tipo Pagina
-	 * 
-	 * Entradas: String[] palabrasClave
-	 * 
-	 * Salidas: Ninguna.
-	 * 
-	 * Entrada/Salida: listaPaginas.
-	 * 
-	 * Precondiciones: listaPaginas no debe estar vacio.
-	 * 
-	 * Postcondiciones: lista esta ordenado descendentemente segun el criterio de
-	 * palabras clave dado.
-	 * 
-	 * @param listaPaginas
-	 * @param palabrasClave
-	 */
-	public static void ordenarPaginas(Pagina[] listaPaginas, String[] palabrasClave) {
-
-		int puntoMedio;
-		Pagina[] semiLista1, semiLista2;
-
-		if (listaPaginas.length >= 1) {// Caso base, una lista de una unica pagina (un unico elemento ya está
-										// ordenado)
-
-			puntoMedio = partirLista(listaPaginas, palabrasClave);// Partimos (y ordenamos) la lista
-
-			semiLista1 = new Pagina[puntoMedio];// Creamos y copiamos una semilista de paginas para ordenarla
-			for (int i = 0; i < semiLista1.length; i++)// Lo llenamos hasta el puntoMedio-1
-				semiLista1[i] = listaPaginas[i];
-			ordenarPaginas(semiLista1, palabrasClave);
-
-			semiLista2 = new Pagina[listaPaginas.length - puntoMedio - 1];// Creamos y copiamos la otra semilista
-			for (int i = 0; i < semiLista2.length; i++)
-				semiLista2[i] = listaPaginas[i + puntoMedio + 1];// Lo rellenamos a partir de la posicion puntomedio+1
-																	// de la lista original
-			if (semiLista2.length > 0)
-				ordenarPaginas(semiLista2, palabrasClave);
-
-			// Rellenamos listaPaginas con la nueva ordenacion
-			listaPaginas = Arrays.copyOf(semiLista1, listaPaginas.length);
-			for (int i = 0; i < semiLista2.length; i++)
-				listaPaginas[i + semiLista1.length] = semiLista2[i];
-
-		}
-
-	}
-
-	/**
 	 * Cabecera: public static void ordenarPaginas (Pagina[] listaPaginas, int[]
 	 * palabrasCoincidentes, int inicio, int fin)
 	 * 
@@ -173,7 +122,7 @@ public class Gestora {
 
 		int puntoMedio;
 
-		if (inicio < fin) {// Caso base, indicesno definen un segmento del array
+		if (inicio < fin && listaPaginas[inicio]!=null) {// Caso base, indicesno definen un segmento del array
 			puntoMedio = partirLista(listaPaginas, palabrasCoincidentes, inicio, fin);// Partimos (y ordenamos) la lista
 			ordenarPaginas(listaPaginas, palabrasCoincidentes, inicio, puntoMedio - 1);
 			ordenarPaginas(listaPaginas, palabrasCoincidentes, puntoMedio + 1, fin);
@@ -181,105 +130,10 @@ public class Gestora {
 	}
 
 	/**
-	 * Cabecera: public static int partirLista(Pagina[] listaPaginas, String[]
-	 * palabrasClave)
-	 * 
-	 * Entradas: String[] palabrasClave.
-	 * 
-	 * Salida: punto por donde se ha partido el array.
-	 * 
-	 * Entrada/Salida: Pagina[] listaPaginas
-	 * 
-	 * Precondiciones: el array no debe estar vacio.
-	 * 
-	 * Postcondiciones: Las siguientes, - Segun las especificaciones, array[ppio],
-	 * ...., array[fin] quedara dividido respecto a valorParticion. - Asociado al
-	 * nombre del subprograma se devuelve el lugar por el que se divide el array.
-	 * Por tanto, el subprograma se dise�ara como funcion.
-	 * 
-	 * @param listaPaginas
-	 * @param palabrasClave
-	 * 
-	 * @return particion
-	 */
-	public static int partirLista(Pagina[] listaPaginas, String[] palabrasClave) {
-
-		int[] palabrasCoincidentes = new int[listaPaginas.length];
-		int particion = 0; // Celda en la que se encuentra el valor por el que vamos a partir el array
-		// En nuestro caso al pasarle siempre un array siempre trabajamos con la
-		// posicion cero como referencia y esta no varia
-		// hasta el final del metodo.
-		// Hemos mantenido el uso del parametro particion en la totalidad del codigo
-		// para ayudar a la legibilidad.
-		boolean pageRankMayor = true;
-		Pagina paginaAux;
-
-		for (int i = 1, j = listaPaginas.length; i < j;) {// Empezando por el principio (saltandonos la posicion cero
-															// que será nuestra pagina a comparar)
-			// y el final del array y aseguramos que i siempre menor que j
-
-			// pageRankMayor=true; no es necesario actualizar ya que del bloque anterior
-			// siempre sale a falso o sale del bucle principal
-			// y en la primera iteracion se ha inicializado a true.
-
-			// avanzamos con el indice i mientras la pagina en esa posicion tenga mas o
-			// igual numero de palabras coincidentes que la pagina de particion
-			for (; (palabrasCoincidentes[i] >= palabrasCoincidentes[0]) && pageRankMayor; i++) {
-				if (palabrasCoincidentes[i] == palabrasCoincidentes[0]) { // En caso de tener el mismo numero valoramos
-																			// el pageRank
-					if (listaPaginas[i].getPageRank() < listaPaginas[0].getPageRank())
-						pageRankMayor = false;// Si tiene menos pasamos al siguiente bloque (la pagina es menos
-												// relevante
-				}
-			}
-
-			// pageRankMayor=false; no es necesario actualizar ya que del bloque anterior
-			// siempre sale a falso o sale del bucle principal
-
-			// avanzamos con el indice j mientras la pagina en esa posicion tenga menos
-			// numero de palabras coincidentes que la pagina de particion
-			for (; palabrasCoincidentes[j] < palabrasCoincidentes[0] && !pageRankMayor; j--) {// Ahora pageRank debe ser
-																								// menor
-				if (palabrasCoincidentes[j] == palabrasCoincidentes[0]) { // En caso de tener el mismo numero valoramos
-																			// el pageRank
-					if (listaPaginas[j].getPageRank() > listaPaginas[0].getPageRank())
-						pageRankMayor = true;// Si tiene mas pasamos al siguiente bloque (la pagina es mas relevante)
-					// En este caso si es (y el anterior) si son iguales hablamos de paginas con la
-					// misma relevancia
-				}
-			}
-			// Tenemos la posicion i de una pagina de menor relevancia a la particion y en j
-			// una de mayor relevancia
-			paginaAux = listaPaginas[i];
-			listaPaginas[i] = listaPaginas[j];
-			listaPaginas[j] = paginaAux; // Intercambiamos la pagina en i por la pagina en j
-			particion = i;// Actualizamos la posicion por la que vamos intercambiando las celdas ya que en
-							// la ultima iteracion i=j y este será nuestro
-			// punto de particion
-
-		} // Final de busqueda de particion y de ordenacion del array
-
-		// Comprobamos si el ultima caso es
-		if (palabrasCoincidentes[0] >= palabrasCoincidentes[particion]) {
-			if (palabrasCoincidentes[0] == palabrasCoincidentes[particion]
-					&& listaPaginas[0].getPageRank() > listaPaginas[particion].getPageRank()) {
-				particion--;
-			}
-		}
-		// Debemos intercambiar el valor de particion para dejarlo en la posicion
-		// deseada
-		paginaAux = listaPaginas[0];
-		listaPaginas[0] = listaPaginas[particion];
-		listaPaginas[particion] = paginaAux; // Intercambiamos la pagina en i por la pagina en j
-
-		return particion;
-	}
-
-	/**
 	 * Cabecera: public static int partirLista(Pagina[] listaPaginas, int[]
 	 * palabrasCoincidentes, int inicio, int fin)
 	 * 
-	 * Entradas: Pagina[] listaPaginas, int[] palabrasCoincidentes.
+	 * Entradas: int[] palabrasCoincidentes, int inicio, int fin
 	 * 
 	 * Salida: punto por donde se ha partido el array.
 	 * 
@@ -293,7 +147,7 @@ public class Gestora {
 	 * Por tanto, el subprograma se dise�ara como funcion.
 	 * 
 	 * @param listaPaginas
-	 * @param palabrasClave
+	 * @param palabrasCoincidentes
 	 * @param inicio
 	 * @param fin
 	 * 
@@ -312,24 +166,24 @@ public class Gestora {
 			// siempre sale a falso o sale del bucle principal
 			// y en la primera iteracion se ha inicializado a true.
 
-			// avanzamos con el indice i mientras la pagina en esa posicion tenga mas o
-			// igual numero de palabras coincidentes que la pagina de particion (0)
-			for (; (palabrasCoincidentes[i] >= palabrasCoincidentes[inicio]) && pageRankMayor; i++) {
+			// avanzamos con el indice i mientras sea distinto de nulo y la pagina en esa posicion tenga mas o
+			// igual numero de palabras coincidentes que la pagina de particion (inicio) y que pageRankMayor sea true
+			for (; listaPaginas[i]!=null && (palabrasCoincidentes[i] >= palabrasCoincidentes[inicio]) && pageRankMayor; i++) {
 				if (palabrasCoincidentes[i] == palabrasCoincidentes[inicio]) { // En caso de tener el mismo numero
 																				// valoramos el pageRank
-					if (listaPaginas[i].getPageRank() < listaPaginas[inicio].getPageRank())
-						pageRankMayor = false;// Si tiene menos pasamos al siguiente bloque (la pagina es menos
-												// relevante)
+					if (listaPaginas[j] != null && listaPaginas[i].getPageRank() < listaPaginas[inicio].getPageRank())
+						pageRankMayor = false;// Si la posicion de j es nula o tiene menos pasamos al siguiente bloque
+												// (la pagina es menos relevante)
 				}
 			}
 
 			// pageRankMayor=false; no es necesario actualizar ya que del bloque anterior
 			// siempre sale a falso o sale del bucle principal
 
-			// avanzamos con el indice j mientras la pagina en esa posicion tenga menos
-			// numero de palabras coincidentes que la pagina de particion
-			for (; palabrasCoincidentes[j] <= palabrasCoincidentes[inicio] && !pageRankMayor; j--) {// Ahora pageRank
-																									// debe ser menor
+			// avanzamos con el indice j si la pgina en j es nula o
+			// mientras la pagina en esa posicion tenga menos número de palabras coincidentes que la pagina de particion
+			for (; listaPaginas[j]==null || (palabrasCoincidentes[j] <= palabrasCoincidentes[inicio] && !pageRankMayor); j--) {
+																								// Ahora pageRank debe ser menor
 				if (palabrasCoincidentes[j] == palabrasCoincidentes[inicio]) { // En caso de tener el mismo numero
 																				// valoramos el pageRank
 					if (listaPaginas[j].getPageRank() > listaPaginas[inicio].getPageRank())
@@ -359,9 +213,9 @@ public class Gestora {
 
 		} // Final de busqueda de particion y de ordenacion del array
 
-		// Comprobamos si el ultima caso la pagina es menos relevante que la pagina de
-		// particion
-		if (palabrasCoincidentes[inicio] >= palabrasCoincidentes[particion]) {
+		// Comprobamos si el ultimo caso la pagina es menos relevante que la pagina de particion
+		// o esta es null
+		if (listaPaginas[particion]==null || palabrasCoincidentes[inicio] >= palabrasCoincidentes[particion]) {
 			if (palabrasCoincidentes[inicio] == palabrasCoincidentes[particion]
 					&& listaPaginas[inicio].getPageRank() > listaPaginas[particion].getPageRank()) {
 				particion--;// En caso afirmativo lo dejamos a la derecha
@@ -496,7 +350,6 @@ public class Gestora {
 	 *   				-false: Si la array paginas solo tiene nulls	  
 	 *   
 	 * @param paginas
-	 * @param url
 	 * 
 	 * @return existe				
      */
@@ -511,4 +364,155 @@ public class Gestora {
     	return existe;
     		
     }
+
+	@Deprecated
+	/**
+	 * Cabecera: public static void ordenarPaginas (Pagina[] listaPaginas, String[]
+	 * palabrasClave)
+	 *
+	 * Comentario: Este método está en deshuso ya que tiene peor rendimiento e internamente es bastante menos legible
+	 *
+	 * Entradas: String[] palabrasClave
+	 *
+	 * Salidas: Ninguna.
+	 *
+	 * Entrada/Salida: listaPaginas.
+	 *
+	 * Precondiciones: listaPaginas no debe estar vacio.
+	 *
+	 * Postcondiciones: lista esta ordenado descendentemente segun el criterio de
+	 * palabras clave dado.
+	 *
+	 * @param listaPaginas
+	 * @param palabrasClave
+	 */
+	public static void ordenarPaginas(Pagina[] listaPaginas, String[] palabrasClave) {
+
+		int puntoMedio;
+		Pagina[] semiLista1, semiLista2;
+
+		if (listaPaginas.length >= 1) {// Caso base, una lista de una unica pagina (un unico elemento ya está
+			// ordenado)
+
+			puntoMedio = partirLista(listaPaginas, palabrasClave);// Partimos (y ordenamos) la lista
+
+			semiLista1 = new Pagina[puntoMedio];// Creamos y copiamos una semilista de paginas para ordenarla
+			for (int i = 0; i < semiLista1.length; i++)// Lo llenamos hasta el puntoMedio-1
+				semiLista1[i] = listaPaginas[i];
+			ordenarPaginas(semiLista1, palabrasClave);
+
+			semiLista2 = new Pagina[listaPaginas.length - puntoMedio - 1];// Creamos y copiamos la otra semilista
+			for (int i = 0; i < semiLista2.length; i++)
+				semiLista2[i] = listaPaginas[i + puntoMedio + 1];// Lo rellenamos a partir de la posicion puntomedio+1
+			// de la lista original
+			if (semiLista2.length > 0)
+				ordenarPaginas(semiLista2, palabrasClave);
+
+			// Rellenamos listaPaginas con la nueva ordenacion
+			listaPaginas = Arrays.copyOf(semiLista1, listaPaginas.length);
+			for (int i = 0; i < semiLista2.length; i++)
+				listaPaginas[i + semiLista1.length] = semiLista2[i];
+
+		}
+
+	}
+
+	@Deprecated
+	/**
+	 * Cabecera: public static int partirLista(Pagina[] listaPaginas, String[]
+	 * palabrasClave)
+	 *
+	 * Comentario: Este método está en deshuso ya que tiene peor rendimiento e internamente es bastante menos legible
+	 *
+	 * Entradas: String[] palabrasClave.
+	 *
+	 * Salida: punto por donde se ha partido el array.
+	 *
+	 * Entrada/Salida: Pagina[] listaPaginas
+	 *
+	 * Precondiciones: el array no debe estar vacio.
+	 *
+	 * Postcondiciones: Las siguientes, - Segun las especificaciones, array[ppio],
+	 * ...., array[fin] quedara dividido respecto a valorParticion. - Asociado al
+	 * nombre del subprograma se devuelve el lugar por el que se divide el array.
+	 * Por tanto, el subprograma se dise�ara como funcion.
+	 *
+	 * @param listaPaginas
+	 * @param palabrasClave
+	 *
+	 * @return particion
+	 */
+	public static int partirLista(Pagina[] listaPaginas, String[] palabrasClave) {
+
+		int[] palabrasCoincidentes = new int[listaPaginas.length];
+		int particion = 0; // Celda en la que se encuentra el valor por el que vamos a partir el array
+		// En nuestro caso al pasarle siempre un array siempre trabajamos con la
+		// posicion cero como referencia y esta no varia
+		// hasta el final del metodo.
+		// Hemos mantenido el uso del parametro particion en la totalidad del codigo
+		// para ayudar a la legibilidad.
+		boolean pageRankMayor = true;
+		Pagina paginaAux;
+
+		for (int i = 1, j = listaPaginas.length; i < j;) {// Empezando por el principio (saltandonos la posicion cero
+			// que será nuestra pagina a comparar)
+			// y el final del array y aseguramos que i siempre menor que j
+
+			// pageRankMayor=true; no es necesario actualizar ya que del bloque anterior
+			// siempre sale a falso o sale del bucle principal
+			// y en la primera iteracion se ha inicializado a true.
+
+			// avanzamos con el indice i mientras la pagina en esa posicion tenga mas o
+			// igual numero de palabras coincidentes que la pagina de particion
+			for (; (palabrasCoincidentes[i] >= palabrasCoincidentes[0]) && pageRankMayor; i++) {
+				if (palabrasCoincidentes[i] == palabrasCoincidentes[0]) { // En caso de tener el mismo numero valoramos
+					// el pageRank
+					if (listaPaginas[i].getPageRank() < listaPaginas[0].getPageRank())
+						pageRankMayor = false;// Si tiene menos pasamos al siguiente bloque (la pagina es menos
+					// relevante
+				}
+			}
+
+			// pageRankMayor=false; no es necesario actualizar ya que del bloque anterior
+			// siempre sale a falso o sale del bucle principal
+
+			// avanzamos con el indice j mientras la pagina en esa posicion tenga menos
+			// numero de palabras coincidentes que la pagina de particion
+			for (; palabrasCoincidentes[j] < palabrasCoincidentes[0] && !pageRankMayor; j--) {// Ahora pageRank debe ser
+				// menor
+				if (palabrasCoincidentes[j] == palabrasCoincidentes[0]) { // En caso de tener el mismo numero valoramos
+					// el pageRank
+					if (listaPaginas[j].getPageRank() > listaPaginas[0].getPageRank())
+						pageRankMayor = true;// Si tiene mas pasamos al siguiente bloque (la pagina es mas relevante)
+					// En este caso si es (y el anterior) si son iguales hablamos de paginas con la
+					// misma relevancia
+				}
+			}
+			// Tenemos la posicion i de una pagina de menor relevancia a la particion y en j
+			// una de mayor relevancia
+			paginaAux = listaPaginas[i];
+			listaPaginas[i] = listaPaginas[j];
+			listaPaginas[j] = paginaAux; // Intercambiamos la pagina en i por la pagina en j
+			particion = i;// Actualizamos la posicion por la que vamos intercambiando las celdas ya que en
+			// la ultima iteracion i=j y este será nuestro
+			// punto de particion
+
+		} // Final de busqueda de particion y de ordenacion del array
+
+		// Comprobamos si el ultima caso es
+		if (palabrasCoincidentes[0] >= palabrasCoincidentes[particion]) {
+			if (palabrasCoincidentes[0] == palabrasCoincidentes[particion]
+					&& listaPaginas[0].getPageRank() > listaPaginas[particion].getPageRank()) {
+				particion--;
+			}
+		}
+		// Debemos intercambiar el valor de particion para dejarlo en la posicion
+		// deseada
+		paginaAux = listaPaginas[0];
+		listaPaginas[0] = listaPaginas[particion];
+		listaPaginas[particion] = paginaAux; // Intercambiamos la pagina en i por la pagina en j
+
+		return particion;
+	}
+
 }

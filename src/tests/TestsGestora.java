@@ -2,14 +2,11 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import clasesBasicas.Pagina;
 import gestion.Gestora;
-import gestion.Gestora;
-import validaciones.Validacion;
 
 public class TestsGestora {
 	static Pagina paginaSubirPageRank;
