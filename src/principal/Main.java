@@ -36,7 +36,7 @@ public class Main {
 				palabrasClaves = Validacion.leerPalabrasClaves();
 
 				// Se crea la nueva pagina
-				pagina = new Pagina(url, descripcion, palabrasClaves, enlaceReferente);
+				pagina = new Pagina(url, descripcion,0, palabrasClaves, enlaceReferente);
 
 				Gestora.insertarPagina(paginasWeb, pagina); // Se guarda la nueva pagina en el array donde estan todas
 															// las paginas

@@ -44,10 +44,10 @@ public class Pagina {
 	private String enlacesReferente;
 
 	// Constructor con parametros
-	public Pagina(String url, String descripcion, String[] palabrasClaves, String enlacesReferente) {
+	public Pagina(String url, String descripcion,int pageRank, String[] palabrasClaves, String enlacesReferente) {
 		this.url = url;
 		this.descripcion = descripcion;
-		this.pageRank = 0;
+		setPageRank(pageRank);
 		this.palabrasClaves = palabrasClaves;
 		this.enlacesReferente = enlacesReferente;
 	}
@@ -79,7 +79,13 @@ public class Pagina {
 	}
 
 	public void setPageRank(int pageRank) {
-		this.pageRank = pageRank;
+		//Añadimos el ifelse en este set para que en caso de que nos metan un pageRank negativo, se convierta a 0.
+		if(pageRank<0) {
+			this.pageRank = 0;
+		}else {
+			this.pageRank = pageRank;
+		}
+		
 	}
 
 	public String[] getPalabrasClaves() {
