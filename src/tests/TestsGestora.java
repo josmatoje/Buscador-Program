@@ -1,6 +1,8 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,6 +18,9 @@ public class TestsGestora {
 	static String [] palabrasClaves = new String[3]; 
 	static String[] arrayVacia = new String[0]; //array vacia
 	static Pagina[] arrayVaciaDePaginas = new Pagina[0]; //array vacia de Paginas
+	static Pagina paginaPageRankAlto;
+	static Pagina paginaPageRankBajo;
+	int[] palabrasCoincidentes= new int[paginas.length];
 
 	
 	@BeforeEach
@@ -36,6 +41,10 @@ public class TestsGestora {
 				palabrasClaves, paginaSubirPageRank.getUrl());
 		paginas[0] = paginaSubirPageRank;
 		paginas[1] = paginaMala;
+		paginaPageRankAlto = new Pagina("https://mequieromorir.com", "pagina hecha para probar el metodo de ordenacion",8,
+				palabrasClaves, "");
+		paginaPageRankBajo=new Pagina("https://mequieromorir.com", "pagina hecha para probar el metodo de ordenacion",4,
+				palabrasClaves, "");
 	}
 
 	
@@ -86,6 +95,16 @@ public class TestsGestora {
 		assertEquals(0, paginaDisminuirPageRank.getPageRank());	
 	}
 	
+	/**
+	 * Descripcion: Test para comprobar que el pageRank  no disminuye
+	 * Metodo a testear: disminuirPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace) de la clase Gestora
+	 */
+	@Test
+	void testNoDisminuirPageRank() {
+		Gestora.disminuirPageRankPaginaEnlace(paginas,  paginaDisminuirPageRank.getUrl());
+		assertEquals(1, paginaDisminuirPageRank.getPageRank());
+	}
+	
 	
 	
 	/*
@@ -115,6 +134,39 @@ public class TestsGestora {
 		paginas[0]=null;
 		paginas=Gestora.insertarPagina(paginas, paginaMala);
 		assertEquals(paginaMala, paginas[0]);
+	}
+	
+	
+	/*@Test
+	void testOrdenarArray() {
+		paginas=Utilidad.aumentarArray(paginas);
+		paginas=Utilidad.aumentarArray(paginas);
+		paginas=Utilidad.aumentarArray(paginas);
+		paginas[3]=paginaPageRankBajo;
+		paginas[4]=paginaPageRankAlto;
+		paginas[0]=null;
+		Gestora.ordenarPaginas(paginas, palabrasCoincidentes,0, 16);
+		}
+	*/
+	
+	/**
+	 * Test para comprobar que las palabras repetidas en un array se eliminan
+	 * Metodo a testear: eliminarPalabrasRepetida(String[] palabras)
+	 */
+	@Test
+	void comprobarEliminarPalabrasCoincidentes() {
+		palabrasClaves[0]="rueda";
+		Gestora.eliminarPalabrasRepetida(palabrasClaves);
+		assertEquals("", palabrasClaves[0]);
+	}
+	/**
+	 * Test para comprobar que las palabras no repetidas en un array no se eliminan
+	 * Metodo a testear: eliminarPalabrasRepetida(String[] palabras)
+	 */
+	@Test
+	void comprobarNoSeEliminanPalabrasCoincidentes() {
+		Gestora.eliminarPalabrasRepetida(palabrasClaves);
+		assertEquals("coche", palabrasClaves[0]);
 	}
 	
 	//Tests para metodo palabras coincidentes
@@ -164,6 +216,44 @@ public class TestsGestora {
 			
 			assertEquals(0, Gestora.palabrasCoincidentes(arrayVacia, arrayVacia));
 		}
+		/**
+		 * Descripcion: Test para comprobar que nos devuelve el true si hay una pagina igual que el url que le indicamos
+		 * Metodo a testear: comprobarExistenciaUrl(Pagina[] paginas,String url) de la clase Gestora
+		 */
+		@Test
+		void testExisteUnaUrlCreada() {
+			assertTrue(Gestora.comprobarExistenciaUrl(paginas, "https://ciclo.iesnervion.es" ));
+		}
+		
+		/**
+		 * Descripcion: Test para comprobar que nos devuelve el false si no hay una pagina igual que el url que le indicamos
+		 * Metodo a testear: comprobarExistenciaUrl(Pagina[] paginas,String url) de la clase Gestora
+		 */
+		@Test
+		void testNoExisteUnaUrlCreada() {
+			assertFalse(Gestora.comprobarExistenciaUrl(paginas, "https://papitas.com" ));
+		}
+		
+		/**
+		 * Descripcion: Test para comprobar que nos devuelve true en caso de que la array de paginas este inicializada y no sea todo null
+		 * Metodo a testear: comprobarExistenciaPaginas(Pagina[] paginas) de la clase Gestora
+		 */
+		
+		@Test
+		void testArrayPaginasValida() {
+			assertTrue(Gestora.comprobarExistenciaPaginas(paginas));
+		}
+		
+		/**
+		 * Descripcion: Test para comprobar que nos devuelve False en caso de que la array de paginas no este inicializada
+		 * Metodo a testear: comprobarExistenciaPaginas(Pagina[] paginas) de la clase Gestora
+		 */
+		@Test
+		void testArrayPaginasNoValida() {
+			assertFalse(Gestora.comprobarExistenciaPaginas(arrayVaciaDePaginas));
+		}
+		
 	}
+
 
 
