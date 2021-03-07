@@ -58,18 +58,12 @@ public class Main {
 						palabrasCoincidentes[i] = Gestora.palabrasCoincidentes(paginasWeb[i].getPalabrasClaves(),
 								palabrasClaves);
 
-					Gestora.ordenarPaginas(paginasWeb, palabrasCoincidentes, 0, paginasWeb.length);
-					
-					// Imprime todas las paginas ordenadas por la condicion
-					for (Pagina value : paginasWeb) {
-						if (value != null)
-							System.out.println(value.toString());
-					}
-			
-				}else {
-					System.out.println("No existen paginas creadas, cree una antes de inciar su busqueda");
-				}
-				
+				// Genera un array de enteros con el numero de palabras coincidentes para cada
+				// pagina de la lista dada
+				palabrasCoincidentes = new int[paginasWeb.length];
+				for (int i = 0; i < palabrasCoincidentes.length; i++)
+					palabrasCoincidentes[i] = Utilidad.palabrasCoincidentes(paginasWeb[i].getPalabrasClaves(),
+							palabrasClaves);
 
 				break;
 
