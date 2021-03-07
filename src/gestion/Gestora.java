@@ -495,7 +495,6 @@ public class Gestora {
 	 *   				-false: Si la array paginas solo tiene nulls	  
 	 *   
 	 * @param paginas
-	 * @param url
 	 * 
 	 * @return existe				
      */
