@@ -103,7 +103,7 @@ public class Validacion {
      * 					la cual sera una url, esta sera una url bien formada y ademas no sera igual a la url principal de alguna 
      * 					de las paginas que hay en un array de tipo Pagina
      *   
-     * @param Pagina[] paginas
+     * @param paginas
      * 
      * @return url
      */
@@ -120,7 +120,7 @@ public class Validacion {
     				System.out.println("La Url introducida no esta bien formada.\n");
     		}while(!urlValida);
     		
-    		urlRepetida = comprobarExistenciaUrl(paginas, url); //Se comprueba que esa url no sea la url principal de alguna 
+    		urlRepetida = Gestora.comprobarExistenciaUrl(paginas, url); //Se comprueba que esa url no sea la url principal de alguna 
     															//de las paginas que hay en un array de tipo Pagina
 
     		if(urlRepetida)
@@ -202,7 +202,7 @@ public class Validacion {
 		    			System.out.println("La Url no esta bien formada\n");
 				}while(!urlValida); //Mientras el enlaceReferente no sea una url 
 				
-				urlExiste = comprobarExistenciaUrl(paginas, enlaceReferente);//Se comprueba que ese enlace Referente corresponde a 
+				urlExiste = Gestora.comprobarExistenciaUrl(paginas, enlaceReferente);//Se comprueba que ese enlace Referente corresponde a 
 																			 //la url principal de alguna de las paginas que hay en un array 
 																			 //de tipo Pagina
 				if(!urlExiste)

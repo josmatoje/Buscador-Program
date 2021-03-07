@@ -68,8 +68,10 @@ public class Mensaje {
 	 * 
 	 */
 	public static void menuModificarPaginaWeb() {
-		System.out.println("******************************\n\n" + "1.- Cambiar la descripcion \n"
-				+ "2.- A�adir palabras claves \n" + "3.- Volver al menu principal\n\n"
+		System.out.println("******************************\n\n"
+				+ "1.- Cambiar la descripcion \n"
+				+ "2.- Anhadir palabras claves \n"
+				+ "3.- Volver al menu principal\n\n"
 				+ "******************************");
 	}
 

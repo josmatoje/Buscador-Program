@@ -3,6 +3,7 @@ package gestion;
 import java.util.Arrays;
 
 public class Utilidad {
+
 	/**
 	 * Descripicion: Este metodo coge una array generico y nos devuelve un array con
 	 * los mismos valores pero de longitud doble Precondiciones: que la array

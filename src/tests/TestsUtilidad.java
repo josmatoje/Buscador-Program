@@ -13,7 +13,9 @@ public class TestsUtilidad {
 	static Pagina paginaDePrueba;
 	static Pagina paginaMala;
 	static Pagina[] paginas = new Pagina[2];
-	static Validacion validacion = new Validacion();
+	static String [] palabrasClaves = new String[3]; 
+	static String[] arrayVacia = new String[0]; //array vacia 
+	
 	
 	
 	@BeforeAll
@@ -23,12 +25,16 @@ public class TestsUtilidad {
 	 * estos
 	 */
 	static void Pagina() {
+		palabrasClaves[0] = "coche";
+		palabrasClaves[1] = "rueda";
+		palabrasClaves[2] = "ferrari";
 		paginaDePrueba = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",
-				new String[] { "informatica" }, "");
+				palabrasClaves, "");
 		paginaMala = new Pagina("enlaceMalo.com", "pagina hecha para probar los enlaces malos",
-				new String[] { "buscador" }, paginaDePrueba.getUrl());
+				palabrasClaves, paginaDePrueba.getUrl());
 		paginas[0] = paginaDePrueba;
 		paginas[1] = paginaMala;
+	
 	}
 
 	
@@ -45,5 +51,5 @@ public class TestsUtilidad {
 		paginas = Utilidad.aumentarArray(paginas);
 		assertEquals(32, paginas.length);
 	}
-
 }
+	
