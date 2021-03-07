@@ -28,9 +28,9 @@ public class TestsUtilidad {
 		palabrasClaves[0] = "coche";
 		palabrasClaves[1] = "rueda";
 		palabrasClaves[2] = "ferrari";
-		paginaDePrueba = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",
+		paginaDePrueba = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",0,
 				palabrasClaves, "");
-		paginaMala = new Pagina("enlaceMalo.com", "pagina hecha para probar los enlaces malos",
+		paginaMala = new Pagina("enlaceMalo.com", "pagina hecha para probar los enlaces malos",0,
 				palabrasClaves, paginaDePrueba.getUrl());
 		paginas[0] = paginaDePrueba;
 		paginas[1] = paginaMala;

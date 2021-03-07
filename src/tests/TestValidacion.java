@@ -23,9 +23,9 @@ public class TestValidacion {
 	 * estos
 	 */
 	static void Pagina() {
-		paginaDePrueba = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",
+		paginaDePrueba = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",0,
 				new String[] { "informatica" }, "");
-		paginaMala = new Pagina("enlaceMalo.com", "pagina hecha para probar los enlaces malos",
+		paginaMala = new Pagina("enlaceMalo.com", "pagina hecha para probar los enlaces malos",0,
 				new String[] { "buscador" }, paginaDePrueba.getUrl());
 		paginas[0] = paginaDePrueba;
 		paginas[1] = paginaMala;
