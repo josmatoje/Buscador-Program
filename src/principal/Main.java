@@ -46,21 +46,27 @@ public class Main {
 				break;
 
 			case 2: // Buscar paginas
+				
+				if(Gestora.comprobarExistenciaPaginas(paginasWeb)) {
+					
+					palabrasClaves = Validacion.leerPalabrasClaves();
 
-				palabrasClaves = Validacion.leerPalabrasClaves();
+					// Genera un array de enteros con el numero de palabras coincidentes para cada
+					// pagina de la lista dada
+					palabrasCoincidentes = new int[paginasWeb.length];
+					for (int i = 0; i < palabrasCoincidentes.length; i++)
+						palabrasCoincidentes[i] = Gestora.palabrasCoincidentes(paginasWeb[i].getPalabrasClaves(),
+								palabrasClaves);
 
-				// Genera un array de enteros con el numero de palabras coincidentes para cada
-				// pagina de la lista dada
-				palabrasCoincidentes = new int[paginasWeb.length];
-				for (int i = 0; i < palabrasCoincidentes.length; i++)
-					palabrasCoincidentes[i] = Gestora.palabrasCoincidentes(paginasWeb[i].getPalabrasClaves(),
-							palabrasClaves);
+					Gestora.ordenarPaginas(paginasWeb, palabrasCoincidentes, 0, paginasWeb.length);
+					for (Pagina value : paginasWeb)
+						value.toString(); // Imprime todas las paginas ordenadas por la condicion
 
-				Gestora.ordenarPaginas(paginasWeb, palabrasCoincidentes, 0, paginasWeb.length);
-				for (Pagina value : paginasWeb)
-					value.toString(); // Imprime todas las paginas ordenadas por la condicion
-
-				break;
+					break;
+				}else {
+					System.out.println("No existen paginas creadas, cree una antes de inciar su busqueda");
+				}
+				
 
 			case 3: // Modificar una pagina web
 

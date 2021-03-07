@@ -476,5 +476,38 @@ public class Gestora {
 			}
     	}
     	return existe;
-    } 
+    }
+    /**
+	 * Cabecera: public static boolean comprobarExistenciaPaginas(Pagina[] paginas)
+	 *   
+	 * Comentario: Este metodo se encarga de comprobar si en la array de Paginas hay alguna creada o si estan todas a null.
+	 *   		 
+	 *   
+	 * Precondiciones: Ninguna
+	 *   
+	 * Entrada: Pagina[] paginas
+	 *   
+	 * Salida: boolean existe 
+	 *    
+	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato(existe), en este caso un boleano el cual tomara los 
+	 *   				siguientes valores:
+	 *   			    -true: Si la array paginas tiene un objeto Pagina que no sea null	
+	 *   				-false: Si la array paginas solo tiene nulls	  
+	 *   
+	 * @param paginas
+	 * @param url
+	 * 
+	 * @return existe				
+     */
+    
+    public static boolean comprobarExistenciaPaginas(Pagina[] paginas) {
+    	boolean existe=false;
+    	for(int i=0; i < paginas.length && !existe;i++) {
+    		if(paginas[i] != null) {
+    			existe=true;
+    		}
+    	}
+    	return existe;
+    		
+    }
 }

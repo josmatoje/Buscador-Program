@@ -33,7 +33,7 @@ public class TestsGestora {
 		palabrasClaves[2] = "ferrari";
 		paginaSubirPageRank = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",0,
 				palabrasClaves, "");
-		paginaDisminuirPageRank = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",1,
+		paginaDisminuirPageRank = new Pagina("https://papitas.com", "pagina hecha para probar los enlaces buenos",1,
 				palabrasClaves, "");
 		paginaMala = new Pagina("enlaceMalo.com", "pagina hecha para probar los enlaces malos",0,
 				palabrasClaves, paginaSubirPageRank.getUrl());
@@ -61,7 +61,7 @@ public class TestsGestora {
 
 	@Test
 	void testNoAumentarPageRank() {
-		Gestora.aumentarPageRankPaginaEnlace(paginas, paginaSubirPageRank.getEnlacesReferente());
+		Gestora.aumentarPageRankPaginaEnlace(paginas, paginaDisminuirPageRank.getEnlacesReferente());
 		assertEquals(0, paginaMala.getPageRank());
 	}
 	
@@ -84,8 +84,9 @@ public class TestsGestora {
 	
 	@Test
 	void testDisminiurPageRank() {
-		
-		
+		paginas[0]=paginaDisminuirPageRank;
+		Gestora.disminuirPageRankPaginaEnlace(paginas, paginaDisminuirPageRank.getUrl());
+		assertEquals(0, paginaDisminuirPageRank.getPageRank());	
 	}
 	
 	
