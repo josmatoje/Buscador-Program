@@ -1,9 +1,7 @@
 package principal;
 
-import java.util.Scanner;
 
 import clasesBasicas.Pagina;
-import gestion.Utilidad;
 import validaciones.Validacion;
 import gestion.Gestora;
 import mensajes.Mensaje;
@@ -59,21 +57,24 @@ public class Main {
 								palabrasClaves);
 
 					Gestora.ordenarPaginas(paginasWeb, palabrasCoincidentes, 0, paginasWeb.length);
+					
+					// Imprime todas las paginas ordenadas por la condicion
 					for (Pagina value : paginasWeb)
-						value.toString(); // Imprime todas las paginas ordenadas por la condicion
-
-					break;
+						if (value != null) 
+							System.out.println(value.toString()); 
+			
 				}else {
 					System.out.println("No existen paginas creadas, cree una antes de inciar su busqueda");
 				}
-				
+			break;	
 
 			case 3: // Modificar una pagina web
 
 			break;
 
-			default:
-				System.out.println("###Saliendo del programa...###"); // Sera la opcion 4 de salir del programa
+			case 4: //Opcion salir del programa
+				System.out.println("###Saliendo del programa...###"); 
+			break;
 
 			}
 
