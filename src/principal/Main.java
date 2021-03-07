@@ -62,11 +62,11 @@ public class Main {
 					for (Pagina value : paginasWeb)
 						value.toString(); // Imprime todas las paginas ordenadas por la condicion
 
-					break;
 				}else {
 					System.out.println("No existen paginas creadas, cree una antes de inciar su busqueda");
 				}
-				
+
+				break;
 
 			case 3: // Modificar una pagina web
 
@@ -74,7 +74,6 @@ public class Main {
 
 			default:
 				System.out.println("###Saliendo del programa...###"); // Sera la opcion 4 de salir del programa
-
 			}
 
 		} while (opcion != 4); // Mientras la opcion no sea salir(4)
