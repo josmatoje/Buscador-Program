@@ -2,8 +2,6 @@ package gestion;
 
 import clasesBasicas.Pagina;
 
-import gestion.Utilidad;
-
 import java.util.Arrays;
 
 public class Gestora {
