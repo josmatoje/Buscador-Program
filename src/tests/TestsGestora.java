@@ -9,7 +9,6 @@ package tests;
 
 	import clasesBasicas.Pagina;
 	import gestion.Gestora;
-	import validaciones.Validacion;
 
 	public class TestsGestora {
 		static Pagina paginaDePrueba;
@@ -17,13 +16,12 @@ package tests;
 		static Pagina paginaDisminuirPageRank;
 		static Pagina paginaMala;
 		static Pagina[] paginas = new Pagina[5];
-		static Validacion validacion = new Validacion();
 		static String [] palabrasClaves = new String[3]; 
 		static String[] arrayVacia = new String[0]; //array vacia
 		static Pagina[] arrayVaciaDePaginas = new Pagina[0]; //array vacia de Paginas
 		static Pagina paginaPageRankAlto;
 		static Pagina paginaPageRankBajo;
-		static int[] palabrasCoincidentes= new int[paginas.length];
+		
 		
 		static Pagina paginaPrimera;
 		static Pagina paginaSegunda;
@@ -31,6 +29,8 @@ package tests;
 		static Pagina paginaCuarta;
 		static Pagina paginaQuinta;
 		static Pagina[] paginasParaOrdenar=new Pagina[5];
+		static int[] mismasPalabrasCoincidentes=new int[]{3,3,3,3,3};
+		static int[] palabrasCoincidentes= new int[]{3,1,5,2,1};
 		@BeforeEach
 
 		/*
@@ -68,15 +68,6 @@ package tests;
 			paginasParaOrdenar[2]=paginaPrimera;
 			paginasParaOrdenar[3]=paginaTercera;
 			paginasParaOrdenar[4]=paginaQuinta;
-			
-			palabrasCoincidentes[0]=3;
-			palabrasCoincidentes[1]=3;
-			palabrasCoincidentes[2]=3;
-			palabrasCoincidentes[3]=3;
-			palabrasCoincidentes[4]=3;
-
-			
-
 		}
 
 		
@@ -166,18 +157,43 @@ package tests;
 			assertEquals(paginaMala, paginas[0]);
 		}
 		
+		/*
+		 * Tests hechos para el método ordenacionInsercionDirecta (Pagina[] listaPaginas, int[] palabrasCoincidentes) de la clase Gestora
+		 */
 		
-		/*@Test
-		void testOrdenarArray() {
-			paginas=Utilidad.aumentarArray(paginas);
-			paginas=Utilidad.aumentarArray(paginas);
-			paginas=Utilidad.aumentarArray(paginas);
-			paginas[3]=paginaPageRankBajo;
-			paginas[4]=paginaPageRankAlto;
-			paginas[0]=null;
-			Gestora.ordenarPaginas(paginas, palabrasCoincidentes,0, 16);
+		/**
+		 * En este test probaremos que el metodo de ordenacion funciona cuando las palabras coincidentes son iguales, es decir, cuando tiene que 
+		 * evaluar los pagerank
+		 * 
+		 * metodo a testear: ordenacionInsercionDirecta (Pagina[] listaPaginas, int[] palabrasCoincidentes) de la clase Gestora
+		 */
+		
+		@Test
+		void testOrdenarArrayMismasPalabrasCoincidentes() {
+				Gestora.ordenacionInsercionDirecta(paginasParaOrdenar, mismasPalabrasCoincidentes);
+				assertEquals(paginaPrimera.getUrl(), paginasParaOrdenar[0].getUrl());
+				assertEquals(paginaSegunda.getUrl(), paginasParaOrdenar[1].getUrl());
+				assertEquals(paginaTercera.getUrl(), paginasParaOrdenar[2].getUrl());
+				assertEquals(paginaCuarta.getUrl(), paginasParaOrdenar[3].getUrl());
+				assertEquals(paginaQuinta.getUrl(), paginasParaOrdenar[4].getUrl());
 			}
-		*/
+		
+		/**
+		 * En este test probaremos que el metodo ordenacion funciona cuando las palabras coincidentes son diferentes.
+		 * 
+		 * metodo a testear: ordenacionInsercionDirecta (Pagina[] listaPaginas, int[] palabrasCoincidentes) de la clase Gestora
+		 */
+		
+		@Test
+		void testOrdenarArrayDiferentesPalabrasCoincidentes() {
+				Gestora.ordenacionInsercionDirecta(paginasParaOrdenar, palabrasCoincidentes);
+				assertEquals(paginaPrimera.getUrl(), paginasParaOrdenar[0].getUrl());
+				assertEquals(paginaSegunda.getUrl(), paginasParaOrdenar[1].getUrl());
+				assertEquals(paginaTercera.getUrl(), paginasParaOrdenar[2].getUrl());
+				assertEquals(paginaCuarta.getUrl(), paginasParaOrdenar[3].getUrl());
+				assertEquals(paginaQuinta.getUrl(), paginasParaOrdenar[4].getUrl());
+			}
+		
 		
 		/**
 		 * Test para comprobar que las palabras repetidas en un array se eliminan
