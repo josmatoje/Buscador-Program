@@ -275,7 +275,7 @@ public class Gestora {
 	}
 
 	/**
-	 * <b>Cabecera:</b> public static void ordenacionInsercionDirecta (Pagina[] listaPaginas, int[] palabrasCoincidentes)
+	 * <b>Cabecera:</b> public static void ordenacionInsercionDirecta (Pagina[] listaPaginas, int[] palabrasCoincidentes) <br>
 	 * <b>Propósito:</b> ordenación ascendente de un array unidimensional de tamaño tam.<br>
 	 *
 	 * <b>Entradas/Salida:</b> un array.<br>
@@ -315,10 +315,9 @@ public class Gestora {
 	}
 
 	/**
-	 * Cabecera: public static void eliminarPalabrasRepetida(String[] palabras)
+	 * <b></b>Cabecera: public static void eliminarPalabrasRepetida(String[] palabras)
 	 * 
-	 * Comentario: Este metodo sustituye las palabras repetidas de un array de
-	 * cadenas por una cadena vacia (no nulas)
+	 * <b></b>Comentario: Este metodo sustituye las palabras repetidas de un array de cadenas por una cadena vacia (no nulas)
 	 * 
 	 * Entradas: Ninguna.
 	 * 

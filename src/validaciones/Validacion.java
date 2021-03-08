@@ -50,17 +50,17 @@ public class Validacion {
     }
     
     /**     
-     * Cabecera: public static int leerValidarNumeroEntreRango(int valorInicial, int valorFinal)<br>
+     * <b>Cabecera:</b> public static int leerValidarNumeroEntreRango(int valorInicial, int valorFinal)<br>
      *   <br>
-     * Comentario: Este metodo se encarga de leer y validar que un numero este entre un rango.<br>
+     * <b>Comentario:</b> Este metodo se encarga de leer y validar que un numero este entre un rango.<br>
      *   <br>
-     * Precondiciones: El numero valorInicial tiene que ser menor que valorFinal<br>
+     * <b>Precondiciones:</b> El numero valorInicial tiene que ser menor que valorFinal<br>
      *   <br>
-     * Entradas: int valorInicial, int valorFinal<br>
+     * <b>Entradas:</b> int valorInicial, int valorFinal<br>
      *   <br>
-	 * Salidas: int numero <br>
+	 * <b>Salidas:</b> int numero <br>
      *   <br>
-     * Postcondiciones: Este metodo se trata de un funcion ya que devuelve un tipo de dato, entero(numero) en este caso,
+     * <b>Postcondiciones:</b> Este metodo se trata de un funcion ya que devuelve un tipo de dato, entero(numero) en este caso,
      *   				 el cual estara entre un rango(valorInicial y valorFinal)<br>
      *   <br>
      * @param valorInicial
@@ -87,20 +87,20 @@ public class Validacion {
     }
     
     /**     
-     * Cabecera: public static String obtenerUrl(Pagina[] paginas)<br>
+     * <b>Cabecera:</b> public static String obtenerUrl(Pagina[] paginas)<br>
      *   <br>
-     * Comentario: Este metodo se encarga de leer una url. Ademas:<br>
+     * <b>Comentario:</b> Este metodo se encarga de leer una url. Ademas:<br>
      * 	&nbsp;&nbsp;&nbsp;&nbsp;-Mediante el metodo validarUrl() se validara que la url sea una url que esta bien formada.<br>
 	 * 	&nbsp;&nbsp;&nbsp;&nbsp;-Mediante el metodo comprobarExistenciaUrl() se comprobara que la url no sea igual a la url principal
 	 * 			    de alguna de la paginas que contiene un array de tipo Pagina<br>
 	 * <br>
-     * Precondiciones: Ninguna<br>
+     * <b>Precondiciones:</b> Ninguna<br>
      *   <br>
-     * Entradas: Pagina[] paginas<br>
+     * <b>Entradas:</b> Pagina[] paginas<br>
      *   <br>
-	 * Salidas: String url <br>
+	 * <b>Salidas:</b> String url <br>
      *   <br>
-     * Postcondiciones: Este metodo se trata de un funcion ya que devuelve un tipo de dato, una cadena(url) en este caso,
+     * <b>Postcondiciones:</b> Este metodo se trata de un funcion ya que devuelve un tipo de dato, una cadena(url) en este caso,
      * 					la cual sera una url, esta sera una url bien formada y ademas no sera igual a la url principal de alguna 
      * 					de las paginas que hay en un array de tipo Pagina<br>
      *   <br>
@@ -165,13 +165,63 @@ public class Validacion {
 		}  	
     	return valida;
     }
-    
+
     /**
+	 * Cabecera: public static String leerDescripcion()<br>
+	 * <br>
+	 * Comentario: Este metodo se encarga de leer una cadena, que sera la descripcion de una pagina<br>
+	 * <br>
+	 * Precondiciones: Ninguna<br>
+	 * <br>
+	 * Entrada: Ninguna<br>
+	 * <br>
+	 * Salida: String(cadena)<br>
+	 * <br>
+	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato, en este caso una cadena.<br>
+	 *  <br>
+	 * @return descripcion<br>
+     */
+	public static String leerDescripcion() {
+		System.out.println("Ingrese una breve descripcion sobre la pagina");
+    	return teclado.nextLine();
+	}
+
+	/**
+	 * <b>Cabecera:</b> public static int leerPageRank() <br>
+	 *<br>
+	 * <b>Comentario:</b> Este metodo se encrga de leer el pageRank para introducirlo por parametros al insertar un pageRank <br>
+	 *<br>
+	 * <b>Precondiciones:</b> ninguna <br>
+	 *<br>
+	 * <b>Postcondiciones:</b> ninguna <br>
+	 *<br>
+	 * <b>Entrada:</b> Ninguna <br>
+	 * <br>
+	 * <b>Salida:</b> String (pageRank) <br>
+	 * <br>
+	 * @return pageRank <br>
+	 */
+	public static int leerPageRank(){
+		int numero=-1;
+
+		System.out.println("Introduzca un valor de pageRank para la pÃ¡gina: ");
+		while(numero<0){
+			try {
+				numero = Integer.parseInt(teclado.nextLine());
+			}
+			 catch (NumberFormatException e) {
+				 System.out.println("Introduzca un numero");
+			 }
+		}
+		return numero;
+	}
+
+	/**
 	 * Cabecera: public static String leerEnlaceReferente(Pagina[] paginas)<br>
 	 *   <br>
 	 * Comentario: Este metodo se encarga de leer una url de enlace referente.
 	 * 			   Mediante el metodo validarUrl() se validara que la url de enlace referente sea una url que esta bien formada.
-	 * 			   Mediante el metodo comprobarExistenciaUrl() se comprobara que la url de enlace referente es igual a la url principal 
+	 * 			   Mediante el metodo comprobarExistenciaUrl() se comprobara que la url de enlace referente es igual a la url principal
 	 * 			   de alguna de la paginas que contiene un array de tipo Pagina<br>
 	 *   <br>
 	 * Precondiciones: Ninguna<br>
@@ -185,27 +235,27 @@ public class Validacion {
 	 * @param paginas <br>
 	 *  <br>
 	 * @return enlaceReferente <br>
-     */
-    public static String leerEnlaceReferente(Pagina[] paginas) {
-    	
-    	String enlaceReferente = "";
-    	boolean urlValida = false, urlExiste = false, continuar = false;
-		System.out.println("¿Quieres ingresar un enlace referente a la pagina?");
-		
+	 */
+	public static String leerEnlaceReferente(Pagina[] paginas) {
+
+		String enlaceReferente = "";
+		boolean urlValida = false, urlExiste = false, continuar = false;
+		System.out.println("Â¿Quieres ingresar un enlace referente a la pagina?");
+
 		if( leerValidarRespuestaSiNo() ) { //Si la respuesta que se lee es Si(true)
-			
-			do {			
+
+			do {
 				do{
 					System.out.println("Ingrese el enlace referente");
 					enlaceReferente = teclado.nextLine();
 					urlValida = validarUrl(enlaceReferente); //Se comprueba que la url introducida sigue la sintaxis de una URL
 					if(!urlValida)
-		    			System.out.println("La Url no esta bien formada\n");
-				}while(!urlValida); //Mientras el enlaceReferente no sea una url 
-				
+						System.out.println("La Url no esta bien formada\n");
+				}while(!urlValida); //Mientras el enlaceReferente no sea una url
+
 				urlExiste = Gestora.comprobarExistenciaUrl(paginas, enlaceReferente);//Se comprueba que ese enlace Referente corresponde a
-																			 //la url principal de alguna de las paginas que hay en un array 
-																			 //de tipo Pagina
+				//la url principal de alguna de las paginas que hay en un array
+				//de tipo Pagina
 				if(!urlExiste) {
 					System.out.println("La Url de enlace introducida no corresponde con la Url principal de ninguna de las paginas\n");
 					System.out.println("Desea continuar y volver a intentarlo");
@@ -215,12 +265,12 @@ public class Validacion {
 				}
 
 			}while(!urlExiste && continuar); //Mientras el enlaceReferente no exista como url principal de otra pagina
-			
-		} 
+
+		}
 		return enlaceReferente;
 	}
 
-    /**
+	/**
 	 * <b>Cabecera:</b> public static String[] leerPalabrasClaves()<br>
 	 *   <br>
 	 * <b>Comentario:</b> Este metodo se encarga de leer las palabras claves que se desee que tenga una pagina.
@@ -236,21 +286,21 @@ public class Validacion {
 	 * 					cadena(palabrasClaves).<br>
 	 *  <br>
 	 * @return palabrasClaves <br>
-     */
+	 */
 	public static String[] leerPalabrasClaves() {
-    	
-    	String[] palabrasClaves = null;
-    	String palabras = "";
-		System.out.println("¿Quieres ingresar una palabra clave?");
-		
-		if( leerValidarRespuestaSiNo() ) { //Si la respuesta que se lee es Si(true) 
+
+		String[] palabrasClaves = null;
+		String palabras = "";
+		System.out.println("Â¿Quieres ingresar una palabra clave?");
+
+		if( leerValidarRespuestaSiNo() ) { //Si la respuesta que se lee es Si(true)
 
 			Mensaje.introducirPalabrasClave();
-			palabras = teclado.nextLine();
+			palabras = teclado.nextLine().toLowerCase();
 
 			palabrasClaves = palabras.split(" "); //Se guardan las palabras separadas por un espacio
-		} 
-		
+		}
+
 		if(palabrasClaves != null)
 			Gestora.eliminarPalabrasRepetida(palabrasClaves); //Elimina las palabras que haya repetidas
 		else
@@ -259,55 +309,21 @@ public class Validacion {
 		return palabrasClaves;
 	}
 
-    /**
-	 * Cabecera: public static String leerDescripcion()<br>
-	 * <br>
-	 * Comentario: Este metodo se encarga de leer una cadena, que sera la descripcion de una pagina<br>
-	 * <br>
-	 * Precondiciones: Ninguna<br>
-	 * <br>
-	 * Entrada: Ninguna<br>
-	 * <br>
-	 * Salida: String(cadena)<br>
-	 * <br>
-	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato, en este caso una cadena.<br>
-	 *  <br>
-	 * @return descripción<br>
-     */
-	public static String leerDescripcion() {
-    	return teclado.nextLine();
-	}
-
 	/**
-	 * <b>Cabecera:</b> public static int leerPageRank() <br>
-	 *<br>
-	 * <b>Comentario:</b> Este metodo se encrga de leer el pageRank para introducirlo por parámetros al insertar un pageRank <br>
-	 *<br>
-	 * <b>Precondiciones:</b> ninguna <br>
-	 *<br>
-	 * <b>Postcondiciones:</b> ninguna <br>
-	 *<br>
-	 * <b>Entrada:</b> Ninguna <br>
-	 * <br>
-	 * <b>Salida:</b> String (pageRank) <br>
-	 * <br>
-	 * @return pageRank <br>
+	 * <b>Cabecera:</b> public static void leerModificarPalabra (String[] palabrasClave) <br>
+	 *   <br>
+	 * <b>Comentario:</b> Modifica una palabra concreta de un array de palabras clave<br>
+	 *   <br>
+	 * <b>Precondiciones:</b> Ninguna <br>
+	 *   <br>
+	 * <b>Entrada:</b> String[] palabrasClave <br>
+	 *   <br>
+	 * <b>Salida:</b> Ninguna <br>
+	 *    <br>
+	 * <b>Postcondiciones:</b> Modifica la palabra indicada.<br>
+	 *
+	 * @param palabrasClave
 	 */
-	public static int leerPageRank(){
-		int numero=-1;
-
-		System.out.println("Introduzca un valor de pageRank para la página: ");
-		while(numero<0){
-			try {
-				numero = Integer.parseInt(teclado.nextLine());
-			}
-			 catch (NumberFormatException e) {
-				 System.out.println("Introduzca un numero");
-			 }
-		}
-		return numero;
-	}
-
 	public static void leerModificarPalabra (String[] palabrasClave){
 		String palabra;
 		boolean modificado=false;
@@ -317,7 +333,7 @@ public class Validacion {
 		for (int i=0; !modificado && i<palabrasClave.length; i++){
 			if(palabrasClave[i].equals(palabra)){
 				System.out.println("Escriba la nueva palabra:");
-				palabra=teclado.nextLine();
+				palabra=teclado.nextLine().toLowerCase();
 				palabrasClave[i]=palabra;
 				modificado=true;
 			}
@@ -327,17 +343,17 @@ public class Validacion {
 	}
     
     /**
-	 * Cabecera: public static void cerrarTeclado()<br>
+	 * <b>Cabecera:</b> public static void cerrarTeclado()<br>
 	 *   <br>
-	 * Comentario: Este metodo se encarga de cerrar el flujo de entrada de datos de un objeto de tipo Scanner. <br>
+	 * <b>Comentario:</b> Este metodo se encarga de cerrar el flujo de entrada de datos de un objeto de tipo Scanner. <br>
 	 *   <br>
-	 * Precondiciones: Ninguna <br>
+	 * <b>Precondiciones:</b> Ninguna <br>
 	 *   <br>
-	 * Entrada: Ninguna <br>
+	 * <b>Entrada:</b> Ninguna <br>
 	 *   <br>
-	 * Salida: Ninguna <br>
+	 * <b>Salida:</b> Ninguna <br>
 	 *    <br>
-	 * Postcondiciones: Se cerrara el obtejo compartido de tipo Scanner.<br>
+	 * <b>Postcondiciones:</b> Se cerrara el obtejo compartido de tipo Scanner.<br>
 	 *  				
      */
     public static void cerrarTeclado() {

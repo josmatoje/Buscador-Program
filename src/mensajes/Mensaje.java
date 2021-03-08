@@ -4,8 +4,6 @@ import clasesBasicas.Pagina;
 
 public class Mensaje {
 
-	// Metodos para mostrar menos
-
 	/**
 	 * Cabecera del metodo: Precondiciones: ninguna
 	 * 
@@ -16,11 +14,11 @@ public class Mensaje {
 	 * Entrada: Ninguna Salida: Ninguna
 	 */
 	public static void menuPrincipal() {
-		System.out.println("******************************************************\n\n"
+		System.out.println("******************************************************\n"
 
 				+ "Bienvenido a tu buscador favorito, que desea realizar? \n"
 				+ "1.- Dar de alta una nueva pagina web \n" + "2.- Buscar paginas claves \n"
-				+ "3.- Modificar una pagina web existente \n" + "4.- Salir\n\n"
+				+ "3.- Modificar una pagina web existente \n" + "4.- Salir\n"
 				+ "******************************************************");
 	}
 
@@ -107,7 +105,7 @@ public class Mensaje {
 		int numeroPaginas;
 
 		for(numeroPaginas=0; listaPaginas[numeroPaginas]!=null && numeroPaginas< listaPaginas.length; numeroPaginas++){
-			System.out.println((numeroPaginas+1)+". "+listaPaginas[numeroPaginas].toString());
+			System.out.println((numeroPaginas+1)+". "+listaPaginas[numeroPaginas].toString()+"\n");
 		}
 
 		return numeroPaginas;
