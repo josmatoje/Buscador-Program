@@ -4,8 +4,9 @@ package tests;
 	import static org.junit.jupiter.api.Assertions.assertFalse;
 	import static org.junit.jupiter.api.Assertions.assertTrue;
 
-	import org.junit.jupiter.api.BeforeEach;
-	import org.junit.jupiter.api.Test;
+import gestion.Utilidad;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 	import clasesBasicas.Pagina;
 	import gestion.Gestora;
@@ -33,34 +34,29 @@ package tests;
 		static int[] palabrasCoincidentes= new int[]{3,1,5,2,1};
 		@BeforeEach
 
-		/*
-		 * Objetos necesarios para los test que se crearan antes de la ejecucion de
-		 * estos
-		 */
-		 void Pagina() {
-			palabrasClaves[0] = "coche";
-			palabrasClaves[1] = "rueda";
-			palabrasClaves[2] = "ferrari";
-			paginaSubirPageRank = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",0,
-					palabrasClaves, "");
-			paginaDisminuirPageRank = new Pagina("https://papitas.com", "pagina hecha para probar los enlaces buenos",1,
-					palabrasClaves, "");
-			paginaMala = new Pagina("enlaceMalo.com", "pagina hecha para probar los enlaces malos",0,
-					palabrasClaves, paginaSubirPageRank.getUrl());
-			paginas[0] = paginaSubirPageRank;
-			paginas[1] = paginaMala;
-			paginaPageRankAlto = new Pagina("https://mequieromorir.com", "pagina hecha para probar el metodo de ordenacion",8,
-					palabrasClaves, "");
-			paginaPageRankBajo=new Pagina("https://mequieromorir.com", "pagina hecha para probar el metodo de ordenacion",4,
-					palabrasClaves, "");
-			paginaDePrueba = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",0,
-					new String[] { "informatica" }, "");
-			
-			paginaPrimera=new Pagina("https://estaPaginaDeberiaSerLaPrimera.com","",5,palabrasClaves,"");
-			paginaSegunda=new Pagina("https://estaPaginaDeberiaSerLaSegunda.com","",4,palabrasClaves,"");
-			paginaTercera=new Pagina("https://estaPaginaDeberiaSerLaTercera.com","",3,palabrasClaves,"");
-			paginaCuarta=new Pagina("https://estaPaginaDeberiaSerLaCuarta.com","",2,palabrasClaves,"");
-			paginaQuinta=new Pagina("https://estaPaginaDeberiaSerLaQuinta.com","",1,palabrasClaves,"");
+	@BeforeEach
+
+	/*
+	 * Objetos necesarios para los test que se crearan antes de la ejecucion de
+	 * estos
+	 */
+	static void Pagina() {
+
+		palabrasClaves[0] = "coche";
+		palabrasClaves[1] = "rueda";
+		palabrasClaves[2] = "ferrari";
+
+		paginaDePrueba = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",
+				palabrasClaves, paginaDePrueba.getUrl());
+		paginaMala = new Pagina("enlaceMalo.com", "pagina hecha para probar los enlaces malos",
+				new String[] { "buscador" }, " ");
+		paginas[0] = paginaDePrueba;
+		paginas[1] = paginaMala;
+		paginaPageRankAlto = new Pagina("https://mequieromorir.com", "pagina hecha para probar el metodo de ordenacion",8,
+				palabrasClaves, "");
+		paginaPageRankBajo=new Pagina("https://mequieromorir.com", "pagina hecha para probar el metodo de ordenacion",4,
+				palabrasClaves, "");
+	}
 
 			
 			paginasParaOrdenar[0]=paginaSegunda;
@@ -69,6 +65,54 @@ package tests;
 			paginasParaOrdenar[3]=paginaTercera;
 			paginasParaOrdenar[4]=paginaQuinta;
 		}
+
+	/**
+	 * Descripcion: Test para probar que hay palabras coincidentes
+	 */
+
+	@Test
+	void palabrasCoincidentesCoinciden() {
+		assertEquals(3, Gestora.palabrasCoincidentes(paginas[0].getPalabrasClaves(), paginas[1].getPalabrasClaves()));
+	}
+
+	/**
+	 * Descripcion: Test para probar que no hay palabras coincidentes
+	 */
+
+	@Test
+	void palabrasCoincidentesNoCoinciden() {
+		String [] palabrasNoCoincidentes = new String[3];//array de palabras diferentes al creado anteriormente
+
+		palabrasNoCoincidentes[0] = "hola";
+		palabrasNoCoincidentes[1] = "adios";
+		palabrasNoCoincidentes[2] = "aguacate";
+
+
+		assertEquals(0, Gestora.palabrasCoincidentes(paginas[0].getPalabrasClaves(), palabrasNoCoincidentes));
+	}
+
+	/**
+	 * Descripcion: Test para probar que no el array para comprobar no tiene palabras clave
+	 */
+
+	@Test
+	void palabrasCoincidentesNoHayPalabrasClavePalabrasComprobar() {
+
+		assertEquals(0, Gestora.palabrasCoincidentes(paginas[0].getPalabrasClaves(), arrayVacia));
+	}
+
+	/**
+	 * Descripcion: Test para probar que no el array de la pagina no tiene palabras clave
+	 */
+
+	@Test
+	void palabrasCoincidentesNoHayPalabrasClavePalabrasPagina() {
+
+
+		assertEquals(0, Gestora.palabrasCoincidentes(arrayVacia, arrayVacia));
+	}
+
+}
 
 		
 		/**
