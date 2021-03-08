@@ -1,7 +1,7 @@
 /**
- * Nombre: Pagina<br/>
- * Propiedades:<br/>
- *  Basicas:<br/>
+ * <b></b>Nombre: Pagina<br/>
+ * <b></b>Propiedades:<br/>
+ *  <b></b>Basicas:<br/>
  *   url: cadena, consultable<br/>
  *   descripcion: cadena, consultable, modificable<br/>
  *   pageRank: entero, consultable<br/>
@@ -53,11 +53,11 @@ public class Pagina {
 	}
 
 	// Constructor por defecto
-	public Pagina() {
-		url = "";
+	public Pagina(String s, String s1, String[] palabrasClaves, String url) {
+		this.url = "";
 		descripcion = "";
 		pageRank = 0;
-		palabrasClaves = null;
+		this.palabrasClaves = null;
 		enlacesReferente = "";
 	}
 
@@ -79,7 +79,7 @@ public class Pagina {
 	}
 
 	public void setPageRank(int pageRank) {
-		//Añadimos el ifelse en este set para que en caso de que nos metan un pageRank negativo, se convierta a 0.
+		//Aï¿½adimos el ifelse en este set para que en caso de que nos metan un pageRank negativo, se convierta a 0.
 		if(pageRank<0) {
 			this.pageRank = 0;
 		}else {
@@ -108,6 +108,6 @@ public class Pagina {
 	@Override
 	public String toString() {
 		// todo: en caso de pagina por defecto no imprimir;
-		return url + "\n" + descripcion;
+		return ("\t"+url + "\n" + descripcion);
 	}
 }

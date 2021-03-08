@@ -17,7 +17,7 @@ public class Main {
 		Pagina pagina;
 		String url = "", descripcion = "", enlaceReferente = "";
 		int opcion = 0, pageRank;
-		boolean salir;
+		boolean seguir;
 
 		do {
 
@@ -29,7 +29,6 @@ public class Main {
 			case 1: // Opcion dar de alta una pagina web
 
 				url = Validacion.obtenerUrl(paginasWeb); // Se obtiene al url de la nueva pagina que se creara
-				System.out.println("Ingrese una breve descripcion sobre la pagina");
 				descripcion = Validacion.leerDescripcion();
 				pageRank = Validacion.leerPageRank();
 				enlaceReferente = Validacion.leerEnlaceReferente(paginasWeb);
@@ -68,7 +67,6 @@ public class Main {
 				}else
 					Mensaje.noExistenPaginas();
 
-
 				break;
 
 			case 3: // Modificar una pagina web
@@ -79,27 +77,29 @@ public class Main {
 					opcion = Mensaje.imprimirPaginas(paginasWeb);
 					opcion = Validacion.leerValidarNumeroEntreRango(1, opcion) - 1;//Restamos uno para que se corresponda con la posición del array
 
-					System.out.println("¿Desea modificar la descripción de esta página?");
-					if (Validacion.leerValidarRespuestaSiNo())
+					System.out.println("Desea modificar la descripcion de esta pagina?");
+					if (Validacion.leerValidarRespuestaSiNo()) {
+						System.out.println("Ingrese una breve descripcion sobre la pagina");
 						paginasWeb[opcion].setDescripcion(Validacion.leerDescripcion());
+					}
 
-					System.out.println("¿Desea modificar las palabras clave?");
+					System.out.println("Desea modificar las palabras clave?");
 					if (Validacion.leerValidarRespuestaSiNo()) {
 						Mensaje.mostrarPalabrasClave(paginasWeb[opcion].getPalabrasClaves());
-						System.out.println("¿Desea modificar todas las palabras?");
+						System.out.println("Desea modificar todas las palabras?");
 						if (Validacion.leerValidarRespuestaSiNo()) {
 							paginasWeb[opcion].setPalabrasClaves(Validacion.leerPalabrasClaves());
 						} else {
-							salir = false;
-							while (!salir) {
+							seguir=true;
+							while (seguir) {
 								Validacion.leerModificarPalabra(paginasWeb[opcion].getPalabrasClaves());
 								System.out.println("Desea modificar otra palabra?");
-								salir = Validacion.leerValidarRespuestaSiNo();
+								seguir = Validacion.leerValidarRespuestaSiNo();
 							}
 						}
 					}
 
-					System.out.println("¿Desea modificar el enlace de referencia?");
+					System.out.println("Desea modificar el enlace de referencia?");
 					if (Validacion.leerValidarRespuestaSiNo()) {
 						enlaceReferente = Validacion.leerEnlaceReferente(paginasWeb);
 						if (!enlaceReferente.equals(""))//El metodo leerEnlaceReferente devuelve una cadena vacia si finalmente el

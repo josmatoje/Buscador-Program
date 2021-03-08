@@ -30,6 +30,5 @@ public class Utilidad {
 		return Arrays.copyOf(arrayLleno, arrayLleno.length * 2);
 	}
 
-	
 
 }
