@@ -49,7 +49,7 @@ public class Gestora {
      * Postcondiciones: Se disminuira el pageRank de un objeto Pagina pero solo si se da el caso que en el array de paginas hay una que su url es 
      * 					igual al urlEnlace, entonces a esta se le disminuira en uno su pageRank, por lo tanto se hara por referencia.
      * 
-     * @param paginas
+     * @param paginas Array de objetos pagina
      * @param urlEnlace
      */
 
@@ -156,8 +156,9 @@ public class Gestora {
 		int particion = inicio, palCoinAux;// El programa asume la pagina de inicio como la de particion
 		boolean pageRankMayor = true;
 		Pagina paginaAux;
+		int i,j;
 
-		for (int i = inicio + 1, j = fin; i < j;) {// recorremos el array desde el pinicio y el final y aseguramos que i
+		for ( i = inicio + 1, j = fin; i < j;) {// recorremos el array desde el pinicio y el final y aseguramos que i
 													// siempre menor que j
 
 			// pageRankMayor=true; no es necesario actualizar ya que del bloque anterior
@@ -166,11 +167,11 @@ public class Gestora {
 
 			// avanzamos con el indice i mientras sea distinto de nulo y la pagina en esa posicion tenga mas o
 			// igual numero de palabras coincidentes que la pagina de particion (inicio) y que pageRankMayor sea true
-			for (; listaPaginas[i]!=null && (palabrasCoincidentes[i] >= palabrasCoincidentes[inicio]) && pageRankMayor; i++) {
+			for (; i < j && listaPaginas[i]!=null && (palabrasCoincidentes[i] >= palabrasCoincidentes[inicio]) && pageRankMayor; i++) {
 				if (palabrasCoincidentes[i] == palabrasCoincidentes[inicio]) { // En caso de tener el mismo numero
 																				// valoramos el pageRank
-					if (listaPaginas[j] != null && listaPaginas[i].getPageRank() < listaPaginas[inicio].getPageRank())
-						pageRankMayor = false;// Si la posicion de j es nula o tiene menos pasamos al siguiente bloque
+					if (listaPaginas[i].getPageRank() > listaPaginas[inicio].getPageRank())
+						pageRankMayor = false;// Si tiene menos pageRank pasamos al siguiente bloque
 												// (la pagina es menos relevante)
 				}
 			}
@@ -180,16 +181,18 @@ public class Gestora {
 
 			// avanzamos con el indice j si la pgina en j es nula o
 			// mientras la pagina en esa posicion tenga menos número de palabras coincidentes que la pagina de particion
-			for (; listaPaginas[j]==null || (palabrasCoincidentes[j] <= palabrasCoincidentes[inicio] && !pageRankMayor); j--) {
+			for (; i < j && (palabrasCoincidentes[j] <= palabrasCoincidentes[inicio] && !pageRankMayor); j--) {
 																								// Ahora pageRank debe ser menor
-				if (palabrasCoincidentes[j] == palabrasCoincidentes[inicio]) { // En caso de tener el mismo numero
+				if (palabrasCoincidentes[j] == palabrasCoincidentes[inicio]&&listaPaginas[j]!=null ) { // En caso de tener el mismo numero
 																				// valoramos el pageRank
-					if (listaPaginas[j].getPageRank() > listaPaginas[inicio].getPageRank())
+					if (listaPaginas[j].getPageRank() < listaPaginas[inicio].getPageRank())
 						pageRankMayor = true;// Si tiene mas pasamos al siguiente bloque (la pagina es mas relevante)
 					// En este caso si es (y el anterior) si son iguales hablamos de paginas con la
 					// misma relevancia
 				}
 			}
+			if(i < j) {
+
 
 			// Tenemos la posicion i de una pagina de menor relevancia a la particion y en j
 			// una de mayor relevancia
@@ -199,11 +202,27 @@ public class Gestora {
 
 			// Posteriormente cambiamos tambien las palabras coincidentes de nuestro array
 			// de enteros para futuras posibles iteraciones que
-			// cada posivion del array de enteros se corresponda con la posicion del array
+			// cada posicion del array de enteros se corresponda con la posicion del array
 			// de su pagina correspondiente
 			palCoinAux = palabrasCoincidentes[j];
 			palabrasCoincidentes[j] = palabrasCoincidentes[i];
 			palabrasCoincidentes[i] = palCoinAux;
+
+				// Tenemos la posicion i de una pagina de menor relevancia a la particion y en j
+				// una de mayor relevancia
+				paginaAux = listaPaginas[j];
+				listaPaginas[j] = listaPaginas[i];
+				listaPaginas[i] = paginaAux; // Intercambiamos la pagina en i por la pagina en j
+	
+				// Posteriormente cambiamos tambien las palabras coincidentes de nuestro array
+				// de enteros para futuras posibles iteraciones que
+				// cada posivion del array de enteros se corresponda con la posicion del array
+				// de su pagina correspondiente
+				palCoinAux = palabrasCoincidentes[j];
+				palabrasCoincidentes[j] = palabrasCoincidentes[i];
+				palabrasCoincidentes[i] = palCoinAux;
+			}
+
 
 			particion = i;// Actualizamos la posicion por la que vamos intercambiando las celdas ya que en
 							// la ultima iteracion i=j
@@ -221,11 +240,78 @@ public class Gestora {
 		}
 		// Debemos intercambiar el valor de particion para dejarlo en la posicion
 		// deseada
-		paginaAux = listaPaginas[inicio];
-		listaPaginas[inicio] = listaPaginas[particion];
-		listaPaginas[particion] = paginaAux; // Intercambiamos la pagina en i por la pagina en j
+		if(listaPaginas[inicio].getPageRank()<listaPaginas[particion].getPageRank()) {
+			paginaAux = listaPaginas[inicio];
+			listaPaginas[inicio] = listaPaginas[particion];
+			listaPaginas[particion] = paginaAux; // Intercambiamos la pagina en i por la pagina en j
+		}
+		
+
+		// Tambien cambiamos las palabras coincidentes de nuestro array
+		// de enteros para futuras posibles iteraciones que
+		// cada posivion del array de enteros se corresponda con la posicion del array
+		// de su pagina correspondiente
+		palCoinAux = palabrasCoincidentes[inicio];
+		palabrasCoincidentes[inicio] = palabrasCoincidentes[particion];
+		palabrasCoincidentes[particion] = palCoinAux;
+
+		// Tambien cambiamos las palabras coincidentes de nuestro array
+		// de enteros para futuras posibles iteraciones que
+		// cada posivion del array de enteros se corresponda con la posicion del array
+		// de su pagina correspondiente
+		palCoinAux = palabrasCoincidentes[inicio];
+		palabrasCoincidentes[inicio] = palabrasCoincidentes[particion];
+		palabrasCoincidentes[particion] = palCoinAux;
+
+		// Tambien cambiamos las palabras coincidentes de nuestro array
+		// de enteros para futuras posibles iteraciones que
+		// cada posivion del array de enteros se corresponda con la posicion del array
+		// de su pagina correspondiente
+		palCoinAux = palabrasCoincidentes[inicio];
+		palabrasCoincidentes[inicio] = palabrasCoincidentes[particion];
+		palabrasCoincidentes[particion] = palCoinAux;
 
 		return particion;
+	}
+
+	/**
+	 * <b>Cabecera:</b> public static void ordenacionInsercionDirecta (Pagina[] listaPaginas, int[] palabrasCoincidentes)
+	 * <b>Propósito:</b> ordenación ascendente de un array unidimensional de tamaño tam.<br>
+	 *
+	 * <b>Entradas/Salida:</b> un array.<br>
+	 * <b>Precondiciones:</b>ambos arrays tienen que tener el mismo tamaño<br>
+	 * <b>Postcondiciones:</b> array [0], ..., array[tam-1] está ordenado de mayor a meno relevancia<br>
+	 *
+	 * @param listaPaginas
+	 * @param palabrasCoincidentes
+	 */
+	public static void ordenacionInsercionDirecta (Pagina[] listaPaginas, int[] palabrasCoincidentes){
+		int palCoinAux;
+		Pagina paginaAux;
+
+		for (int i=1;i<listaPaginas.length; i++){
+			for(int j=i; j>0;j--){
+				if( listaPaginas[j-1] == null || palabrasCoincidentes[j]>palabrasCoincidentes[j-1] ||
+					(	palabrasCoincidentes[j]==palabrasCoincidentes[j-1] && listaPaginas[j] != null &&
+						listaPaginas[j].getPageRank() > listaPaginas[j-1].getPageRank()			)
+					){
+
+						//Intercambiamos ambas paginas
+						paginaAux = listaPaginas[j];
+						listaPaginas[j] = listaPaginas[j-1];
+						listaPaginas[j-1] = paginaAux;
+
+						// Posteriormente cambiamos tambien las palabras coincidentes de nuestro array
+						// de enteros para futuras posibles iteraciones que
+						// cada posicion del array de enteros se corresponda con la posicion del array
+						// de su pagina correspondiente
+						palCoinAux = palabrasCoincidentes[j];
+						palabrasCoincidentes[j] = palabrasCoincidentes[j-1];
+						palabrasCoincidentes[j-1] = palCoinAux;
+
+				}
+			}
+		}
 	}
 
 	/**
@@ -263,22 +349,21 @@ public class Gestora {
 	}
 	
 	/**
-	 * Descripcion: Compara dos arrays de cadenas y devuelve el numero de veces que
-	 * coinciden cadenas en ambos string Precondiciones: No se encuentran palabras
-	 * repetidas en niguna de las cadenas que se pasan por parametros
-	 * Postcondiciones: Le damos dos array de String y el metodo nos devuelve el
-	 * numero de veces que coinciden las palabras de un array en la otra.
-	 * Entrada:String[] palabrasPagina, String[] palabrasComprobar Salida:int
-	 * contador
+	 * <b>Descripcion:</b> Compara dos arrays de cadenas y devuelve el numero de veces que coinciden cadenas en ambos string <br>
+	 * <b>Entrada:</b>  dos listas (Arrays) de cadenas los cuales van a ser comparados <br>
+	 *
+	 * <b>Precondiciones:</b> No se encuentran palabras repetidas en niguna de las cadenas que se pasan por parametros <br>
+	 *
+	 * <b>Postcondiciones:</b> El entero será un numero mayor o igual a cero, las listas no se ven modificadas.<br>
+	 *
+	 * <b>Salida:</b> un entero que indica el numero deveces que se encuentra una cadena en ambas listas (arrays) <br>
 	 * 
 	 * @param palabrasPagina
 	 * @param palabrasComprobar
-	 * @return palabrasCoincidentes /* Entrada: dos listas (Arrays) de cadenas los
-	 *         cuales van a ser comparados Salida: un entero que indica el numero de
-	 *         veces que se encuentra una cadena en ambas listas (arrays)
-	 *         Precondiciones: No se encuentran palabras repetidas en niguna de las
-	 *         cadenas que se pasan por parametros Postcondiciones: el entero será
-	 *         un numero mayor o igual a cero, las listas no se ven modificadas
+	 * @return palabrasCoincidentes
+	 *
+	 *
+	 * Postcondiciones:
 	 */
 	public static int palabrasCoincidentes(String[] palabrasPagina, String[] palabrasComprobar) {
 
@@ -287,8 +372,8 @@ public class Gestora {
 
 		for (int i = 0; i < palabrasComprobar.length; i++) {
 			comprobado = false;
-			for (int j = 0; i < palabrasPagina.length && !comprobado; i++) {
-				if (!palabrasComprobar[i].equals("") && palabrasPagina[j] != null && !palabrasComprobar[j].equals("")
+			for (int j = 0; j < palabrasPagina.length && !comprobado; j++) {
+				if (!palabrasComprobar[i].equals("") && palabrasPagina[j] != null && !palabrasComprobar[i].equals("")
 						&& palabrasComprobar[i].equals(palabrasPagina[j])) {
 					contador++;
 					comprobado = true;
@@ -354,10 +439,10 @@ public class Gestora {
     
     public static boolean comprobarExistenciaPaginas(Pagina[] paginas) {
     	boolean existe=false;
-    	for(int i=0; i < paginas.length && !existe;i++) {
-    		if(paginas[i] != null) {
+    	for(int i=0; i < paginas.length && !existe; i++) {
+    		if(paginas[i] != null)
     			existe=true;
-    		}
+
     	}
     	return existe;
     		
