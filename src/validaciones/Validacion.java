@@ -30,16 +30,19 @@ public class Validacion {
      *  @return afirmativo	<br>
      */
     public static boolean leerValidarRespuestaSiNo() {   
-        char respuesta;
+        char respuesta=' ';
         boolean afirmativo = true;
         
         System.out.println("Introduzca S (si) / N (no)");
         do {
+        	try {
         	 respuesta = teclado.nextLine().toLowerCase().charAt(0);
-
-        	 if (respuesta != 's' && respuesta != 'n') {
-				System.out.println("Error valor introducido invalido, ingrese uno de nuevo:");
-        	 }
+        	}catch(Exception e){
+	        	//Hemos introducido un try catch para evitar que salte una excepci�n cuando el usuario no ingrese un caracter y le de directamente a intro
+        	}
+        	if (respuesta != 's' && respuesta != 'n') {
+					System.out.println("Error valor introducido invalido, ingrese uno de nuevo:");
+        	}
         	 
         }while(respuesta != 's' && respuesta != 'n');
         
@@ -114,7 +117,7 @@ public class Validacion {
     	
     	do {    		
     		do{
-        		System.out.println("Ingrese la url de la pagina");
+        		System.out.println("Ingrese la url de la pagina (recuerde que debe empezar con http:)");
         		url = teclado.nextLine();
     			urlValida = validarUrl(url); //Se comprobara que la url sea una que este bien formada(Que siga la sintaxis de una url)
     			if(!urlValida)

@@ -7,22 +7,22 @@ import java.util.Arrays;
 public class Gestora {
 
     /**
-     * Cabecera: public static void aumentarPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace)
+     * <b>Cabecera</b>: public static void aumentarPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace)</br></br>
      * 
-     * Comentario: Este metodo se encarga de aumentar en uno el pageRank de un objeto de tipo Pagina que se encuentra en un array de tipo Pagina.
-     * 			   Solo se aumentara si en dicho array se encuentra una pagina que su url es igual al parametro urlEnlace
+     * <b>Comentario</b>: Este metodo se encarga de aumentar en uno el pageRank de un objeto de tipo Pagina que se encuentra en un array de tipo Pagina.
+     * 			   Solo se aumentara si en dicho array se encuentra una pagina que su url es igual al parametro urlEnlace</br></br>
      * 
-     * Entradas: Pagina[] paginas,String urlEnlace
+     * <b>Entradas</b>: Pagina[] paginas,String urlEnlace </br></br>
      * 
-     * Salida: Ninguna
+     * <b>Salida</b>: Ninguna </br></br>
      * 
-     * Precondiciones: Crear el array paginas
+     * <b>Precondiciones</b>: Crear el array paginas </br></br>
      * 
-     * Postcondiciones: Se aumenta el pageRank de un objeto Pagina pero solo si se da el caso que en el array de paginas hay una que su url es 
-     * 					igual al urlEnlace, entonces a esta se le aumentara en uno su pageRank, por lo tanto se hara por referencia.
+     * <b>Postcondiciones</b>: Se aumenta el pageRank de un objeto Pagina pero solo si se da el caso que en el array de paginas hay una que su url es 
+     * 					igual al urlEnlace, entonces a esta se le aumentara en uno su pageRank, por lo tanto se hara por referencia.</br></br>
      * 
-     * @param paginas
-     * @param urlEnlace
+     * @param paginas</br>
+     * @param urlEnlace</br>
      */
     public static void aumentarPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace) {
         boolean modificado = false;
@@ -35,22 +35,22 @@ public class Gestora {
     }
     
     /**
-     * Cabecera: public static void disminuirPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace)
+     * <b>Cabecera</b>: public static void disminuirPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace)</br></br>
      * 
-     * Comentario: Este metodo se encarga de disminuir en uno el pageRank de un objeto de tipo Pagina que se encuentra en un array de tipo Pagina.
-     * 			   Solo se disminuira si en dicho array se encuentra una pagina que su url es igual al parametro urlEnlace
+     * <b>Comentario</b>: Este metodo se encarga de disminuir en uno el pageRank de un objeto de tipo Pagina que se encuentra en un array de tipo Pagina.
+     * 			   Solo se disminuira si en dicho array se encuentra una pagina que su url es igual al parametro urlEnlace</br></br>
      * 
-     * Entradas: Pagina[] paginas,String urlEnlace
+     * <b>Entradas</b>: Pagina[] paginas,String urlEnlace</br></br>
      * 
-     * Salida: Ninguna
+     * <b>Salida</b>: Ninguna</br></br>
      * 
-     * Precondiciones: Crear el array paginas
+     * <b>Precondiciones</b>: Crear el array paginas</br></br>
      * 
-     * Postcondiciones: Se disminuira el pageRank de un objeto Pagina pero solo si se da el caso que en el array de paginas hay una que su url es 
-     * 					igual al urlEnlace, entonces a esta se le disminuira en uno su pageRank, por lo tanto se hara por referencia.
+     * <b>Postcondiciones</b>: Se disminuira el pageRank de un objeto Pagina pero solo si se da el caso que en el array de paginas hay una que su url es 
+     * 					igual al urlEnlace, entonces a esta se le disminuira en uno su pageRank, por lo tanto se hara por referencia.</br></br>
      * 
-     * @param paginas Array de objetos pagina
-     * @param urlEnlace
+     * @param paginas Array de objetos pagina</br>
+     * @param urlEnlace</br>
      */
 
     public static void disminuirPageRankPaginaEnlace(Pagina[] paginas, String urlEnlace) {
@@ -65,12 +65,12 @@ public class Gestora {
 
 
 	/**
-	 * Precondiciones: array paginas y objeto p de la clase Pagina Postcondiciones:
+	 * <b>Precondiciones</b>: array paginas y objeto p de la clase Pagina Postcondiciones: </br></br>
 	 * 
-	 * @param paginas
-	 * @param pagina
+	 * @param paginas</br>
+	 * @param pagina</br>
 	 * 
-	 * @return paginas
+	 * @return paginas</br>
 	 */
 
 	/*
@@ -95,26 +95,26 @@ public class Gestora {
 	}
 
 	/**
-	 * Cabecera: public static void ordenarPaginas (Pagina[] listaPaginas, int[]
-	 * palabrasCoincidentes, int inicio, int fin)
+	 * <b>Cabecera</b>: public static void ordenarPaginas (Pagina[] listaPaginas, int[]
+	 * palabrasCoincidentes, int inicio, int fin) </br></br>
 	 * 
-	 * Comentario: Este metodo se encarga de ordenar un array de tipo Pagina
+	 * <b>Comentario</b>: Este metodo se encarga de ordenar un array de tipo Pagina </br></br>
 	 * 
-	 * Entradas: int[] palabrasCoincidentes, int inicio, int fin
+	 * <b>Entradas</b>: int[] palabrasCoincidentes, int inicio, int fin </br></br>
 	 * 
-	 * Salidas: Ninguna.
+	 * <b>Salidas</b>: Ninguna. </br></br>
 	 * 
-	 * Entrada/Salida: listaPaginas.
+	 * <b>Entrada/Salida</b>: listaPaginas.</br></br>
 	 * 
-	 * Precondiciones: listaPaginas no debe estar vacio.
+	 * <b>Precondiciones</b>: listaPaginas no debe estar vacio.</br></br>
 	 * 
-	 * Postcondiciones: lista [0],...,lista[N-1] esta ordenado descendentemente
-	 * segun el criterio de palabras clave dado.
+	 * <b>Postcondiciones</b>: lista [0],...,lista[N-1] esta ordenado descendentemente
+	 * segun el criterio de palabras clave dado.</br></br>
 	 * 
-	 * @param listaPaginas
-	 * @param palabrasCoincidentes
-	 * @param inicio
-	 * @param fin
+	 * @param listaPaginas</br>
+	 * @param palabrasCoincidentes</br>
+	 * @param inicio</br>
+	 * @param fin</br>
 	 */
 	public static void ordenarPaginas(Pagina[] listaPaginas, int[] palabrasCoincidentes, int inicio, int fin) {
 
@@ -128,28 +128,28 @@ public class Gestora {
 	}
 
 	/**
-	 * Cabecera: public static int partirLista(Pagina[] listaPaginas, int[]
-	 * palabrasCoincidentes, int inicio, int fin)
+	 * <b>Cabecera</b>: public static int partirLista(Pagina[] listaPaginas, int[]
+	 * palabrasCoincidentes, int inicio, int fin) </br></br>
 	 * 
-	 * Entradas: int[] palabrasCoincidentes, int inicio, int fin
+	 * <b>Entradas</b>: int[] palabrasCoincidentes, int inicio, int fin </br></br>
 	 * 
-	 * Salida: punto por donde se ha partido el array.
+	 * <b>Salida</b>: punto por donde se ha partido el array.</br></br>
 	 * 
-	 * Entrada/Salida: Pagina[] listaPaginas
+	 * <b>Entrada/Salida</b>: Pagina[] listaPaginas</br></br>
 	 * 
-	 * Precondiciones: el array no debe estar vacio.
+	 * <b>Precondiciones</b>: el array no debe estar vacio.</br></br>
 	 * 
-	 * Postcondiciones: Las siguientes, - Segun las especificaciones, array[ppio],
+	 * <b>Postcondiciones</b>: Las siguientes, - Segun las especificaciones, array[ppio],
 	 * ...., array[fin] quedara dividido respecto a valorParticion. - Asociado al
 	 * nombre del subprograma se devuelve el lugar por el que se divide el array.
-	 * Por tanto, el subprograma se dise�ara como funcion.
+	 * Por tanto, el subprograma se dise�ara como funcion. </br></br>
 	 * 
-	 * @param listaPaginas
-	 * @param palabrasCoincidentes
-	 * @param inicio
-	 * @param fin
+	 * @param listaPaginas</br>
+	 * @param palabrasCoincidentes</br>
+	 * @param inicio</br>
+	 * @param fin</br>
 	 * 
-	 * @return particion
+	 * @return particion</br>
 	 */
 	public static int partirLista(Pagina[] listaPaginas, int[] palabrasCoincidentes, int inicio, int fin) {
 
@@ -279,8 +279,8 @@ public class Gestora {
 	 * <b>Propósito:</b> ordenación ascendente de un array unidimensional de tamaño tam.<br>
 	 *
 	 * <b>Entradas/Salida:</b> un array.<br>
-	 * <b>Precondiciones:</b>ambos arrays tienen que tener el mismo tamaño<br>
-	 * <b>Postcondiciones:</b> array [0], ..., array[tam-1] está ordenado de mayor a meno relevancia<br>
+	 * <b>Precondiciones:</b>ambos arrays tienen que tener el mismo tamanyo<br>
+	 * <b>Postcondiciones:</b> array [0], ..., array[tam-1] esta ordenado de mayor a meno relevancia<br>
 	 *
 	 * @param listaPaginas
 	 * @param palabrasCoincidentes
@@ -315,24 +315,25 @@ public class Gestora {
 	}
 
 	/**
-	 * <b></b>Cabecera: public static void eliminarPalabrasRepetida(String[] palabras)
+	 * <b>Cabecera</b>: public static void eliminarPalabrasRepetida(String[] palabras)</br></br>
 	 * 
-	 * <b></b>Comentario: Este metodo sustituye las palabras repetidas de un array de cadenas por una cadena vacia (no nulas)
+	 * <b>Comentario</b>: Este metodo sustituye las palabras repetidas de un array de
+	 * cadenas por una cadena vacia (no nulas)</br></br>
 	 * 
-	 * Entradas: Ninguna.
+	 * <b>Entradas</b>: Ninguna.</br></br>
 	 * 
-	 * Salida: Ninguna.
+	 * <b>Salida</b>: Ninguna.</br></br>
 	 * 
-	 * Entrada/Salida: String[] palabras
+	 * <b>Entrada/Salida</b>: String[] palabras</br></br>
 	 * 
-	 * Precondiciones: palabras no deberia contener ninguna posicion con un valor
-	 * null.
+	 * <b>Precondiciones</b>: palabras no deberia contener ninguna posicion con un valor
+	 * null.</br></br>
 	 * 
-	 * Postcondiciones: El array contendra Strings distintos y tendrá la misma
+	 * <b>Postcondiciones</b>: El array contendra Strings distintos y tendrá la misma
 	 * longitud que el array original. Solo podrá encontrarse repetidos strings
-	 * vacios ("")
+	 * vacios ("")</br></br>
 	 * 
-	 * @param palabras
+	 * @param palabras</br>
 	 */
 	public static void eliminarPalabrasRepetida(String[] palabras) {
 		boolean repetida = false;
@@ -384,26 +385,26 @@ public class Gestora {
 	}
 	
 	/**
-	 * Cabecera: public static boolean comprobarExistenciaUrl(Pagina[] paginas,String url)
+	 * <b>Cabecera</b>: public static boolean comprobarExistenciaUrl(Pagina[] paginas,String url) </br></br>
 	 *   
-	 * Comentario: Este metodo se encarga de comprobar si la cadena(url) es igual a la url principal de alguna de las paginas 
-	 *   		   que hay en un array de tipo Pagina
+	 * <b>Comentario</b>: Este metodo se encarga de comprobar si la cadena(url) es igual a la url principal de alguna de las paginas 
+	 *   		   que hay en un array de tipo Pagina</br></br>
 	 *   
-	 * Precondiciones: Ninguna
+	 * <b>Precondiciones</b>: Ninguna</br></br>
 	 *   
-	 * Entrada: Pagina[] paginas,String url
+	 * <b>Entrada</b>: Pagina[] paginas,String url</br></br>
 	 *   
-	 * Salida: boolean existe 
+	 * <b>Salida</b>: boolean existe</br></br>
 	 *    
-	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato(existe), en este caso un boleano el cual tomara los 
-	 *   				siguientes valores:
-	 *   			    -true: Si la url recibida como parametro es la url principal de otra pagina	
-	 *   				-false: Si la url recibida como parametro no es la url principal de otra pagina	  
+	 * <b>Postcondiciones</b>: Este metodo se trata de una funcion ya que devulve un tipo de dato(existe), en este caso un boleano el cual tomara los 
+	 *   				siguientes valores:</br>
+	 *   			    -true: Si la url recibida como parametro es la url principal de otra pagina	</br>
+	 *   				-false: Si la url recibida como parametro no es la url principal de otra pagina</br></br>	  
 	 *   
-	 * @param paginas
-	 * @param url
+	 * @param paginas</br>
+	 * @param url</br>
 	 * 
-	 * @return existe				
+	 * @return existe</br>			
      */
     public static boolean comprobarExistenciaUrl(Pagina[] paginas,String url) {
     	boolean existe = false;
@@ -415,25 +416,25 @@ public class Gestora {
     	return existe;
     }
     /**
-	 * Cabecera: public static boolean comprobarExistenciaPaginas(Pagina[] paginas)
+	 * <b>Cabecera</b>: public static boolean comprobarExistenciaPaginas(Pagina[] paginas)</br></br>
 	 *   
-	 * Comentario: Este metodo se encarga de comprobar si en la array de Paginas hay alguna creada o si estan todas a null.
+	 * <b>Comentario</b>: Este metodo se encarga de comprobar si en la array de Paginas hay alguna creada o si estan todas a null.</br></br>
 	 *   		 
 	 *   
-	 * Precondiciones: Ninguna
+	 * <b>Precondiciones</b>: Ninguna</br></br>
 	 *   
-	 * Entrada: Pagina[] paginas
+	 * <b>Entrada</b>: Pagina[] paginas</br></br>
 	 *   
-	 * Salida: boolean existe 
+	 * <b>Salida</b>: boolean existe </br></br>
 	 *    
-	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato(existe), en este caso un boleano el cual tomara los 
-	 *   				siguientes valores:
-	 *   			    -true: Si la array paginas tiene un objeto Pagina que no sea null	
-	 *   				-false: Si la array paginas solo tiene nulls	  
+	 * <b>Postcondiciones</b>: Este metodo se trata de una funcion ya que devulve un tipo de dato(existe), en este caso un boleano el cual tomara los 
+	 *   				siguientes valores:</br>
+	 *   			    -true: Si la array paginas tiene un objeto Pagina que no sea null</br>	
+	 *   				-false: Si la array paginas solo tiene nulls</br></br>	  
 	 *   
-	 * @param paginas
+	 * @param paginas</br>
 	 * 
-	 * @return existe				
+	 * @return existe</br>			
      */
     
     public static boolean comprobarExistenciaPaginas(Pagina[] paginas) {
@@ -596,5 +597,6 @@ public class Gestora {
 
 		return particion;
 	}
+
 
 }
