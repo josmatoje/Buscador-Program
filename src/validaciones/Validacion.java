@@ -121,7 +121,7 @@ public class Validacion {
     				System.out.println("La Url introducida no esta bien formada.\n");
     		}while(!urlValida);
     		
-    		urlRepetida = Gestora.comprobarExistenciaUrl(paginas, url); //Se comprueba que esa url no sea la url principal de alguna 
+    		urlRepetida = Gestora.comprobarExistenciaUrl(paginas, url); //Se comprueba que esa url no sea la url principal de alguna
     															//de las paginas que hay en un array de tipo Pagina
 
     		if(urlRepetida)
@@ -203,15 +203,17 @@ public class Validacion {
 		    			System.out.println("La Url no esta bien formada\n");
 				}while(!urlValida); //Mientras el enlaceReferente no sea una url 
 				
-				urlExiste = Gestora.comprobarExistenciaUrl(paginas, enlaceReferente);//Se comprueba que ese enlace Referente corresponde a 
+				urlExiste = Gestora.comprobarExistenciaUrl(paginas, enlaceReferente);//Se comprueba que ese enlace Referente corresponde a
 																			 //la url principal de alguna de las paginas que hay en un array 
 																			 //de tipo Pagina
-				if(!urlExiste)
+				if(!urlExiste) {
 					System.out.println("La Url de enlace introducida no corresponde con la Url principal de ninguna de las paginas\n");
 					System.out.println("Desea continuar y volver a intentarlo");
 					continuar = leerValidarRespuestaSiNo();
-					if(!continuar)
+					if (!continuar)
 						enlaceReferente = "";
+				}
+
 			}while(!urlExiste && continuar); //Mientras el enlaceReferente no exista como url principal de otra pagina
 			
 		} 
@@ -219,18 +221,18 @@ public class Validacion {
 	}
 
     /**
-	 * Cabecera: public static String[] leerPalabrasClaves()<br>
+	 * <b>Cabecera:</b> public static String[] leerPalabrasClaves()<br>
 	 *   <br>
-	 * Comentario: Este metodo se encarga de leer las palabras claves que se desee que tenga una pagina.
+	 * <b>Comentario:</b> Este metodo se encarga de leer las palabras claves que se desee que tenga una pagina.
 	 * 			   Mediante el metodo eliminarPalabrasRepetida() se eliminaran aquellas palabras que esten repetidas<br>
 	 *   <br>
-	 * Precondiciones: Ninguna<br>
+	 * <b>Precondiciones:</b> Ninguna<br>
 	 *   <br>
-	 * Entrada: Ninguna<br>
+	 * <b>Entrada:</b> Ninguna<br>
 	 *   <br>
-	 * Salida: String[] palabrasClaves<br>
+	 * <b>Salida:</b> String[] palabrasClaves<br>
 	 *    <br>
-	 * Postcondiciones: Este metodo se trata de una funcion ya que devulve un tipo de dato, en este caso un array de
+	 * <b>Postcondiciones:</b> Este metodo se trata de una funcion ya que devulve un tipo de dato, en este caso un array de
 	 * 					cadena(palabrasClaves).<br>
 	 *  <br>
 	 * @return palabrasClaves <br>
@@ -294,6 +296,7 @@ public class Validacion {
 	public static int leerPageRank(){
 		int numero=-1;
 
+		System.out.println("Introduzca un valor de pageRank para la página: ");
 		while(numero<0){
 			try {
 				numero = Integer.parseInt(teclado.nextLine());
