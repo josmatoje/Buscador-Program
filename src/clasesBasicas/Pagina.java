@@ -108,6 +108,6 @@ public class Pagina {
 	@Override
 	public String toString() {
 		// todo: en caso de pagina por defecto no imprimir;
-		return url + "\n" + descripcion;
+		return ("\t"+url + "\n" + descripcion);
 	}
 }

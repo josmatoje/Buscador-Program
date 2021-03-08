@@ -107,7 +107,7 @@ public class Mensaje {
 		int numeroPaginas;
 
 		for(numeroPaginas=0; listaPaginas[numeroPaginas]!=null && numeroPaginas< listaPaginas.length; numeroPaginas++){
-			System.out.println((numeroPaginas+1)+". "+listaPaginas[numeroPaginas].toString());
+			System.out.println("\n"+(numeroPaginas+1)+". "+listaPaginas[numeroPaginas].toString());
 		}
 
 		return numeroPaginas;

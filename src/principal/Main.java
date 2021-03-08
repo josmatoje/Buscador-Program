@@ -17,7 +17,7 @@ public class Main {
 		Pagina pagina;
 		String url = "", descripcion = "", enlaceReferente = "";
 		int opcion = 0, pageRank;
-		boolean salir;
+		boolean seguir;
 
 		do {
 
@@ -80,27 +80,29 @@ public class Main {
 					opcion = Mensaje.imprimirPaginas(paginasWeb);
 					opcion = Validacion.leerValidarNumeroEntreRango(1, opcion) - 1;//Restamos uno para que se corresponda con la posiciÃ³n del array
 
-					System.out.println("Â¿Desea modificar la descripciÃ³n de esta pÃ¡gina?");
-					if (Validacion.leerValidarRespuestaSiNo())
+					System.out.println("¿Desea modificar la descripcion de esta pagina?");
+					if (Validacion.leerValidarRespuestaSiNo()) {
+						System.out.println("Ingrese una breve descripcion sobre la pagina");
 						paginasWeb[opcion].setDescripcion(Validacion.leerDescripcion());
+					}
 
-					System.out.println("Â¿Desea modificar las palabras clave?");
+					System.out.println("¿Desea modificar las palabras clave?");
 					if (Validacion.leerValidarRespuestaSiNo()) {
 						Mensaje.mostrarPalabrasClave(paginasWeb[opcion].getPalabrasClaves());
-						System.out.println("Â¿Desea modificar todas las palabras?");
+						System.out.println("¿Desea modificar todas las palabras?");
 						if (Validacion.leerValidarRespuestaSiNo()) {
 							paginasWeb[opcion].setPalabrasClaves(Validacion.leerPalabrasClaves());
 						} else {
-							salir = false;
-							while (!salir) {
+							seguir=true;
+							while (seguir) {
 								Validacion.leerModificarPalabra(paginasWeb[opcion].getPalabrasClaves());
 								System.out.println("Desea modificar otra palabra?");
-								salir = Validacion.leerValidarRespuestaSiNo();
+								seguir = Validacion.leerValidarRespuestaSiNo();
 							}
 						}
 					}
 
-					System.out.println("Â¿Desea modificar el enlace de referencia?");
+					System.out.println("¿Desea modificar el enlace de referencia?");
 					if (Validacion.leerValidarRespuestaSiNo()) {
 						enlaceReferente = Validacion.leerEnlaceReferente(paginasWeb);
 						if (!enlaceReferente.equals(""))//El metodo leerEnlaceReferente devuelve una cadena vacia si finalmente el
