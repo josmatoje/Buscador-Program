@@ -53,11 +53,11 @@ public class Pagina {
 	}
 
 	// Constructor por defecto
-	public Pagina() {
-		url = "";
+	public Pagina(String s, String s1, String[] palabrasClaves, String url) {
+		this.url = "";
 		descripcion = "";
 		pageRank = 0;
-		palabrasClaves = null;
+		this.palabrasClaves = null;
 		enlacesReferente = "";
 	}
 
@@ -79,7 +79,7 @@ public class Pagina {
 	}
 
 	public void setPageRank(int pageRank) {
-		//Añadimos el ifelse en este set para que en caso de que nos metan un pageRank negativo, se convierta a 0.
+		//Aï¿½adimos el ifelse en este set para que en caso de que nos metan un pageRank negativo, se convierta a 0.
 		if(pageRank<0) {
 			this.pageRank = 0;
 		}else {

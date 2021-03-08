@@ -124,7 +124,7 @@ public class Validacion {
     				System.out.println("La Url introducida no esta bien formada.\n");
     		}while(!urlValida);
     		
-    		urlRepetida = Gestora.comprobarExistenciaUrl(paginas, url); //Se comprueba que esa url no sea la url principal de alguna 
+    		urlRepetida = Gestora.comprobarExistenciaUrl(paginas, url); //Se comprueba que esa url no sea la url principal de alguna
     															//de las paginas que hay en un array de tipo Pagina
 
     		if(urlRepetida)
@@ -206,7 +206,7 @@ public class Validacion {
 		    			System.out.println("La Url no esta bien formada\n");
 				}while(!urlValida); //Mientras el enlaceReferente no sea una url 
 				
-				urlExiste = Gestora.comprobarExistenciaUrl(paginas, enlaceReferente);//Se comprueba que ese enlace Referente corresponde a 
+				urlExiste = Gestora.comprobarExistenciaUrl(paginas, enlaceReferente);//Se comprueba que ese enlace Referente corresponde a
 																			 //la url principal de alguna de las paginas que hay en un array 
 																			 //de tipo Pagina
 				if(!urlExiste) {
@@ -310,6 +310,7 @@ public class Validacion {
 		}
 		return numero;
 	}
+
 
 	public static void leerModificarPalabra (String[] palabrasClave){
 		String palabra;

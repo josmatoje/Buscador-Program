@@ -263,6 +263,14 @@ public class Gestora {
 		palabrasCoincidentes[inicio] = palabrasCoincidentes[particion];
 		palabrasCoincidentes[particion] = palCoinAux;
 
+		// Tambien cambiamos las palabras coincidentes de nuestro array
+		// de enteros para futuras posibles iteraciones que
+		// cada posivion del array de enteros se corresponda con la posicion del array
+		// de su pagina correspondiente
+		palCoinAux = palabrasCoincidentes[inicio];
+		palabrasCoincidentes[inicio] = palabrasCoincidentes[particion];
+		palabrasCoincidentes[particion] = palCoinAux;
+
 		return particion;
 	}
 

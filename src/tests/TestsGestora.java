@@ -4,8 +4,9 @@ package tests;
 	import static org.junit.jupiter.api.Assertions.assertFalse;
 	import static org.junit.jupiter.api.Assertions.assertTrue;
 
-	import org.junit.jupiter.api.BeforeEach;
-	import org.junit.jupiter.api.Test;
+import gestion.Utilidad;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 	import clasesBasicas.Pagina;
 	import gestion.Gestora;
@@ -69,7 +70,59 @@ package tests;
 			paginasParaOrdenar[2]=paginaPrimera;
 			paginasParaOrdenar[3]=paginaTercera;
 			paginasParaOrdenar[4]=paginaQuinta;
-		}
+	}
+
+			
+
+
+
+	/**
+	 * Descripcion: Test para probar que hay palabras coincidentes
+	 */
+
+	@Test
+	void palabrasCoincidentesCoinciden() {
+		assertEquals(3, Gestora.palabrasCoincidentes(paginas[0].getPalabrasClaves(), paginas[1].getPalabrasClaves()));
+	}
+
+	/**
+	 * Descripcion: Test para probar que no hay palabras coincidentes
+	 */
+
+	@Test
+	void palabrasCoincidentesNoCoinciden() {
+		String [] palabrasNoCoincidentes = new String[3];//array de palabras diferentes al creado anteriormente
+
+		palabrasNoCoincidentes[0] = "hola";
+		palabrasNoCoincidentes[1] = "adios";
+		palabrasNoCoincidentes[2] = "aguacate";
+
+
+		assertEquals(0, Gestora.palabrasCoincidentes(paginas[0].getPalabrasClaves(), palabrasNoCoincidentes));
+	}
+
+	/**
+	 * Descripcion: Test para probar que no el array para comprobar no tiene palabras clave
+	 */
+
+	@Test
+	void palabrasCoincidentesNoHayPalabrasClavePalabrasComprobar() {
+
+		assertEquals(0, Gestora.palabrasCoincidentes(paginas[0].getPalabrasClaves(), arrayVacia));
+	}
+
+	/**
+	 * Descripcion: Test para probar que no el array de la pagina no tiene palabras clave
+	 */
+
+	@Test
+	void palabrasCoincidentesNoHayPalabrasClavePalabrasPagina() {
+
+
+		assertEquals(0, Gestora.palabrasCoincidentes(arrayVacia, arrayVacia));
+	}
+
+
 
 		
 		/**
@@ -216,57 +269,7 @@ package tests;
 			assertEquals("coche", palabrasClaves[0]);
 		}
 		
-		//Tests para metodo palabras coincidentes
-		
-			/**
-			 * Descripcion: Test para probar que hay palabras coincidentes
-			 */
-			
-			@Test
-			void palabrasCoincidentesCoinciden() {
-				assertEquals(3, Gestora.palabrasCoincidentes(paginas[0].getPalabrasClaves(), paginas[1].getPalabrasClaves()));
-			}
-			
-			/**
-			 * Descripcion: Test para probar que no hay palabras coincidentes
-			 */
-			
-			@Test
-			void palabrasCoincidentesNoCoinciden() {
-				 String [] palabrasNoCoincidentes = new String[3];//array de palabras diferentes al creado anteriormente
-				
-				 palabrasNoCoincidentes[0] = "hola";
-				 palabrasNoCoincidentes[1] = "adios";
-				 palabrasNoCoincidentes[2] = "aguacate";
-				 
-				
-				assertEquals(0, Gestora.palabrasCoincidentes(paginas[0].getPalabrasClaves(), palabrasNoCoincidentes));
-			}
-			
-			/**
-			 * Descripcion: Test para probar que no el array para comprobar no tiene palabras clave
-			 */
-			
-			@Test
-			void palabrasCoincidentesNoHayPalabrasClavePalabrasComprobar() {
-				
-				assertEquals(0, Gestora.palabrasCoincidentes(paginas[0].getPalabrasClaves(), arrayVacia));
-			}
-			
-			/**
-			 * 
-			 * Descripcion: Test para probar que no el array de la pagina no tiene palabras clave
-			 */
-			
-			@Test
-			void palabrasCoincidentesNoHayPalabrasClavePalabrasPagina() {
-				
-				assertEquals(0, Gestora.palabrasCoincidentes(arrayVacia, arrayVacia));
-			}
-			/**
-			 * Descripcion: Test para comprobar que nos devuelve el true si hay una pagina igual que el url que le indicamos
-			 * Metodo a testear: comprobarExistenciaUrl(Pagina[] paginas,String url) de la clase Gestora
-			 */
+
 			@Test
 			void testExisteUnaUrlCreada() {
 				assertTrue(Gestora.comprobarExistenciaUrl(paginas, "https://ciclo.iesnervion.es" ));
