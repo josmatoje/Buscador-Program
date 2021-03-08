@@ -79,16 +79,16 @@ public class Main {
 					opcion = Mensaje.imprimirPaginas(paginasWeb);
 					opcion = Validacion.leerValidarNumeroEntreRango(1, opcion) - 1;//Restamos uno para que se corresponda con la posiciÃ³n del array
 
-					System.out.println("¿Desea modificar la descripcion de esta pagina?");
+					System.out.println("Desea modificar la descripcion de esta pagina?");
 					if (Validacion.leerValidarRespuestaSiNo()) {
 						System.out.println("Ingrese una breve descripcion sobre la pagina");
 						paginasWeb[opcion].setDescripcion(Validacion.leerDescripcion());
 					}
 
-					System.out.println("¿Desea modificar las palabras clave?");
+					System.out.println("Desea modificar las palabras clave?");
 					if (Validacion.leerValidarRespuestaSiNo()) {
 						Mensaje.mostrarPalabrasClave(paginasWeb[opcion].getPalabrasClaves());
-						System.out.println("¿Desea modificar todas las palabras?");
+						System.out.println("Desea modificar todas las palabras?");
 						if (Validacion.leerValidarRespuestaSiNo()) {
 							paginasWeb[opcion].setPalabrasClaves(Validacion.leerPalabrasClaves());
 						} else {
@@ -101,7 +101,7 @@ public class Main {
 						}
 					}
 
-					System.out.println("¿Desea modificar el enlace de referencia?");
+					System.out.println("Desea modificar el enlace de referencia?");
 					if (Validacion.leerValidarRespuestaSiNo()) {
 						enlaceReferente = Validacion.leerEnlaceReferente(paginasWeb);
 						if (!enlaceReferente.equals(""))//El metodo leerEnlaceReferente devuelve una cadena vacia si finalmente el
