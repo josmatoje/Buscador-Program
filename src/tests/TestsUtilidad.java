@@ -11,11 +11,12 @@ import gestion.Utilidad;
 
 public class TestsUtilidad {
 	static Pagina[] paginas = new Pagina[2];
+	static Pagina paginaDePrueba;
+	static Pagina paginaMala;
+	
+	
+	
 
-	
-	
-	
-	@BeforeAll
 
 	/*
 	 * Objetos necesarios para los test que se crearan antes de la ejecucion de
