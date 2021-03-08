@@ -617,19 +617,17 @@ public class Gestora {
 			// avanzamos con el indice i mientras sea distinto de nulo y la pagina en esa posicion tenga mas o
 			// igual numero de palabras coincidentes que la pagina de particion (inicio) y que pageRankMayor sea true
 			
-			for (; i < j && listaPaginas[i]!=null && palabrasCoincidentes[i] >= palabrasCoincidentes[inicio] 		
-				 && (palabrasCoincidentes[i] == palabrasCoincidentes[inicio] 
-				 && listaPaginas[i].getPageRank() > listaPaginas[inicio].getPageRank()); i++);
-			
+			for (; i < j && listaPaginas[i]!=null && (palabrasCoincidentes[i] > palabrasCoincidentes[inicio] 		
+				 || (palabrasCoincidentes[i] == palabrasCoincidentes[inicio]  && listaPaginas[i].getPageRank() > listaPaginas[inicio].getPageRank()) ); i++);
+		
 
 			// pageRankMayor=false; no es necesario actualizar ya que del bloque anterior
 			// siempre sale a falso o sale del bucle principal
 
 			// avanzamos con el indice j si la pgina en j es nula o
 			// mientras la pagina en esa posicion tenga menos número de palabras coincidentes que la pagina de particion
-			for (; i < j && listaPaginas[j]!=null && palabrasCoincidentes[j] <= palabrasCoincidentes[inicio] 
-				&& (palabrasCoincidentes[j] == palabrasCoincidentes[inicio] 
-				&& listaPaginas[j].getPageRank() < listaPaginas[inicio].getPageRank()); j--);
+			for (; i < j && listaPaginas[j]!=null && (palabrasCoincidentes[j] < palabrasCoincidentes[inicio] 
+				|| (palabrasCoincidentes[j] == palabrasCoincidentes[inicio] && listaPaginas[j].getPageRank() < listaPaginas[inicio].getPageRank())); j--);
 			
 			// Tenemos la posicion i de una pagina de menor relevancia a la particion y en j
 			// una de mayor relevancia
@@ -637,11 +635,15 @@ public class Gestora {
 			listaPaginas[j] = listaPaginas[i];
 			listaPaginas[i] = paginaAux; // Intercambiamos la pagina en i por la pagina en j
 			
-			
+			palCoinAux = palabrasCoincidentes[j];
+			palabrasCoincidentes[j] = palabrasCoincidentes[i];
+			palabrasCoincidentes[i] = palCoinAux;
 
 		} // Final de busqueda de particion y de ordenacion del array
 
-		if (listaPaginas[particion].getPageRank() > listaPaginas[i].getPageRank()) {
+		if (palabrasCoincidentes[particion] > palabrasCoincidentes[i] 
+				|| (palabrasCoincidentes[i] == palabrasCoincidentes[inicio] && 
+					listaPaginas[particion].getPageRank() > listaPaginas[i].getPageRank() )) {
 			i-=1;
 		}
 		
@@ -650,6 +652,10 @@ public class Gestora {
 		
 		particion = i;// Actualizamos la posicion por la que vamos intercambiando las celdas ya que en
 							// la ultima iteracion i=j
+		
+		palCoinAux = palabrasCoincidentes[inicio];
+		palabrasCoincidentes[inicio] = palabrasCoincidentes[i];
+		palabrasCoincidentes[i] = palCoinAux;
 		
 		return particion;
 	}
