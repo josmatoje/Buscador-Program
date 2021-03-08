@@ -55,56 +55,59 @@ public class Main {
 					// pagina de la lista dada
 					palabrasCoincidentes = new int[paginasWeb.length];
 					for (int i = 0; i < palabrasCoincidentes.length; i++)
-						palabrasCoincidentes[i] = Gestora.palabrasCoincidentes(paginasWeb[i].getPalabrasClaves(),
-								palabrasClaves);
+						palabrasCoincidentes[i] = paginasWeb[i]==null ?  //ifelse --> operador ternario (en caso de paginaWeb nula, palabras coincidentes 0)
+								0: Gestora.palabrasCoincidentes (paginasWeb[i].getPalabrasClaves(),palabrasClaves);
 
-					Gestora.ordenarPaginas(paginasWeb, palabrasCoincidentes, 0, paginasWeb.length);
-					
+					//Gestora.ordenarPaginas(paginasWeb, palabrasCoincidentes, 0, paginasWeb.length-1);
+					Gestora.ordenacionInsercionDirecta(paginasWeb,palabrasCoincidentes);
+
+					System.out.println("Estas son las paginas por orden de rlevancia:");
 					// Imprime todas las paginas ordenadas por la condicion
-					for (Pagina value : paginasWeb) {
-						if (value != null)
-							System.out.println(value.toString());
-					}
+					Mensaje.imprimirPaginas(paginasWeb);
 			
-				}else {
-					System.out.println("No existen paginas creadas, cree una antes de inciar su busqueda");
-				}
-				
+				}else
+					Mensaje.noExistenPaginas();
+
 
 				break;
 
 			case 3: // Modificar una pagina web
 
-				opcion=Mensaje.imprimirPaginas(paginasWeb);
-				opcion= Validacion.leerValidarNumeroEntreRango(1,opcion)-1;//Restamos uno para que se corresponda con la posición del array
+				if(Gestora.comprobarExistenciaPaginas(paginasWeb)) {
 
-				System.out.println("¿Desea modificar la descripción de esta página?");
-				if(Validacion.leerValidarRespuestaSiNo())
-					paginasWeb[opcion].setDescripcion(Validacion.leerDescripcion());
+					System.out.println("Escoja la pagina que desea modificar: ");
+					opcion = Mensaje.imprimirPaginas(paginasWeb);
+					opcion = Validacion.leerValidarNumeroEntreRango(1, opcion) - 1;//Restamos uno para que se corresponda con la posición del array
 
-				System.out.println("¿Desea modificar las palabras clave?");
-				if(Validacion.leerValidarRespuestaSiNo()){
-					Mensaje.mostrarPalabrasClave(paginasWeb[opcion].getPalabrasClaves());
-					System.out.println("¿Desea modificar todas las palabras?");
-					if(Validacion.leerValidarRespuestaSiNo()){
-						paginasWeb[opcion].setPalabrasClaves(Validacion.leerPalabrasClaves());
-					}else{
-						salir=false;
-						while(!salir){
-							Validacion.leerModificarPalabra(paginasWeb[opcion].getPalabrasClaves());
-							System.out.println("Desea modificar otra palabra?");
-							salir=Validacion.leerValidarRespuestaSiNo();
+					System.out.println("¿Desea modificar la descripción de esta página?");
+					if (Validacion.leerValidarRespuestaSiNo())
+						paginasWeb[opcion].setDescripcion(Validacion.leerDescripcion());
+
+					System.out.println("¿Desea modificar las palabras clave?");
+					if (Validacion.leerValidarRespuestaSiNo()) {
+						Mensaje.mostrarPalabrasClave(paginasWeb[opcion].getPalabrasClaves());
+						System.out.println("¿Desea modificar todas las palabras?");
+						if (Validacion.leerValidarRespuestaSiNo()) {
+							paginasWeb[opcion].setPalabrasClaves(Validacion.leerPalabrasClaves());
+						} else {
+							salir = false;
+							while (!salir) {
+								Validacion.leerModificarPalabra(paginasWeb[opcion].getPalabrasClaves());
+								System.out.println("Desea modificar otra palabra?");
+								salir = Validacion.leerValidarRespuestaSiNo();
+							}
 						}
 					}
-				}
 
-				System.out.println("¿Desea modificar el enlace de referencia?");
-				if(Validacion.leerValidarRespuestaSiNo()) {
-					enlaceReferente=Validacion.leerEnlaceReferente(paginasWeb);
-					if(enlaceReferente!="")//El metodo leerEnlaceReferente devuelve una cadena vacia si finalmente el
-														// usuario no introduce ningun enlace de refernecia
-						paginasWeb[opcion].setEnlacesReferente(enlaceReferente);
-				}
+					System.out.println("¿Desea modificar el enlace de referencia?");
+					if (Validacion.leerValidarRespuestaSiNo()) {
+						enlaceReferente = Validacion.leerEnlaceReferente(paginasWeb);
+						if (!enlaceReferente.equals(""))//El metodo leerEnlaceReferente devuelve una cadena vacia si finalmente el
+							// usuario no introduce ningun enlace de refernecia
+							paginasWeb[opcion].setEnlacesReferente(enlaceReferente);
+					}
+				}else
+					Mensaje.noExistenPaginas();
 
 			break;
 
