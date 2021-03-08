@@ -2,8 +2,6 @@ package gestion;
 
 import clasesBasicas.Pagina;
 
-import gestion.Utilidad;
-
 import java.util.Arrays;
 
 public class Gestora {
@@ -51,7 +49,7 @@ public class Gestora {
      * Postcondiciones: Se disminuira el pageRank de un objeto Pagina pero solo si se da el caso que en el array de paginas hay una que su url es 
      * 					igual al urlEnlace, entonces a esta se le disminuira en uno su pageRank, por lo tanto se hara por referencia.
      * 
-     * @param paginas
+     * @param paginas Array de objetos pagina
      * @param urlEnlace
      */
 
@@ -201,7 +199,7 @@ public class Gestora {
 
 			// Posteriormente cambiamos tambien las palabras coincidentes de nuestro array
 			// de enteros para futuras posibles iteraciones que
-			// cada posivion del array de enteros se corresponda con la posicion del array
+			// cada posicion del array de enteros se corresponda con la posicion del array
 			// de su pagina correspondiente
 			palCoinAux = palabrasCoincidentes[j];
 			palabrasCoincidentes[j] = palabrasCoincidentes[i];
@@ -227,7 +225,55 @@ public class Gestora {
 		listaPaginas[inicio] = listaPaginas[particion];
 		listaPaginas[particion] = paginaAux; // Intercambiamos la pagina en i por la pagina en j
 
+		// Tambien cambiamos las palabras coincidentes de nuestro array
+		// de enteros para futuras posibles iteraciones que
+		// cada posivion del array de enteros se corresponda con la posicion del array
+		// de su pagina correspondiente
+		palCoinAux = palabrasCoincidentes[inicio];
+		palabrasCoincidentes[inicio] = palabrasCoincidentes[particion];
+		palabrasCoincidentes[particion] = palCoinAux;
+
 		return particion;
+	}
+
+	/**
+	 * <b>Cabecera:</b> public static void ordenacionInsercionDirecta (Pagina[] listaPaginas, int[] palabrasCoincidentes)
+	 * <b>Propósito:</b> ordenación ascendente de un array unidimensional de tamaño tam.<br>
+	 *
+	 * <b>Entradas/Salida:</b> un array.<br>
+	 * <b>Precondiciones:</b>ambos arrays tienen que tener el mismo tamaño<br>
+	 * <b>Postcondiciones:</b> array [0], ..., array[tam-1] está ordenado de mayor a meno relevancia<br>
+	 *
+	 * @param listaPaginas
+	 * @param palabrasCoincidentes
+	 */
+	public static void ordenacionInsercionDirecta (Pagina[] listaPaginas, int[] palabrasCoincidentes){
+		int palCoinAux;
+		Pagina paginaAux;
+
+		for (int i=1;i<listaPaginas.length; i++){
+			for(int j=i; j>0;j--){
+				if( listaPaginas[j-1] == null || palabrasCoincidentes[j]>palabrasCoincidentes[j-1] ||
+					(	palabrasCoincidentes[j]==palabrasCoincidentes[j-1] && listaPaginas[j] != null &&
+						listaPaginas[j].getPageRank() > listaPaginas[j-1].getPageRank()			)
+					){
+
+						//Intercambiamos ambas paginas
+						paginaAux = listaPaginas[j];
+						listaPaginas[j] = listaPaginas[j-1];
+						listaPaginas[j-1] = paginaAux;
+
+						// Posteriormente cambiamos tambien las palabras coincidentes de nuestro array
+						// de enteros para futuras posibles iteraciones que
+						// cada posicion del array de enteros se corresponda con la posicion del array
+						// de su pagina correspondiente
+						palCoinAux = palabrasCoincidentes[j];
+						palabrasCoincidentes[j] = palabrasCoincidentes[j-1];
+						palabrasCoincidentes[j-1] = palCoinAux;
+
+				}
+			}
+		}
 	}
 
 	/**
@@ -265,22 +311,21 @@ public class Gestora {
 	}
 	
 	/**
-	 * Descripcion: Compara dos arrays de cadenas y devuelve el numero de veces que
-	 * coinciden cadenas en ambos string Precondiciones: No se encuentran palabras
-	 * repetidas en niguna de las cadenas que se pasan por parametros
-	 * Postcondiciones: Le damos dos array de String y el metodo nos devuelve el
-	 * numero de veces que coinciden las palabras de un array en la otra.
-	 * Entrada:String[] palabrasPagina, String[] palabrasComprobar Salida:int
-	 * contador
+	 * <b>Descripcion:</b> Compara dos arrays de cadenas y devuelve el numero de veces que coinciden cadenas en ambos string <br>
+	 * <b>Entrada:</b>  dos listas (Arrays) de cadenas los cuales van a ser comparados <br>
+	 *
+	 * <b>Precondiciones:</b> No se encuentran palabras repetidas en niguna de las cadenas que se pasan por parametros <br>
+	 *
+	 * <b>Postcondiciones:</b> El entero será un numero mayor o igual a cero, las listas no se ven modificadas.<br>
+	 *
+	 * <b>Salida:</b> un entero que indica el numero deveces que se encuentra una cadena en ambas listas (arrays) <br>
 	 * 
 	 * @param palabrasPagina
 	 * @param palabrasComprobar
-	 * @return palabrasCoincidentes /* Entrada: dos listas (Arrays) de cadenas los
-	 *         cuales van a ser comparados Salida: un entero que indica el numero de
-	 *         veces que se encuentra una cadena en ambas listas (arrays)
-	 *         Precondiciones: No se encuentran palabras repetidas en niguna de las
-	 *         cadenas que se pasan por parametros Postcondiciones: el entero será
-	 *         un numero mayor o igual a cero, las listas no se ven modificadas
+	 * @return palabrasCoincidentes
+	 *
+	 *
+	 * Postcondiciones:
 	 */
 	public static int palabrasCoincidentes(String[] palabrasPagina, String[] palabrasComprobar) {
 
@@ -290,7 +335,7 @@ public class Gestora {
 		for (int i = 0; i < palabrasComprobar.length; i++) {
 			comprobado = false;
 			for (int j = 0; j < palabrasPagina.length && !comprobado; j++) {
-				if (!palabrasComprobar[i].equals("") && palabrasPagina[j] != null && !palabrasComprobar[j].equals("")
+				if (!palabrasComprobar[i].equals("") && palabrasPagina[j] != null && !palabrasComprobar[i].equals("")
 						&& palabrasComprobar[i].equals(palabrasPagina[j])) {
 					contador++;
 					comprobado = true;
@@ -356,10 +401,10 @@ public class Gestora {
     
     public static boolean comprobarExistenciaPaginas(Pagina[] paginas) {
     	boolean existe=false;
-    	for(int i=0; i < paginas.length && !existe;i++) {
-    		if(paginas[i] != null) {
+    	for(int i=0; i < paginas.length && !existe; i++) {
+    		if(paginas[i] != null)
     			existe=true;
-    		}
+
     	}
     	return existe;
     		

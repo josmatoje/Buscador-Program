@@ -53,7 +53,8 @@ public class Mensaje {
 	/**
 	 * Precondiciones=ninguna Postcondiciones=Nos muestra un pequenho mensaje
 	 * indicandonos que introduzcamos una url valida para modificar la pagina
-	 * Entrada=ninguna Salida=ninguna
+	 * Entrada=ninguna
+	 * Salida=ninguna
 	 * 
 	 */
 
@@ -62,9 +63,10 @@ public class Mensaje {
 	}
 
 	/**
-	 * Precondiciones=ninguna Postcondiciones=Nos muestra el menu para la opcion de
-	 * modificar una pagina una vez introducida una url valida. Entrada=ninguna
-	 * Salida=ninguna
+	 * Precondiciones=ninguna <br>
+	 * Postcondiciones=Nos muestra el menu para la opcion de modificar una pagina una vez introducida una url valida. <br>
+	 * Entrada=ninguna <br>
+	 * Salida=ninguna <br>
 	 * 
 	 */
 	public static void menuModificarPaginaWeb() {
@@ -85,5 +87,35 @@ public class Mensaje {
 
 	public static void introducirPalabrasClave() {
 		System.out.println("Ingrese todas las palabras separadas por espacios:");
+	}
+
+	public static void noExistenPaginas() {
+		System.out.println("No existen paginas creadas, cree una antes de inciar su busqueda");
+	}
+
+	/**<b>Cabecera:</b> public static int imprimirPaginas(Pagina[] listaPaginas) <br>
+	 * <b>Comentario:</b> Este metodo imprime las paginas enumeradas hasta que encuentre una posición nula en el array<br>
+	 * <b>Precondicion:</b> El array debe tener los objetos agrupados en las primeras celdas
+	 * <b>Entrada:</b> Un array con objetos pagina
+	 * <b>Salida:</b> Un entero que indica la cantidad de paginas que existen en el array
+	 * <b>Postcondicion:</b> las celdas que contengan valores no nulos despues de un valor nulo no serán mostradas
+	 * <br>
+	 * @param listaPaginas
+	 * @return numeroPaginas
+	 */
+	public static int imprimirPaginas(Pagina[] listaPaginas){
+		int numeroPaginas;
+
+		for(numeroPaginas=0; listaPaginas[numeroPaginas]!=null && numeroPaginas< listaPaginas.length; numeroPaginas++){
+			System.out.println((numeroPaginas+1)+". "+listaPaginas[numeroPaginas].toString());
+		}
+
+		return numeroPaginas;
+	}
+	
+	public static void mostrarPalabrasClave (String[] palabrasClave){
+		for(String palabra:palabrasClave){
+			System.out.println("- "+palabra);
+		}
 	}
 }
