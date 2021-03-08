@@ -590,4 +590,5 @@ public class Gestora {
 		return particion;
 	}
 
+
 }
