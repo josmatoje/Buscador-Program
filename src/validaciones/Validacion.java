@@ -243,7 +243,7 @@ public class Validacion {
 
 		String enlaceReferente = "";
 		boolean urlValida = false, urlExiste = false, continuar = false;
-		System.out.println("¿Quieres ingresar un enlace referente a la pagina?");
+		System.out.println("¿Quieres ingresar un enlace referente a la pagina? (Si la respuesta es no la pagina no referencia a nada)");
 
 		if( leerValidarRespuestaSiNo() ) { //Si la respuesta que se lee es Si(true)
 

@@ -29,24 +29,24 @@ public class Main {
 			case 1: // Opcion dar de alta una pagina web
 
 				url = Validacion.obtenerUrl(paginasWeb); // Se obtiene al url de la nueva pagina que se creara
-				descripcion = Validacion.leerDescripcion();
-				pageRank = Validacion.leerPageRank();
-				enlaceReferente = Validacion.leerEnlaceReferente(paginasWeb);
-				palabrasClaves = Validacion.leerPalabrasClaves();
+				descripcion = Validacion.leerDescripcion(); //Se obtiene una descripcion
+				pageRank = Validacion.leerPageRank(); //Se obtiene un pageRank
+				enlaceReferente = Validacion.leerEnlaceReferente(paginasWeb); //Se obtiene en enlace de referente
+				palabrasClaves = Validacion.leerPalabrasClaves(); //Se leen las palabras claves de la pagina 
 
 				// Se crea la nueva pagina
 				pagina = new Pagina(url, descripcion, pageRank, palabrasClaves, enlaceReferente);
 
 				Gestora.insertarPagina(paginasWeb, pagina); // Se guarda la nueva pagina en el array donde estan todas
 															// las paginas
-				if (!pagina.getEnlaceReferente().equals(""))
+				if (!pagina.getEnlaceReferente().equals(""))//Si la pagina tiene un enlace referente 
 					Gestora.aumentarPageRankPaginaEnlace(paginasWeb, pagina.getEnlaceReferente());
 
 				break;
 
 			case 2: // Buscar paginas
 				
-				if(Gestora.comprobarExistenciaPaginas(paginasWeb)) {
+				if(Gestora.comprobarExistenciaPaginas(paginasWeb)) { //Si existen paginas
 					
 					palabrasClaves = Validacion.leerPalabrasClaves();
 
@@ -60,26 +60,25 @@ public class Main {
 					//Gestora.ordenarPaginas(paginasWeb, palabrasCoincidentes, 0, paginasWeb.length-1);
 					Gestora.ordenacionInsercionDirecta(paginasWeb,palabrasCoincidentes);
 
-					System.out.println("Estas son las paginas por orden de rlevancia:");
+					System.out.println("Estas son las paginas por orden de relevancia:");
 					// Imprime todas las paginas ordenadas por la condicion
 					Mensaje.imprimirPaginas(paginasWeb);
 			
-				}else
+				}else {
 					Mensaje.noExistenPaginas();
-
+				}
 				break;
 
 			case 3: // Modificar una pagina web
 
-				if(Gestora.comprobarExistenciaPaginas(paginasWeb)) {
+				if(Gestora.comprobarExistenciaPaginas(paginasWeb)) { //Si existen paginas
 
 					System.out.println("Escoja la pagina que desea modificar: ");
 					opcion = Mensaje.imprimirPaginas(paginasWeb);
 					opcion = Validacion.leerValidarNumeroEntreRango(1, opcion) - 1;//Restamos uno para que se corresponda con la posición del array
 
 					System.out.println("Desea modificar la descripcion de esta pagina?");
-					if (Validacion.leerValidarRespuestaSiNo()) {
-						System.out.println("Ingrese una breve descripcion sobre la pagina");
+					if (Validacion.leerValidarRespuestaSiNo()) {  
 						paginasWeb[opcion].setDescripcion(Validacion.leerDescripcion());
 					}
 
@@ -87,7 +86,7 @@ public class Main {
 					if (Validacion.leerValidarRespuestaSiNo()) {
 						Mensaje.mostrarPalabrasClave(paginasWeb[opcion].getPalabrasClaves());
 						System.out.println("Desea modificar todas las palabras?");
-						if (Validacion.leerValidarRespuestaSiNo()) {
+						if (Validacion.leerValidarRespuestaSiNo()) { 
 							paginasWeb[opcion].setPalabrasClaves(Validacion.leerPalabrasClaves());
 						} else {
 							seguir=true;
@@ -100,15 +99,19 @@ public class Main {
 					}
 
 					System.out.println("Desea modificar o eliminar el enlace de referencia?");
-					if (Validacion.leerValidarRespuestaSiNo()) {
-						Gestora.disminuirPageRankPaginaEnlace(paginasWeb, paginasWeb[opcion].getEnlaceReferente());
+					if (Validacion.leerValidarRespuestaSiNo()) { //Si la respuesta es si 
+					
+						if(!paginasWeb[opcion].getEnlaceReferente().equals("")){ //Si la pagina que se desea modificar tiene una url de enlace
+							Gestora.disminuirPageRankPaginaEnlace(paginasWeb, paginasWeb[opcion].getEnlaceReferente());
+						}
 						enlaceReferente = Validacion.leerEnlaceReferente(paginasWeb);
-						if (enlaceReferente.equals(paginasWeb[opcion].getUrl())){//El metodo leerEnlaceReferente devuelve una cadena vacia si finalmente el
-							System.out.println("No puedes referenciar una pagina a ella misma");
+										
+						if (enlaceReferente.equals(paginasWeb[opcion].getUrl())){//Si el enlace referente se lee es igual a la url de la 
+																				 //pagina en la que se esta haciendo la modificacion 
+							System.out.println("Una pagina no puede referenciarse a ella misma");
 						}else { 
-							if(!enlaceReferente.equals("")){
-								// usuario no introduce ningun enlace de refernecia
-								Gestora.aumentarPageRankPaginaEnlace(paginasWeb, paginasWeb[opcion].getEnlaceReferente());
+							if(!enlaceReferente.equals("")){ //Si el enlace referente que se lee no es una cadena vacia 
+								Gestora.aumentarPageRankPaginaEnlace(paginasWeb, enlaceReferente);
 							}
 							paginasWeb[opcion].setEnlaceReferente(enlaceReferente);
 						}
