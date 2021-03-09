@@ -1,7 +1,7 @@
 /**
- * Nombre: Pagina<br/>
- * Propiedades:<br/>
- *  Basicas:<br/>
+ * <b></b>Nombre: Pagina<br/>
+ * <b></b>Propiedades:<br/>
+ *  <b></b>Basicas:<br/>
  *   url: cadena, consultable<br/>
  *   descripcion: cadena, consultable, modificable<br/>
  *   pageRank: entero, consultable<br/>

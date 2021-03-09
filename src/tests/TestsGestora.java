@@ -12,59 +12,65 @@ import org.junit.jupiter.api.Test;
 	import gestion.Gestora;
 
 	public class TestsGestora {
+		//declaracion de las paginas
 		static Pagina paginaDePrueba;
 		static Pagina paginaSubirPageRank;
 		static Pagina paginaDisminuirPageRank;
 		static Pagina paginaMala;
-		static Pagina[] paginas = new Pagina[5];
-		static String [] palabrasClaves = new String[3]; 
-		static String[] arrayVacia = new String[0]; //array vacia
-		static Pagina[] arrayVaciaDePaginas = new Pagina[0]; //array vacia de Paginas
 		static Pagina paginaPageRankAlto;
 		static Pagina paginaPageRankBajo;
-		
-		
 		static Pagina paginaPrimera;
 		static Pagina paginaSegunda;
 		static Pagina paginaTercera;
 		static Pagina paginaCuarta;
 		static Pagina paginaQuinta;
+		
+		//declaracion e inicializacion de las arrays
+		static Pagina[] paginas = new Pagina[5];
+		static String [] palabrasClaves = new String[] {"coche","rueda","ferrari"}; 
+		static String[] arrayVacia = new String[0]; //array vacia
+		static Pagina[] arrayVaciaDePaginas = new Pagina[0]; //array vacia de Paginas
 		static Pagina[] paginasParaOrdenar=new Pagina[5];
 		static int[] mismasPalabrasCoincidentes=new int[]{3,3,3,3,3};
 		static int[] palabrasCoincidentes= new int[]{3,1,5,2,1};
+		
+		
+		@BeforeEach
 
+		/*
+		 * Objetos necesarios para los test que se crearan antes de la ejecucion de
+		 * estos
+		 */
+		 void Pagina() {
+			//inicializacion de paginas
+			paginaSubirPageRank = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",0,
+					palabrasClaves, "");
+			paginaDisminuirPageRank = new Pagina("https://papitas.com", "pagina hecha para probar los enlaces buenos",1,
+					palabrasClaves, "");
+			paginaMala = new Pagina("enlaceMalo.com", "pagina hecha para probar los enlaces malos",0,
+					palabrasClaves, paginaSubirPageRank.getUrl());
+			
+			paginaPageRankAlto = new Pagina("https://mequieromorir.com", "pagina hecha para probar el metodo de ordenacion",8,
+					palabrasClaves, "");
+			paginaPageRankBajo=new Pagina("https://mequieromorir.com", "pagina hecha para probar el metodo de ordenacion",4,
+					palabrasClaves, "");
+			paginaDePrueba = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",0,
+					new String[] { "informatica" }, "");
+			paginaPrimera=new Pagina("https://estaPaginaDeberiaSerLaPrimera.com","",5,palabrasClaves,"");
+			paginaSegunda=new Pagina("https://estaPaginaDeberiaSerLaSegunda.com","",4,palabrasClaves,"");
+			paginaTercera=new Pagina("https://estaPaginaDeberiaSerLaTercera.com","",3,palabrasClaves,"");
+			paginaCuarta=new Pagina("https://estaPaginaDeberiaSerLaCuarta.com","",2,palabrasClaves,"");
+			paginaQuinta=new Pagina("https://estaPaginaDeberiaSerLaQuinta.com","",1,palabrasClaves,"");
 
-	@BeforeEach
-
-	/*
-	 * Objetos necesarios para los test que se crearan antes de la ejecucion de
-	 * estos
-	 */
-	static void Pagina() {
-
-		palabrasClaves[0] = "coche";
-		palabrasClaves[1] = "rueda";
-		palabrasClaves[2] = "ferrari";
-
-		paginaDePrueba = new Pagina("https://ciclo.iesnervion.es", "pagina hecha para probar los enlaces buenos",
-				palabrasClaves, paginaDePrueba.getUrl());
-		paginaMala = new Pagina("enlaceMalo.com", "pagina hecha para probar los enlaces malos",
-				new String[] { "buscador" }, " ");
-		paginas[0] = paginaDePrueba;
-		paginas[1] = paginaMala;
-		paginaPageRankAlto = new Pagina("https://mequieromorir.com", "pagina hecha para probar el metodo de ordenacion",8,
-				palabrasClaves, "");
-		paginaPageRankBajo=new Pagina("https://mequieromorir.com", "pagina hecha para probar el metodo de ordenacion",4,
-				palabrasClaves, "");
+			//inicializacion de las arrays
+			paginas[0] = paginaSubirPageRank;
+			paginas[1] = paginaMala;
 			paginasParaOrdenar[0]=paginaSegunda;
 			paginasParaOrdenar[1]=paginaCuarta;
 			paginasParaOrdenar[2]=paginaPrimera;
 			paginasParaOrdenar[3]=paginaTercera;
 			paginasParaOrdenar[4]=paginaQuinta;
 	}
-
-			
-
 
 
 	/**
@@ -215,7 +221,7 @@ import org.junit.jupiter.api.Test;
 		
 		@Test
 		void testOrdenarArrayMismasPalabrasCoincidentes() {
-				Gestora.ordenacionInsercionDirecta(paginasParaOrdenar, mismasPalabrasCoincidentes);
+				Gestora.ordenarPaginas(paginasParaOrdenar, mismasPalabrasCoincidentes, 0, paginasParaOrdenar.length - 1);
 				assertEquals(paginaPrimera.getUrl(), paginasParaOrdenar[0].getUrl());
 				assertEquals(paginaSegunda.getUrl(), paginasParaOrdenar[1].getUrl());
 				assertEquals(paginaTercera.getUrl(), paginasParaOrdenar[2].getUrl());
@@ -231,7 +237,7 @@ import org.junit.jupiter.api.Test;
 		
 		@Test
 		void testOrdenarArrayDiferentesPalabrasCoincidentes() {
-				Gestora.ordenacionInsercionDirecta(paginasParaOrdenar, palabrasCoincidentes);
+				Gestora.ordenarPaginas(paginasParaOrdenar, mismasPalabrasCoincidentes, 0, paginasParaOrdenar.length - 1);
 				assertEquals(paginaPrimera.getUrl(), paginasParaOrdenar[0].getUrl());
 				assertEquals(paginaSegunda.getUrl(), paginasParaOrdenar[1].getUrl());
 				assertEquals(paginaTercera.getUrl(), paginasParaOrdenar[2].getUrl());
