@@ -75,7 +75,7 @@ public class Gestora {
 
 	/*
 	 * Aclaracion: En el caso en el que paginas este lleno, se tendra que aumentar
-	 * su tama�o, entonces este tomara otra referencia, por eso el metodo devuelve
+	 * su tamanho, entonces este tomara otra referencia, por eso el metodo devuelve
 	 * Pagina[]
 	 */
 	public static Pagina[] insertarPagina(Pagina[] paginas, Pagina pagina) {
@@ -127,6 +127,7 @@ public class Gestora {
 		}
 	}
 
+	@Deprecated
 	/**
 	 * <b>Cabecera</b>: public static int partirLista(Pagina[] listaPaginas, int[]
 	 * palabrasCoincidentes, int inicio, int fin) </br></br>
@@ -276,7 +277,7 @@ public class Gestora {
 
 	/**
 	 * <b>Cabecera:</b> public static void ordenacionInsercionDirecta (Pagina[] listaPaginas, int[] palabrasCoincidentes) <br>
-	 * <b>Propósito:</b> ordenación ascendente de un array unidimensional de tamaño tam.<br>
+	 * <b>Comentario:</b> ordenación ascendente de un array unidimensional de tamaño tam.<br>
 	 *
 	 * <b>Entradas/Salida:</b> un array.<br>
 	 * <b>Precondiciones:</b>ambos arrays tienen que tener el mismo tamanyo<br>

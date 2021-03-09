@@ -16,3 +16,7 @@
 src/package-info.java
 
 out/
+
+*.xml
+
+.idea/
