@@ -132,7 +132,7 @@ import org.junit.jupiter.api.Test;
 		 */
 		@Test
 		void testAumentarPageRank() {
-			Gestora.aumentarPageRankPaginaEnlace(paginas, paginaMala.getEnlacesReferente());
+			Gestora.aumentarPageRankPaginaEnlace(paginas, paginaMala.getEnlaceReferente());
 			assertEquals(1, paginaSubirPageRank.getPageRank());
 		}
 		
@@ -144,7 +144,7 @@ import org.junit.jupiter.api.Test;
 
 		@Test
 		void testNoAumentarPageRank() {
-			Gestora.aumentarPageRankPaginaEnlace(paginas, paginaDisminuirPageRank.getEnlacesReferente());
+			Gestora.aumentarPageRankPaginaEnlace(paginas, paginaDisminuirPageRank.getEnlaceReferente());
 			assertEquals(0, paginaMala.getPageRank());
 		}
 		
@@ -155,7 +155,7 @@ import org.junit.jupiter.api.Test;
 		
 		@Test
 		void testNoEntraEnElFor() {
-			Gestora.aumentarPageRankPaginaEnlace(arrayVaciaDePaginas, paginaSubirPageRank.getEnlacesReferente());
+			Gestora.aumentarPageRankPaginaEnlace(arrayVaciaDePaginas, paginaSubirPageRank.getEnlaceReferente());
 			assertEquals(0, paginaMala.getPageRank());
 		}
 		

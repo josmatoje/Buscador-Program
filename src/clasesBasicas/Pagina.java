@@ -41,7 +41,7 @@ public class Pagina {
 	private String descripcion;
 	private int pageRank;
 	private String[] palabrasClaves;
-	private String enlacesReferente;
+	private String enlaceReferente;
 
 	// Constructor con parametros
 	public Pagina(String url, String descripcion,int pageRank, String[] palabrasClaves, String enlacesReferente) {
@@ -49,7 +49,7 @@ public class Pagina {
 		this.descripcion = descripcion;
 		setPageRank(pageRank);
 		this.palabrasClaves = palabrasClaves;
-		this.enlacesReferente = enlacesReferente;
+		this.enlaceReferente = enlacesReferente;
 	}
 
 	// Constructor por defecto
@@ -58,7 +58,7 @@ public class Pagina {
 		descripcion = "";
 		pageRank = 0;
 		this.palabrasClaves = null;
-		enlacesReferente = "";
+		enlaceReferente = "";
 	}
 
 	// Getters and setters
@@ -96,12 +96,12 @@ public class Pagina {
 		this.palabrasClaves = palabrasClaves;
 	}
 
-	public String getEnlacesReferente() {
-		return enlacesReferente;
+	public String getEnlaceReferente() {
+		return enlaceReferente;
 	}
 
-	public void setEnlacesReferente(String enlacesReferente) {
-		this.enlacesReferente = enlacesReferente;
+	public void setEnlaceReferente(String enlaceReferente) {
+		this.enlaceReferente = enlaceReferente;
 	}
 
 	// Metodo toString para mostrar las paginas

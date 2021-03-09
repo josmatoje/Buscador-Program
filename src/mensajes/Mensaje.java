@@ -103,7 +103,6 @@ public class Mensaje {
 				+ "3.- Volver al menu principal\n\n"
 				+ "******************************");
 	}
-
 	/**
 	 * <b>Cabecera:</b> public static void caracterIntroducidoNoValido() <br>
 	 *     <br>
