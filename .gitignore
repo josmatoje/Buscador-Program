@@ -1,32 +1,26 @@
-<<<<<<< HEAD
 
 .idea/misc.xml
 
 .idea/modules.xml
 
 .idea/vcs.xml
-=======
-<<<<<<< HEAD
 
 *.iml
 
-.idea/
-=======
-/bin/
-<<<<<<< HEAD
-
 .project
-
-.classpath
-=======
 
 .classpath
 
 .project
->>>>>>> Pedrito
->>>>>>> main
 
 src/package-info.java
 
 out/
+<<<<<<< HEAD
 /bin1/
+=======
+
+*.xml
+
+.idea/
+>>>>>>> Santi

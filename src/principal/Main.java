@@ -29,7 +29,6 @@ public class Main {
 			case 1: // Opcion dar de alta una pagina web
 
 				url = Validacion.obtenerUrl(paginasWeb); // Se obtiene al url de la nueva pagina que se creara
-				System.out.println("Ingrese una breve descripcion sobre la pagina");
 				descripcion = Validacion.leerDescripcion();
 				pageRank = Validacion.leerPageRank();
 				enlaceReferente = Validacion.leerEnlaceReferente(paginasWeb);
@@ -67,7 +66,6 @@ public class Main {
 			
 				}else
 					Mensaje.noExistenPaginas();
-
 
 				break;
 

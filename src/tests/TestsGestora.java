@@ -72,9 +72,6 @@ import org.junit.jupiter.api.Test;
 			paginasParaOrdenar[4]=paginaQuinta;
 	}
 
-			
-
-
 
 	/**
 	 * Descripcion: Test para probar que hay palabras coincidentes
@@ -224,7 +221,7 @@ import org.junit.jupiter.api.Test;
 		
 		@Test
 		void testOrdenarArrayMismasPalabrasCoincidentes() {
-				Gestora.ordenacionInsercionDirecta(paginasParaOrdenar, mismasPalabrasCoincidentes);
+				Gestora.ordenarPaginas(paginasParaOrdenar, mismasPalabrasCoincidentes, 0, paginasParaOrdenar.length - 1);
 				assertEquals(paginaPrimera.getUrl(), paginasParaOrdenar[0].getUrl());
 				assertEquals(paginaSegunda.getUrl(), paginasParaOrdenar[1].getUrl());
 				assertEquals(paginaTercera.getUrl(), paginasParaOrdenar[2].getUrl());
@@ -240,7 +237,7 @@ import org.junit.jupiter.api.Test;
 		
 		@Test
 		void testOrdenarArrayDiferentesPalabrasCoincidentes() {
-				Gestora.ordenacionInsercionDirecta(paginasParaOrdenar, palabrasCoincidentes);
+				Gestora.ordenarPaginas(paginasParaOrdenar, mismasPalabrasCoincidentes, 0, paginasParaOrdenar.length - 1);
 				assertEquals(paginaPrimera.getUrl(), paginasParaOrdenar[0].getUrl());
 				assertEquals(paginaSegunda.getUrl(), paginasParaOrdenar[1].getUrl());
 				assertEquals(paginaTercera.getUrl(), paginasParaOrdenar[2].getUrl());

@@ -17,11 +17,11 @@ public class Mensaje {
 	 *     <br>
 	 */
 	public static void menuPrincipal() {
-		System.out.println("******************************************************\n\n"
+		System.out.println("******************************************************\n"
 
 				+ "Bienvenido a tu buscador favorito, que desea realizar? \n"
 				+ "1.- Dar de alta una nueva pagina web \n" + "2.- Buscar paginas claves \n"
-				+ "3.- Modificar una pagina web existente \n" + "4.- Salir\n\n"
+				+ "3.- Modificar una pagina web existente \n" + "4.- Salir\n"
 				+ "******************************************************");
 	}
 
