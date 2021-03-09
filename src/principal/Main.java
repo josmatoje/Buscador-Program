@@ -39,8 +39,8 @@ public class Main {
 
 				Gestora.insertarPagina(paginasWeb, pagina); // Se guarda la nueva pagina en el array donde estan todas
 															// las paginas
-				if (!pagina.getEnlacesReferente().equals(""))
-					Gestora.aumentarPageRankPaginaEnlace(paginasWeb, pagina.getEnlacesReferente());
+				if (!pagina.getEnlaceReferente().equals(""))
+					Gestora.aumentarPageRankPaginaEnlace(paginasWeb, pagina.getEnlaceReferente());
 
 				break;
 
@@ -99,12 +99,19 @@ public class Main {
 						}
 					}
 
-					System.out.println("Desea modificar el enlace de referencia?");
+					System.out.println("Desea modificar o eliminar el enlace de referencia?");
 					if (Validacion.leerValidarRespuestaSiNo()) {
+						Gestora.disminuirPageRankPaginaEnlace(paginasWeb, paginasWeb[opcion].getEnlaceReferente());
 						enlaceReferente = Validacion.leerEnlaceReferente(paginasWeb);
-						if (!enlaceReferente.equals(""))//El metodo leerEnlaceReferente devuelve una cadena vacia si finalmente el
-							// usuario no introduce ningun enlace de refernecia
-							paginasWeb[opcion].setEnlacesReferente(enlaceReferente);
+						if (enlaceReferente.equals(paginasWeb[opcion].getUrl())){//El metodo leerEnlaceReferente devuelve una cadena vacia si finalmente el
+							System.out.println("No puedes referenciar una pagina a ella misma");
+						}else { 
+							if(!enlaceReferente.equals("")){
+								// usuario no introduce ningun enlace de refernecia
+								Gestora.aumentarPageRankPaginaEnlace(paginasWeb, paginasWeb[opcion].getEnlaceReferente());
+							}
+							paginasWeb[opcion].setEnlaceReferente(enlaceReferente);
+						}
 					}
 				}else
 					Mensaje.noExistenPaginas();
