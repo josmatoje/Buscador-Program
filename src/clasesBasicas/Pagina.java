@@ -79,7 +79,7 @@ public class Pagina {
 	}
 
 	public void setPageRank(int pageRank) {
-		//A�adimos el ifelse en este set para que en caso de que nos metan un pageRank negativo, se convierta a 0.
+		//Anhadimos el ifelse en este set para que en caso de que nos metan un pageRank negativo, se convierta a 0.
 		if(pageRank<0) {
 			this.pageRank = 0;
 		}else {
